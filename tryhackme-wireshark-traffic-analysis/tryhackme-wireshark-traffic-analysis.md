@@ -16,6 +16,8 @@ tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.window_size > 1024
 
 ![Filter](images/1-ss.jpg)
 
+### Which scan type is used to scan the TCP port 80?
+
 The task tells us this:
 
 ![Filter](images/1-2-ss.jpg)
