@@ -1,12 +1,9 @@
+# TryHackMe: Wireshark – Traffic Analysis
 
-# TryHackMe Wireshark: Traffic Analysis Write-Up
+## Task 2: Nmap Scans
 
-#### Task 2: Nmap Scans
-
-**What is the total number of "TCP Connect" scans?**
-
+### What is the total number of "TCP Connect" scans?
 The Nmap flag for a TCP connect scan is "-sT".
-
 A connect scan initiates the TCP connection but does not complete the full handshake. It sends a SYN packet, examines the reply, then terminates the connection.
 
 So a SYN packet is sent, but the corresponding ACK message is never received. The packets also have a window size larger than 1024 bytes.
