@@ -1,13 +1,20 @@
-# TryHackMe Wireshark: Traffic Analysis Write-Up 
 
-#### Task 2: nmap scans
-**What is the total number of the "TCP Connect" scans?**  
-Filter by -sS (syn scan) and we see 1k packets 
+# TryHackMe Wireshark: Traffic Analysis Write-Up
 
-The nmap flag for a TCP connect scan is -sT 
-A connect scan initates the TCP connection without ever closing it – it sends a syn packet, examines the reply, then shuts the connection down 
-So a syn is sent, but the corresponding ack message is never received, it also has a windows size larger than 1024 bytes, so let's try the filter:
+#### Task 2: Nmap Scans
 
-tcp.flags.syn==1 and tcp.flags.ack==0 and tcp.window_size > 1024
+**What is the total number of "TCP Connect" scans?**
 
-1000 packets are returned, and that's the correct answer 
+The Nmap flag for a TCP connect scan is "-sT".
+
+A connect scan initiates the TCP connection but does not complete the full handshake. It sends a SYN packet, examines the reply, then terminates the connection.
+
+So a SYN packet is sent, but the corresponding ACK message is never received. The packets also have a window size larger than 1024 bytes.
+
+Let's try this filter:
+
+tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.window_size > 1024
+
+1000 packets are returned, and that's the correct answer
+
+
