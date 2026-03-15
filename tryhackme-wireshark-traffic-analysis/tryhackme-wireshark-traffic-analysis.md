@@ -12,6 +12,12 @@ Let's try this filter:
 
 tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.window_size > 1024
 
-1000 packets are returned, and that's the correct answer
+### 1000 packets are returned, and that's the correct answer
 
 ![Filter](images/1-ss.jpg)
+
+The task tells us this:
+
+![Filter](images/1-2-ss.jpg)
+
+### Answer: TCP connect 
