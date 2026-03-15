@@ -16,4 +16,3 @@ tcp.flags.syn == 1 and tcp.flags.ack == 0 and tcp.window_size > 1024
 
 
 
-
