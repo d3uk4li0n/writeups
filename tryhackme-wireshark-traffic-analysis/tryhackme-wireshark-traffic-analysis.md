@@ -23,3 +23,24 @@ The task tells us this:
 ![Filter](images/1-2-ss.jpg)
 
 ### Answer: TCP connect 
+
+
+### How many "UDP close port" messages are there?
+
+The task tells us this too: 
+
+![Filter](images/1-3-ss.jpg)
+
+### Answer: 1083 
+
+
+### Which UDP port in the 55-70 port range is open?
+
+Let's set a filter to check for UDP ports in the 55–70 range 
+
+udp.port >= 55 and udp.port <= 70
+
+![Filter](images/1-4.jpg)
+
+## Answer: 48
+
