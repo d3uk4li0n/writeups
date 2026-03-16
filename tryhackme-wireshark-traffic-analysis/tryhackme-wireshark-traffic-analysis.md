@@ -57,5 +57,12 @@ arp.opcode == 1 && arp.src.hw_mac == 00:0c:29:e2:18:b4
 
 **Answer:** 284
 
+### What is the number of HTTP packets received by the attacker?
 
+We can filter by protocol and using the attacker's MAC address 
+http and eth.addr == 00:0c:29:e2:18:b4
+
+![Filter](images/2-2.jpg)
+
+**Answer: 90**
 
