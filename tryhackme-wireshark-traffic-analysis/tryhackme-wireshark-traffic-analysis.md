@@ -66,3 +66,15 @@ http and eth.addr == 00:0c:29:e2:18:b4
 
 **Answer: 90**
 
+### What is the number of sniffed username&password entries?
+We know we have to look for POST requests – that much we do know  
+This one took a while for me to crack 
+
+I started by setting this filter: 
+http.request.method == POST and eth.dst == 00:0c:29:e2:18:b4
+
+![Filter](images/2-3-1.jpg)
+
+But 10 was not the answer 
+
+**Answer: 7**
