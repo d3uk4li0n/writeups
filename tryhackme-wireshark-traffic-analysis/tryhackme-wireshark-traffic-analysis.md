@@ -148,8 +148,6 @@ nbns.name contains LIVALJM
 
 40 packets are returned, we're only interested in those with a registration value in them
 
-![Filter](images/3-1.jpg)
-
 One common denominator those packets seem to have are two flags with the value of 0x2810 and 0x2910 respectively, so let's filter by those 
 nbns.name contains "LIVALJM" and nbns.flags in {0x2810 0x2910}
 
@@ -159,4 +157,24 @@ nbns.name contains "LIVALJM" and nbns.flags in {0x2810 0x2910}
 
 **Answer: 16**
 
+### Which host requested the IP address "172.16.13.85"?
 
+The task basically gives us the answer, so we use the filter:
+
+dhcp.option.requested_ip_address == 172.16.13.85
+
+ONE packet is returned 
+
+![Filter](images/3-4.jpg)
+
+**Answer: Galaxy A-12**
+
+### What is the IP address of the user "u5"? (Enter the address in defanged format.)
+
+As the task suggests –> kerberos.CNameString == "u5"
+
+![Filter](images/3-5.jpg)
+
+Use [Cyberchef](https://gchq.github.io/CyberChef/) to defang it
+
+**Answer: 10[.]1[.]12[.]2**
