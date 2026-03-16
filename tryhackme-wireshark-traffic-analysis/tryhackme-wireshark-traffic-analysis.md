@@ -67,14 +67,34 @@ http and eth.addr == 00:0c:29:e2:18:b4
 **Answer: 90**
 
 ### What is the number of sniffed username&password entries?
-We know we have to look for POST requests – that much we do know  
-This one took a while for me to crack 
 
-I started by setting this filter: 
+We know that we need to look for **POST requests**, since login credentials are typically submitted through HTTP POST forms
+
+This one took a while for me to figure out
+
+I started by applying this filter:
+
 http.request.method == POST and eth.dst == 00:0c:29:e2:18:b4
 
 ![Filter](images/2-3-1.jpg)
 
-But 10 was not the answer 
+However, 10 is not the correct answer.
 
-**Answer: 7**
+Inspecting the POST requests further, we notice that the relevant fields contain "uname", so we can filter for that 
+This returns 7 packets, but that is still not the correct answer.
+
+![Filter](images/2-3-2.jpg)
+
+At this point, it appears that only the **POST requests to `/userinfo.php`** are relevant, so we refine the filter:
+
+http.request.full_uri == "http://testphp.vulnweb.com/userinfo.php" &&
+http.request.method == POST &&
+urlencoded-form contains "uname"
+
+This returns 6 packets, which correspond to the sniffed username and password entries.
+
+![Filter](images/2-3-3.jpg)
+
+**Answer: 6**
+
+
