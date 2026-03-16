@@ -120,3 +120,41 @@ Sure enough, we select it, and we see our answer there
 ![Filter](images/2-5-2.jpg)
 
 **Answer: Nice work!**
+
+## Task 4: Identifying Hosts: DHCP, NetBIOS and Kerberos
+
+### What is the MAC address of the host "Galaxy A30"?
+
+My first move was probably the most predictable one
+
+Using the filter:
+
+dhcp.option.hostname contains "Galaxy A30"
+
+yielded no results, so I broadened the search to:
+
+dhcp.option.hostname contains "Galaxy"
+
+This returns three packets. Two of them correspond to the broadcast address of the local network segment, leaving only one relevant packet
+
+![Filter](images/3-1.jpg)
+
+**Answer:** 9a:81:41:cb:96:6c
+
+### How many NetBIOS registration requests does the "LIVALJM" workstation have?
+
+First thing we need to do is narrow down the research:
+nbns.name contains LIVALJM
+
+40 packets are returned, we're only interested in those with a registration value in them
+
+One common denominator those packets seem to have are two flags with the value of 0x2810 and 0x2910 respectively, so let's filter by those 
+nbns.name contains "LIVALJM" and nbns.flags in {0x2810 0x2910}
+
+![Filter](images/3-2.jpg)
+
+![Filter](images/3-3.jpg)
+
+**Answer: 16**
+
+
