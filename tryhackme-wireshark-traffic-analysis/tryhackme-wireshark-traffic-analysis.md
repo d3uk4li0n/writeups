@@ -44,3 +44,17 @@ udp.port >= 55 and udp.port <= 70
 
 ### Answer: 48
 
+## Task 3: ARP Poisoning & Man In The Middle!
+
+### What is the number of ARP requests crafted by the attacker?
+
+We know that the ARP request opcode is 1  
+We also know the attacker's MAC address from the task, so we can filter based on that:
+
+arp.opcode == 1 && arp.src.hw_mac == 00:0c:29:e2:18:b4
+
+![Filter](images/2-1.jpg)
+
+### Answer: 284
+
+
