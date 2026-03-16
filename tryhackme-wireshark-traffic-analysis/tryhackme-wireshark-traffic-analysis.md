@@ -178,3 +178,15 @@ As the task suggests –> kerberos.CNameString == "u5"
 Use [Cyberchef](https://gchq.github.io/CyberChef/) to defang it
 
 **Answer: 10[.]1[.]12[.]2**
+
+### What is the hostname of the available host in the Kerberos packets?
+
+Once again, the task comes to our aid
+
+![Filter](images/3-6.jpg)
+
+We issue: kerberos.CNameString contains "$" and we get one result 
+
+![Filter](images/3-7.jpg)
+
+**Answer: xp1$**
