@@ -97,4 +97,26 @@ This returns 6 packets, which correspond to the sniffed username and password en
 
 **Answer: 6**
 
+### What is the password of the "Client986"?
 
+Keeping the filter we just used, double-click packet 1668, and go to HTML Form URL encoded
+
+![Filter](images/2-4.jpg)
+
+**Answer: clientnothere!**
+
+### What is the comment provided by the "Client354"?
+
+We're looking for POST requests again, we get 10 packets by filtering for those 
+
+http.request.method == POST
+
+The only suspect entry is the comment.php one
+
+![Filter](images/2-5-1.jpg)
+
+Sure enough, we select it, and we see our answer there
+
+![Filter](images/2-5-2.jpg)
+
+**Answer: Nice work!**
