@@ -148,6 +148,8 @@ nbns.name contains LIVALJM
 
 40 packets are returned, we're only interested in those with a registration value in them
 
+![Filter](images/3-1.jpg)
+
 One common denominator those packets seem to have are two flags with the value of 0x2810 and 0x2910 respectively, so let's filter by those 
 nbns.name contains "LIVALJM" and nbns.flags in {0x2810 0x2910}
 
