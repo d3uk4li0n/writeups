@@ -212,7 +212,7 @@ While it doesn’t carry data itself, it can provide us with useful information 
 
 ### DNS analysis overview 
 
-Adversary often sets up a domain address and configures it as a C2 channel and the commands executed post-exploitation send DNS queries to the C2 server. We one to recognize these queries is that they are longer than default. 
+Adversary often sets up a domain address and configures it as a C2 channel and the commands executed post-exploitation send DNS queries to the C2 server. One way to recognize these queries is that they are longer than default length. 
 
 ### Use the "Desktop/exercise-pcaps/dns-icmp/icmp-tunnel.pcap" file. Investigate the anomalous packets. Which protocol is used in ICMP tunnelling?
 
