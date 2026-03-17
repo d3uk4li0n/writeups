@@ -282,6 +282,6 @@ Simply follow the TCP stream of the packet we got from the last answer
 
 We get this info from the same data stream 
 
-![Filter](images/5-6.jpg)
+![Filter](images/5-7.jpg)
 
 **Answer: CHMOD 777**
