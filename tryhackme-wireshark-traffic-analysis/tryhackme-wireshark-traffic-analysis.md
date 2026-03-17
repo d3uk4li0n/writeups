@@ -258,7 +258,7 @@ ftp.response.code == 530
 First I tried this filter: ftp.request.arg contains "ftp" && (ftp.request.command == "LIST" || ftp.request.command == "CWD")  
 But no packets are returned
 
-As the 213 code is supposed to give us the file status, I go with: ftp.request.arg contains "ftp" and ftp.response.code == 213  
+Since the 213 code indicates file status, I try: ftp.request.arg contains "ftp" && ftp.response.code == 213  
 Still nothing 
 
 ![Filter](images/5-3.jpg)
