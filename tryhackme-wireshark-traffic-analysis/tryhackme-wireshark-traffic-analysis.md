@@ -240,3 +240,15 @@ Back to Cyberchef to defang it
 
 **Answer: dataexfil[.]com**
 
+## Task 6: Cleartext Protocol Analysis: FTP
+
+### How many incorrect login attempts are there?
+
+The task basically gave us the answer:
+ftp.response.code == 530
+
+![Filter](images/5-1.jpg)
+
+![Filter](images/5-2.jpg)
+
+**Answer: 737**
