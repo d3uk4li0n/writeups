@@ -223,7 +223,7 @@ It took some trial and error of looking at the raw data of various packets, but 
 ### Use the "Desktop/exercise-pcaps/dns-icmp/dns.pcap" file.Investigate the anomalous packets. What is the suspicious main domain address that receives anomalous DNS queries? (Enter the address in defanged format.)
 
 Let’s try: dns.qry.name.len > 15 and !mdns
-(which is the task's recommended filter)
+(which is the task's recommended filter)  
 But that returned 30k packets, that’s not gonna help us
 
 After rummaging in vain amongst the returned packets, I asked [Echo](https://tryhackme.com/echo) for a way to get a cleaner output, and he recommended this: 
@@ -231,7 +231,7 @@ dns.qry.name.len > 15 and !mdns and dns.qry.type == 5
 
 ![Filter](images/4-1.jpg)
 
-That returned 3308 packets – still messy, but the packets all look very similar 
+That returned 3308 packets – still messy, but the packets all look very similar  
 Pick a random packet, go to Follow –> UDP Stream
 
 ![Filter](images/4-2.jpg)
