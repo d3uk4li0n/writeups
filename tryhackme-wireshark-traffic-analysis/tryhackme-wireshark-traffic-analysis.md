@@ -190,3 +190,22 @@ We issue: kerberos.CNameString contains "$" and we get one result
 ![Filter](images/3-7.jpg)
 
 **Answer: xp1$**
+
+## Task 5: Tunneling Traffic: DNS and ICMP
+
+### Investigate the anomalous packets. Which protocol is used in ICMP tunnelling?
+
+## ICMP Overview
+
+ICMP (Internet Control Message Protocol) is used by network devices to send **error messages and diagnostic information** — not actual data like TCP or UDP.
+
+You can think of it as the troubleshooting protocol *par excellence*.
+
+Tools like ping and traceroute rely on ICMP. Ping works by sending ICMP echo request messages and receiving echo replies.  
+
+When analyzing traffic, ICMP can quickly tell us:
+- whether a host is alive  
+- if packets are failing to reach their destination  
+- how traffic is moving across the network  
+
+While it doesn’t carry data itself, it can provide us with useful information about the devices we are trying to communicate with.
