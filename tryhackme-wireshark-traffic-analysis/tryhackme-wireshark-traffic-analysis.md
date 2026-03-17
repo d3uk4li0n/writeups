@@ -210,6 +210,33 @@ When analyzing traffic, ICMP can quickly tell us:
 
 While it doesn’t carry data itself, it can provide us with useful information about the devices we are trying to communicate with.
 
+### DNS analysis overview 
+
+Adversary often sets up a domain address and configures it as a C2 channel and the commands executed post-exploitation send DNS queries to the C2 server. We one to recognize these queries is that they are longer than default. 
+
+### Use the "Desktop/exercise-pcaps/dns-icmp/icmp-tunnel.pcap" file. Investigate the anomalous packets. Which protocol is used in ICMP tunnelling?
+
 It took some trial and error of looking at the raw data of various packets, but I finally got it:
 
 **Answer: SSH**
+
+### Use the "Desktop/exercise-pcaps/dns-icmp/dns.pcap" file.Investigate the anomalous packets. What is the suspicious main domain address that receives anomalous DNS queries? (Enter the address in defanged format.)
+
+Let’s try: dns.qry.name.len > 15 and !mdns
+(which is the task's recommended filter)
+But that returned 30k packets, that’s not gonna help us
+
+After rummaging in vain amongst the returned packets, I asked [Echo](https://tryhackme.com/echo) for a way to get a cleaner output, and he recommended this: 
+dns.qry.name.len > 15 and !mdns and dns.qry.type == 5 
+
+![Filter](images/4-1.jpg)
+
+That returned 3308 packets – still messy, but the packets all look very similar 
+Pick a random packet, go to Follow –> UDP Stream
+
+![Filter](images/4-2.jpg)
+
+Back to Cyberchef to defang it
+
+**Answer: dataexfil[.]com**
+
