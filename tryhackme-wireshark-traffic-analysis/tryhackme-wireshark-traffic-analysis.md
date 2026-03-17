@@ -252,3 +252,21 @@ ftp.response.code == 530
 ![Filter](images/5-2.jpg)
 
 **Answer: 737**
+
+### What is the size of the file accessed by the "ftp" account?
+
+First I tried this filter: ftp.request.arg contains "ftp" && (ftp.request.command == "LIST" || ftp.request.command == "CWD")  
+But no packets are returned
+
+As the 213 code is supposed to give us the file status, I go with: ftp.request.arg contains "ftp" and ftp.response.code == 213  
+Still nothing 
+
+![Filter](images/5-3.jpg)
+
+Finally I try: ftp.request.arg contains "ftp" or ftp.response.code == 213  
+4 packets are displayed, 2 of them contain a 213 response 
+
+![Filter](images/5-4.jpg)
+
+**Answer: 39424**
+
