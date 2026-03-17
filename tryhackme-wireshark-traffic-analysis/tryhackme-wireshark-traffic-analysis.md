@@ -226,7 +226,7 @@ Let’s try: dns.qry.name.len > 15 and !mdns
 (which is the task's recommended filter)  
 But that returned 30k packets, that’s not gonna help us
 
-After rummaging in vain amongst the returned packets, I asked [Echo](https://tryhackme.com/echo) for a way to get a cleaner output, and he recommended this: 
+After rummaging in vain among the returned packets, I asked [Echo](https://tryhackme.com/echo) for a way to get a cleaner output, and he recommended this filter: 
 dns.qry.name.len > 15 and !mdns and dns.qry.type == 5 
 
 ![Filter](images/4-1.jpg)
