@@ -336,3 +336,22 @@ Only one packet is returned
 ![Filter](images/7-4.jpg)
 
 **Answer: 444**
+
+### Locate the "Log4j" attack starting phase and decode the base64 command. What is the IP address contacted by the adversary? (Enter the address in defanged format and exclude "{}".)
+
+On the same packet, right-click Hypertext Transfer protocol at the bottom, and go to Follow -> TCP Stream  
+
+![Filter](images/7-5.jpg)
+
+The answer is in the string following /Base64
+
+![Filter](images/7-6.jpg)
+
+Let's bake it using Cyberchef 
+
+![Filter](images/7-7.jpg)
+
+This is quite interesting – the string tells us someone used wget to download and run a script  
+We change the cyberchef formula to defang the IP address we found 
+
+**Answer: 62[.]210[.]130[.]250**
