@@ -312,6 +312,27 @@ So we're gonna apply the user-agent field as a column as this will allow us to e
 
 **Answer: 6**
 
+### What is the packet number with a subtle spelling difference in the user agent field?
 
+There isn’t much that filters can do here, nor is there much we can do other than look at each individual packet until we find the answer
 
+![Filter](images/7-2.jpg)
 
+**Answer: 52**
+
+### Locate the "Log4j" attack starting phase. What is the packet number?
+
+The task, once again, basically gives us the answer
+
+![Filter](images/7-3.jpg)
+
+we just need to take all these individual filters and combine them in a single filter:  
+http.request.method=="POST" and ((ip contains "jndi") or (ip contains 
+"Exploit")) and ((frame contains "jndi") or (frame contains "Exploit")) and 
+((http.user_agent contains "$") or (http.user_agent contains "=="))  
+
+Only one packet is returned
+
+![Filter](images/7-4.jpg)
+
+**Answer: 444**
