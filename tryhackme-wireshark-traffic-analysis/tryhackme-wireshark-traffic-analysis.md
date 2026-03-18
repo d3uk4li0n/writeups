@@ -285,3 +285,33 @@ We get this info from the same data stream
 ![Filter](images/5-7.jpg)
 
 **Answer: CHMOD 777**
+
+## Task 7: Cleartext Protocol Analysis: HTTP
+
+### HTTP Overview
+
+HTTP (Hypertext Transfer Protocol) is used for communication between clients (like browsers) and web servers. Unlike HTTPS, HTTP traffic is sent in cleartext, meaning anyone monitoring the network can read the requests and responses.
+
+This can include juicy stuff like:
+- URLs  
+- form data (usernames, passwords, comments)  
+- headers and cookies  
+
+So HTTP is a goldmine during traffic analysis — sensitive information can often be extracted directly from the packets
+
+In this section, we’ll analyze HTTP traffic to identify user activity and extract useful data from cleartext communications
+
+### Investigate the user agents. What is the number of anomalous  "user-agent" types?
+
+Filtering for user-agents with: http.user_agent   
+reduces the number of visible packets from 54 to 53  
+
+So we're gonna apply the user-agent field as a column as this will allow us to easily sift through the different types of user-agents 
+
+![Filter](images/7-1.jpg)
+
+**Answer: 6**
+
+
+
+
