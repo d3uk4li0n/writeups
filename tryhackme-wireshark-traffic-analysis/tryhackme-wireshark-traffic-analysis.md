@@ -306,7 +306,7 @@ In this section, we’ll analyze HTTP traffic to identify user activity and extr
 Filtering for user-agents with: http.user_agent   
 reduces the number of visible packets from 54 to 53  
 
-So we're gonna apply the user-agent field as a column as this will allow us to easily sift through the different types of user-agents 
+So we're gonna apply the user-agent field as a column as this will allow us to easily sift through the different user-agents 
 
 ![Filter](images/7-1.jpg)
 
