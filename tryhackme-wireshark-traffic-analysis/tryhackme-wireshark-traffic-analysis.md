@@ -449,8 +449,8 @@ We get exactly one packet
 
 For this one, we need to go to Tools –> Firewall ACL Rules –> IPFirewall (ipfw):
 
-![Filter](images/10-1.jpg)
-
 ![Filter](images/10-2.jpg)
+
+![Filter](images/10-1.jpg)
 
 **Answer: add deny ip from 10.121.70.151 to any in**
