@@ -442,3 +442,15 @@ ftp and ftp.request.command and !ftp.request.arg
 We get exactly one packet  
 
 **Answer: 170**
+
+## Bonus: Actionable Results! 
+
+### Use the "Desktop/exercise-pcaps/bonus/Bonus-exercise.pcap" file. Select packet number 99. Create a rule for "IPFirewall (ipfw)". What is the rule for "denying source IPv4 address"?
+
+For this one, we need to go to Tools –> Firewall ACL Rules –> IPFirewall (ipfw):
+
+![Filter](images/10-1.jpg)
+
+![Filter](images/10-2.jpg)
+
+**Answer: add deny ip from 10.121.70.151 to any in**
