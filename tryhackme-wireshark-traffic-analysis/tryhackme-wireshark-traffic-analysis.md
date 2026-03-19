@@ -422,6 +422,23 @@ easy peasy
 
 ### What is the packet number where "empty password" was submitted?  
 
+The protocol has to be FTP, as we know from the previous task that there is only one HTTP packet using authentication  
+So we filter for FTP traffic with:  
+ftp  
 
+Now it's just a matter of manually sifting through the packets  
+
+You quickly notice that packets without a password lack the "Request arg" field, which is present in those that include one  
+
+![Filter](images/9-2.jpg)
+
+![Filter](images/9-3.jpg)
+
+We can set a filter to include said "arg" field, and one for packets that request a password. We also want a "not" field to include packets that do not have this option:  
+ftp and ftp.request.command and !ftp.request.arg  
+
+![Filter](images/9-5.jpg)
+
+We get exactly one packet  
 
 **Answer: 170**
