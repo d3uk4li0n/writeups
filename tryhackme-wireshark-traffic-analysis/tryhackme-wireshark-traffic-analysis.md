@@ -404,3 +404,5 @@ Double-click packet 1637 –> Follow –> TLS Stream
 ![Filter](images/8-6.jpg)
 
 **Answer: FLAG{THM-PACKETMASTER}**
+
+## Task 9: Bonus: Hunt Cleartext Credentials!
