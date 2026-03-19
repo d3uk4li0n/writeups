@@ -385,5 +385,22 @@ Fortunately, it doesn't take much effort to weed out the irrelevant ones: filter
 
 **Answer: 115**
 
+### Go to Frame 322. What is the authority header of the HTTP2 packet? (Enter the address in defanged format.)
 
+![Filter](images/8-4.jpg)
 
+**Answer: safebrowsing[.]googleapis[.]com**
+
+### Investigate the decrypted packets and find the flag! What is the flag?
+
+My first instinct is to filter by request:    
+(http.request or tls.handshake.type == 1) and !(ssdp) 
+23 packets displayed – most of them are client hello ones, but there's a few at the bottom that look interesting  
+
+![Filter](images/8-5.jpg)
+
+Double-click packet 1637 –> Follow –> TLS Stream 
+
+![Filter](images/8-6.jpg)
+
+**Answer: FLAG{THM-PACKETMASTER}**
