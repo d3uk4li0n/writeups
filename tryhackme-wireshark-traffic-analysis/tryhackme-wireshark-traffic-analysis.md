@@ -407,3 +407,21 @@ Double-click packet 1637 –> Follow –> TLS Stream
 **Answer: FLAG{THM-PACKETMASTER}**
 
 ## Task 9: Bonus: Hunt Cleartext Credentials!
+
+### Use the "Desktop/exercise-pcaps/bonus/Bonus-exercise.pcap" file. What is the packet number of the credentials using "HTTP Basic Auth"?
+
+Filtering for http traffic returns two packets:    
+http
+
+![Filter](images/9-1.jpg)
+
+The relevant packet contains the HTTP Basic Authentication credentials  
+easy peasy  
+
+**Answer: 237**
+
+### What is the packet number where "empty password" was submitted?  
+
+
+
+**Answer: 170**
