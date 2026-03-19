@@ -355,3 +355,19 @@ This is quite interesting – the string tells us someone used wget to download
 We change the cyberchef formula to defang the IP address we found 
 
 **Answer: 62[.]210[.]130[.]250**
+
+## Task 8: Encrypted Protocol Analysis: Decrypting HTTPS
+
+### What is the frame number of the "Client Hello" message sent to "accounts.google.com"?
+
+We start by filtering using:
+(http.request or tls.handshake.type == 1) and !(ssdp) and frame contains "accounts.google.com"
+
+This filter shows HTTP requests and TLS Client Hello messages while excluding SSDP traffic, and narrows the results to packets containing "accounts.google.com"  
+This allows us to focus on traffic related to that domain, including the initial TLS handshake where the client indicates the server it wants to reach 
+
+Only one packet is returned  
+
+**Answer: 16**
+
+![Filter](images/8-1.jpg)
