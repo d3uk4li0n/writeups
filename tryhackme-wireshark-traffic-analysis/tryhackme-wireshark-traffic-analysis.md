@@ -454,3 +454,13 @@ For this one, we need to go to Tools –> Firewall ACL Rules –> IPFirewall (ip
 ![Filter](images/10-1.jpg)
 
 **Answer: add deny ip from 10.121.70.151 to any in**
+
+### Select packet number 231. Create "IPFirewall" rules. What is the rule for "allowing destination MAC address"?
+
+For this one, we need to switch from deny to allow in the MAC destination address rule:  
+
+![Filter](images/10-3.jpg)
+
+![Filter](images/10-4.jpg)
+
+**Answer: add allow MAC 00:d0:59:aa:af:80 any in**
