@@ -368,6 +368,6 @@ This allows us to focus on traffic related to that domain, including the initial
 
 Only one packet is returned  
 
-**Answer: 16**
-
 ![Filter](images/8-1.jpg)
+
+**Answer: 16**
