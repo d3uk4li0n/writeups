@@ -374,12 +374,16 @@ Only one packet is returned
 
 ### Decrypt the traffic with the "KeysLogFile.txt" file. What is the number of HTTP2 packets?
 
-As per the task, we need to we need to apply the encryption key to view the encrypted data, and the task tells us how  
+As per the task, we need to apply the key log file to decrypt the encrypted traffic, and the task provides the steps to do so 
 
 ![Filter](images/8-2.jpg)
 
 For some reason the number of packets we get when applying the key (119) isn't correct – I have no idea why  
-Fortunately, it doesn't take much effort to weed out the irrelevant ones 
+Fortunately, it doesn't take much effort to weed out the irrelevant ones: filter by http2 
+
+![Filter](images/8-3.jpg)
 
 **Answer: 115**
+
+
 
