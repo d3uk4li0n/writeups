@@ -395,6 +395,7 @@ Fortunately, it doesn't take much effort to weed out the irrelevant ones: filter
 
 My first instinct is to filter by request:    
 (http.request or tls.handshake.type == 1) and !(ssdp)  
+
 23 packets displayed – most of them are client hello ones, but there's a few at the bottom that look interesting  
 
 ![Filter](images/8-5.jpg)
