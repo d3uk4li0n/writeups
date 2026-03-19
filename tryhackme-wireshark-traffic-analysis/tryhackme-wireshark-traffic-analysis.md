@@ -360,7 +360,7 @@ We change the cyberchef formula to defang the IP address we found
 
 ### What is the frame number of the "Client Hello" message sent to "accounts.google.com"?
 
-We start by filtering using:
+We start by filtering using:  
 (http.request or tls.handshake.type == 1) and !(ssdp) and frame contains "accounts.google.com"
 
 This filter shows HTTP requests and TLS Client Hello messages while excluding SSDP traffic, and narrows the results to packets containing "accounts.google.com"  
