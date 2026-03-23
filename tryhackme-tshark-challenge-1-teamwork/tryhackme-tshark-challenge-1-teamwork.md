@@ -17,7 +17,7 @@ __Answer the questions below__
 Investigate the domains by using VirusTotal.
 According to VirusTotal, there is a domain marked as malicious/suspicious*
 
-*What is the full URL of the malicious/suspicious domain address?*
+### What is the full URL of the malicious/suspicious domain address?
 
 *Enter your answer in defanged format.*
 
@@ -34,3 +34,5 @@ We can easily clean this up by filtering valid entries using grep:
 tshark -r teamwork.pcap -T fields -e http.request.full_uri | grep "http://"
 
 ![Filter](images/1-1.jpg)
+
+### When was the URL of the malicious/suspicious domain address first submitted to VirusTotal?
