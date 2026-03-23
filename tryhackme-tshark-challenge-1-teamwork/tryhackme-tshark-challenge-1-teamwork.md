@@ -15,8 +15,8 @@ An alert has been triggered: "The threat research team discovered a suspicious d
 
 __Investigate the contacted domains.
 Investigate the domains by using VirusTotal.
-According to VirusTotal, there is a domain marked as malicious/suspicious.
+According to VirusTotal, there is a domain marked as malicious/suspicious.__
 
-What is the full URL of the malicious/suspicious domain address?
+__What is the full URL of the malicious/suspicious domain address?__
 
-Enter your answer in defanged format.__
+__Enter your answer in defanged format.__
