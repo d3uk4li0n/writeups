@@ -13,10 +13,10 @@ An alert has been triggered: "The threat research team discovered a suspicious d
 
 __Answer the questions below__
 
-**Investigate the contacted domains.
+*Investigate the contacted domains.
 Investigate the domains by using VirusTotal.
-According to VirusTotal, there is a domain marked as malicious/suspicious**
+According to VirusTotal, there is a domain marked as malicious/suspicious*
 
 *What is the full URL of the malicious/suspicious domain address?*
 
-**Enter your answer in defanged format.**
+*Enter your answer in defanged format.*
