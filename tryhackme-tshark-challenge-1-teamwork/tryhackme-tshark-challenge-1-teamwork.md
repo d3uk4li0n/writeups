@@ -10,3 +10,13 @@ NOTE: Exercise files contain real examples. DO NOT interact with them outside
 ## Case: Teamwork!
 
 An alert has been triggered: "The threat research team discovered a suspicious domain that could be a potential threat to the organisation."
+
+### Answer the questions below 
+
+__Investigate the contacted domains.
+Investigate the domains by using VirusTotal.
+According to VirusTotal, there is a domain marked as malicious/suspicious.
+
+What is the full URL of the malicious/suspicious domain address?
+
+Enter your answer in defanged format.__
