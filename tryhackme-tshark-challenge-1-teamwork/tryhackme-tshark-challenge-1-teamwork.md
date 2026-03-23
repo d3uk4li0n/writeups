@@ -43,5 +43,6 @@ We see the URL, now we go to [CyberChef](https://gchq.github.io/CyberChef/) to d
 
 We copy-paste the URL in virustotal, go to the details tab, and we see the date of first submission: 
 
+![Filter](images/2-1.jpg)
 
 **Answer: 2017-04-17 22:52:53 UTC**
