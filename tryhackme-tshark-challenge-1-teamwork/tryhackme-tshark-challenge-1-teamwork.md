@@ -46,3 +46,30 @@ We copy-paste the URL in virustotal, go to the details tab, and we see the date 
 ![Filter](images/2-1.jpg)
 
 **Answer: 2017-04-17 22:52:53 UTC**
+
+### Which known service was the domain trying to impersonate?
+
+We see this from the URL: http://www.paypal.com4uswebappsresetaccountrecovery.timeseaways.com/
+
+**Answer: paypal**
+
+### What is the IP address of the malicious domain?
+
+*Enter your answer in defanged format*
+
+To get the IP address of the malicious domain, we need to examine the DNS traffic  
+DNS is responsible for resolving domain names into IP addresses, so the mapping we are looking for will be found in the DNS query/response exchange  
+
+Specifically, the IP address is contained in the DNS response, within the "Answer" section, where the domain is mapped to its corresponding IP address.  
+
+We can therefore filter for DNS packets related to the malicious domain and inspect their contents to retrieve the resolved IP:  
+tshark -r teamwork.pcap -Y "dns.qry.name contains timeseaways.com" -V | grep "Addr"
+
+![Filter](images/3-1.jpg)
+
+![Filter](images/3-2.jpg)
+
+We have our IP address  
+Defang if using [CyberChef](https://gchq.github.io/CyberChef/) again
+
+**Answer: 184[.]154[.]127[.]226**
