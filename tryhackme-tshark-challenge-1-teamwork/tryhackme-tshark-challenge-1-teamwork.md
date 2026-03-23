@@ -60,7 +60,7 @@ We see this from the URL: http://www.paypal.com4uswebappsresetaccountrecovery.ti
 To get the IP address of the malicious domain, we need to examine the DNS traffic  
 DNS is responsible for resolving domain names into IP addresses, so the mapping we are looking for will be found in the DNS query/response exchange  
 
-Specifically, the IP address is contained in the DNS response, within the "Answer" section, where the domain is mapped to its corresponding IP address.  
+Specifically, the IP address is contained in the DNS response, within the "Answer" section, where the domain is mapped to its corresponding IP address  
 
 We can therefore filter for DNS packets related to the malicious domain and inspect their contents to retrieve the resolved IP:  
 tshark -r teamwork.pcap -Y "dns.qry.name contains timeseaways.com" -V | grep "Addr"
@@ -73,3 +73,21 @@ We have our IP address
 Defang if using [CyberChef](https://gchq.github.io/CyberChef/) again
 
 **Answer: 184[.]154[.]127[.]226**
+
+### What is the email address that was used?
+
+*Enter your answer in defanged format. (format: aaa[at]bbb[.]ccc)*
+
+To identify the email address used, we inspect HTTP POST requests, as these typically contain user-submitted data such as login credentials.
+
+We can extract potential email addresses directly from the packet data using:
+
+tshark -r teamwork.pcap -V | grep -Eo '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
+
+This command searches the verbose packet output for patterns matching email addresses
+
+![Filter](images/4-1.jpg)
+
+From the output, we identify the following email:
+
+**Answer: johnny5alive[at]gmail[.]com**
