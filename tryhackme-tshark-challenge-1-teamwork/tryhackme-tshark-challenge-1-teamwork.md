@@ -35,7 +35,7 @@ tshark -r teamwork.pcap -T fields -e http.request.full_uri | grep "http://"
 
 ![Filter](images/1-1.jpg)
 
-We see the URL, now we go to [Cyberchef]([https://www.example.com](https://gchq.github.io/CyberChef/)) to defang it 
+We see the URL, now we go to [CyberChef](https://gchq.github.io/CyberChef/) to defang it 
 
 **Answer: hxxp[://]www[.]paypal[.]com4uswebappsresetaccountrecovery[.]timeseaways[.]com/**
 
