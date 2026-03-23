@@ -20,3 +20,17 @@ According to VirusTotal, there is a domain marked as malicious/suspicious*
 *What is the full URL of the malicious/suspicious domain address?*
 
 *Enter your answer in defanged format.*
+
+We need to extract the domain information, so we issue the following command:  
+
+tshark -r teamwork.pcap -T fields -e http.request.full_uri
+
+This command reads the PCAP file and extracts the full HTTP request URIs from each packet.  
+The `-T fields` option tells TShark to output specific fields instead of full packet details, and `-e http.request.full_uri` selects the full request URI (including the domain and path), allowing us to quickly identify the domains being contacted.
+
+The output contains a lot of empty lines, as not every packet includes an HTTP request.  
+We can easily clean this up by filtering valid entries using grep:  
+
+tshark -r teamwork.pcap -T fields -e http.request.full_uri | grep "http://"
+
+![Filter](images/1-1.jpg)
