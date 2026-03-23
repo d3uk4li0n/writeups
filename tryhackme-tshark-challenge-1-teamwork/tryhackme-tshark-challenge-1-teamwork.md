@@ -11,12 +11,12 @@ NOTE: Exercise files contain real examples. DO NOT interact with them outside
 
 An alert has been triggered: "The threat research team discovered a suspicious domain that could be a potential threat to the organisation."
 
-#### Answer the questions below
+__Answer the questions below__
 
-__Investigate the contacted domains.
+**Investigate the contacted domains.
 Investigate the domains by using VirusTotal.
-According to VirusTotal, there is a domain marked as malicious/suspicious.__
+According to VirusTotal, there is a domain marked as malicious/suspicious**
 
-__What is the full URL of the malicious/suspicious domain address?__
+*What is the full URL of the malicious/suspicious domain address?*
 
-__Enter your answer in defanged format.__
+**Enter your answer in defanged format.**
