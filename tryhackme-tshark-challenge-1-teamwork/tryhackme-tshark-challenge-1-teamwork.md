@@ -11,7 +11,7 @@ NOTE: Exercise files contain real examples. DO NOT interact with them outside
 
 An alert has been triggered: "The threat research team discovered a suspicious domain that could be a potential threat to the organisation."
 
-### Answer the questions below 
+__Answer the questions below__
 
 __Investigate the contacted domains.
 Investigate the domains by using VirusTotal.
