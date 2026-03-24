@@ -32,4 +32,6 @@ tshark -r directory-curiosity.pcap -Y "dns.flags.response == 0" -T fields -e dns
 
 ![Filter](images/1.jpg)
 
+Defang it using [Cyberchef](https://gchq.github.io/CyberChef/)
+
 **Answer: jx2-bavuong[.]com**
