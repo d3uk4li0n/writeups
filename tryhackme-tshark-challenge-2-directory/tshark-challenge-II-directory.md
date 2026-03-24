@@ -22,9 +22,9 @@ According to VirusTotal, there is a domain marked as malicious/suspicious.*
 
 *Enter your answer in a defanged format.*  
 
-To identify potentially malicious domains, we first need to analyze the DNS traffic. That will tell us which domains the victim attempted to resolve, which are a main source of suspicious activity. 
+To identify potentially malicious domains, we first need to analyze the DNS traffic. That will tell us which domains the victim attempted to resolve, which are a main source of suspicious activity   
 
-Since a capture contains both DNS queries and responses, we will filter specifically for DNS query packets. To do that, we will use the filter dns.flags.response == 0, which isolates only query packets (as opposed to responses).  
+Since a capture contains both DNS queries and responses, we will filter specifically for DNS query packets. To do that, we will use the filter dns.flags.response == 0, which isolates only query packets (as opposed to responses)  
 
 In order to visualize the queried domain names, we can use TShark’s field output functionality, focusing on the dns.qry.name field:  
 
