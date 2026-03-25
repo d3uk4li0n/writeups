@@ -55,3 +55,7 @@ tshark -r directory-curiosity.pcap -Y "http.request" -T fields -e http.request.f
 ![Filter](images/2-2.jpg)
 
 **Answer: 14**
+
+### What is the IP address associated with the malicious domain?
+
+Enter your answer in a defanged format.
