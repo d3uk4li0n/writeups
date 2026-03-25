@@ -35,3 +35,23 @@ tshark -r directory-curiosity.pcap -Y "dns.flags.response == 0" -T fields -e dns
 Defang it using [Cyberchef](https://gchq.github.io/CyberChef/)
 
 **Answer: jx2-bavuong[.]com**
+
+### What is the total number of HTTP requests sent to the malicious domain?
+
+To investigate HTTP activity related to the malicious domain, we first need to extract all HTTP requests from the capture. HTTP requests represent outbound communication initiated by the client and can reveal interactions with suspicious infrastructure.  
+
+To isolate only HTTP request packets, we apply the display filter http.request. We then use TShark’s field output functionality to extract the full requested URIs via the http.request.full_uri field:  
+
+tshark -r directory-curiosity.pcap -Y "http.request" -T fields -e http.request.full_uri
+
+![Filter](images/2-1.jpg)
+
+The output contains too many empty lines due to packets that do not include the specified field. To clean the output, we remove blank lines using awk NF  
+
+Next, we filter for requests targeting the identified malicious domain (jx2-bavuong.com) using grep. Finally, we count the total number of matching requests with wc -l, which gives us the number of HTTP requests sent to the malicious domain  
+
+tshark -r directory-curiosity.pcap -Y "http.request" -T fields -e http.request.full_uri awk NF grep "jx2-bavuong.com" wc -l
+
+![Filter](images/2-2.jpg)
+
+**Answer: 14**
