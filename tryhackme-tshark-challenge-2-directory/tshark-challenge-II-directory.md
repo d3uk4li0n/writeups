@@ -19,7 +19,6 @@ Investigate the domains by using VirusTotal.
 According to VirusTotal, there is a domain marked as malicious/suspicious.*
 
 ### What is the name of the malicious/suspicious domain?
-
 *Enter your answer in a defanged format.*  
 
 To identify potentially malicious domains, we first need to analyze the DNS traffic. That will tell us which domains the victim attempted to resolve, which are a main source of suspicious activity   
@@ -57,8 +56,7 @@ tshark -r directory-curiosity.pcap -Y "http.request" -T fields -e http.request.f
 **Answer: 14**
 
 ### What is the IP address associated with the malicious domain?
-
-Enter your answer in a defanged format.
+*Enter your answer in a defanged format.*
 
 To determine the IP address associated with the malicious domain, we need to analyze the DNS response traffic. While DNS queries show which domains were requested, DNS responses contain the actual resolved IP addresses.  
 
