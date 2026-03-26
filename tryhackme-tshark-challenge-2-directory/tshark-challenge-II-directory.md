@@ -59,3 +59,15 @@ tshark -r directory-curiosity.pcap -Y "http.request" -T fields -e http.request.f
 ### What is the IP address associated with the malicious domain?
 
 Enter your answer in a defanged format.
+
+To determine the IP address associated with the malicious domain, we need to analyze the DNS response traffic. While DNS queries show which domains were requested, DNS responses contain the actual resolved IP addresses.  
+
+To isolate this information, we filter for DNS response packets using dns.flags.response == 1 and match only those related to the malicious domain (jx2-bavuong.com). We then extract the corresponding IPv4 address using the dns.a field, as DNS A records map a domain to its IPv4 address.  
+
+tshark -r directory-curiosity.pcap -Y "dns.flags.response == 1 and dns.qry.name contains jx2-bavuong.com" -T fields -e dns.a
+
+![Filter](images/3.jpg)
+
+Defang using [Cyberchef](https://gchq.github.io/CyberChef/)
+
+**Answer: 141[.]164[.]41[.]174**
