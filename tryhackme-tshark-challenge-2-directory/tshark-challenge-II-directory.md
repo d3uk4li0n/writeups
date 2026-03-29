@@ -70,5 +70,5 @@ Defang using [Cyberchef](https://gchq.github.io/CyberChef/)
 
 **Answer: 141[.]164[.]41[.]174**
 
-### What is the server info of the suspicious domain?
+
 
