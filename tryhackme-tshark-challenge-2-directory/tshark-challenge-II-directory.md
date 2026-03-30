@@ -72,3 +72,14 @@ Defang using [Cyberchef](https://gchq.github.io/CyberChef/)
 
 ### What is the server info of the suspicious domain?
 
+To identify the server information associated with the suspicious domain, we need to analyze HTTP response traffic. HTTP requests are sent by the client, whereas HTTP responses are returned by the server and they often include metadata about the server itself (eg HTTP headers, which is what we are interested in)   
+
+To isolate this information, we filter for HTTP response packets using http.response. We then extract the value of the http.server field, which corresponds to the server header in HTTP responses — a header commonly used to indicate the software running on the web server  
+
+tshark -r directory-curiosity.pcap -Y "http.response" -T fields -e "http.server" 
+
+![Filter](images/4.jpg)
+
+**Answer: Apache/2.2.11 (Win32) DAV/2 mod_ssl/2.2.11 OpenSSL/0.9.8i PHP/5.2.9**
+
+
