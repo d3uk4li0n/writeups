@@ -126,3 +126,17 @@ That executable looks sketchy, but really we don't need much more evidence other
 ![Filter](images/9.jpg)
 
 **Answer: b4851333efaf399889456f78eac0fd532e9d8791b23a86a19402c1164aed20de**
+
+### Search the SHA256 value of the file on VirtusTotal.
+
+*What is the "PEiD packer" value?*
+
+![Filter](images/10.jpg)
+
+**Answer: .NET executable**
+
+### Search the SHA256 value of the file on VirtusTotal
+
+*What does the "Lastline Sandbox" flag this as?*
+
+![Filter](images/11.jpg)
