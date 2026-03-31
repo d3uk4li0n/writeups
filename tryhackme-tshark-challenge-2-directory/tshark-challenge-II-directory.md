@@ -121,4 +121,8 @@ That executable looks sketchy, but really we don't need much more evidence other
 
 **Answer: vlauto[.]exe**
 
+### What is the SHA256 value of the malicious file?
 
+![Filter](images/8.jpg)
+
+**Answer: b4851333efaf399889456f78eac0fd532e9d8791b23a86a19402c1164aed20de**
