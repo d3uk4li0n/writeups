@@ -140,3 +140,5 @@ That executable looks sketchy, but really we don't need much more evidence other
 *What does the "Lastline Sandbox" flag this as?*
 
 ![Filter](images/11.jpg)
+
+**Answer: Malware Trojan**
