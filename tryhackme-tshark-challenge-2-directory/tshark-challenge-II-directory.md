@@ -82,8 +82,17 @@ tshark -r directory-curiosity.pcap -Y "http.response" -T fields -e "http.server"
 
 **Answer: Apache/2.2.11 (Win32) DAV/2 mod_ssl/2.2.11 OpenSSL/0.9.8i PHP/5.2.9**
 
-### Follow the "first TCP stream" in "ASCII".
+### Follow the "first TCP stream" in "ASCII"
 *Investigate the output carefully.*
 
 ### What is the number of listed files?
 
+To determine the number of files listed on the suspicious server, we reconstruct the TCP stream between the client and the server. This way, we can view the communication between the two, including HTTP requests and responses.   
+
+This allows us to inspect the server’s response content directly. We see that the response contains an HTML directory listing (see: “Index of /”), and that shows us the files hosted on the server. It can be tricky (as it was, in this instance) to distinguish noise from usable data, but that's our mission here.  
+
+tshark -r directory-curiosity.pcap -q -z "follow,tcp,ascii,0"
+
+The output is too messy to screenshot.  
+
+**Answer: 3**
