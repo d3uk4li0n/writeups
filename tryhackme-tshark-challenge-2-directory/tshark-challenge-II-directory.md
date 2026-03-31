@@ -96,3 +96,12 @@ tshark -r directory-curiosity.pcap -q -z "follow,tcp,ascii,0"
 The output is too messy to screenshot.  
 
 **Answer: 3**
+
+### What is the filename of the first file?
+
+*Enter your answer in a defanged format*
+
+From the output of the previous command:  
+![Filter](images/7.jpg)
+
+**Answer: 123[.]php**
