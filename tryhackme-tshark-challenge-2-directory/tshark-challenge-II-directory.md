@@ -105,3 +105,20 @@ From the output of the previous command:
 ![Filter](images/7.jpg)
 
 **Answer: 123[.]php**
+
+### Export all HTTP traffic objects.
+*What is the name of the downloaded executable file?*
+
+### Enter your answer in a defanged format
+
+The following command will save basically everything transferred over HTTP (the -Q flag is to exclude noise):
+
+tshark -Q -r directory-curiosity.pcap --export-objects http,.
+
+![Filter](images/8.jpg)
+
+That executable looks sketchy, but really we don't need much more evidence other than the fact it's an executable  
+
+**Answer: vlauto[.]exe**
+
+
