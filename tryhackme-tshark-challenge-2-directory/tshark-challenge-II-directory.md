@@ -49,7 +49,7 @@ The output contains too many empty lines due to packets that do not include the 
 
 Next, we filter for requests targeting the identified malicious domain (jx2-bavuong.com) using grep. Finally, we count the total number of matching requests with wc -l, which gives us the number of HTTP requests sent to the malicious domain  
 
-tshark -r directory-curiosity.pcap -Y "http.request" -T fields -e http.request.full_uri awk NF grep "jx2-bavuong.com" wc -l
+tshark -r directory-curiosity.pcap -Y "http.request" -T fields -e http.request.full_uri | awk NF | grep "jx2-bavuong.com" | wc -l
 
 ![Filter](images/2-2.jpg)
 
