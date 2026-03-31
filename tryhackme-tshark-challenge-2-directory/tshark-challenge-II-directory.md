@@ -82,4 +82,8 @@ tshark -r directory-curiosity.pcap -Y "http.response" -T fields -e "http.server"
 
 **Answer: Apache/2.2.11 (Win32) DAV/2 mod_ssl/2.2.11 OpenSSL/0.9.8i PHP/5.2.9**
 
+### Follow the "first TCP stream" in "ASCII".
+*Investigate the output carefully.*
+
+### What is the number of listed files?
 
