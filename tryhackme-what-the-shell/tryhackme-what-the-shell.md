@@ -35,7 +35,7 @@ There are work arounds to both of these problems, which we will cover later on.
 
 Both Socat and Netcat have .exe versions for use on Windows.
 
-*Metasploit -- multi/handler:*
+*Metasploit – multi/handler:*
 
 The exploit/multi/handler module of the Metasploit framework is, like socat and netcat, used to receive reverse shells. Due to being part of the Metasploit framework, multi/handler provides a fully-fledged way to obtain stable shells, with a wide variety of further options to improve the caught shell. It's also the only way to interact with a meterpreter shell, and is the easiest way to handle staged payloads -- both of which we will look at in task 9.
 
