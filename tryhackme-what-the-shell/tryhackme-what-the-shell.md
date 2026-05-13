@@ -11,7 +11,7 @@ We will be covering both of these scenarios in further detail throughout the roo
 The format of this room is as follows:
 
 The bulk of the room is made up of information, with examples given in code blocks and screenshots.
-There are two VMs -- one Linux, one Windows -- in the last two tasks of the room. These can be used to practice the techniques demonstrated.
+There are two VMs – one Linux, one Windows – in the last two tasks of the room. These can be used to practice the techniques demonstrated.
 There are example practice questions in Task 13. Feel free to work through these, or follow along with the tasks as you complete them.
 Without further ado, let's begin!
 
