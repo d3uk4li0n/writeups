@@ -15,3 +15,8 @@ There are two VMs -- one Linux, one Windows -- in the last two tasks of the room
 There are example practice questions in Task 13. Feel free to work through these, or follow along with the tasks as you complete them.
 Without further ado, let's begin!
 
+### Task 2: Tools
+
+There are a variety of tools that we will be using to receive reverse shells and to send bind shells. In general terms, we need malicious shell code, as well as a way of interfacing with the resulting shell. We will discuss each of these briefly below:
+
+---
