@@ -100,6 +100,12 @@ The important thing to understand here is that we are listening on the target, t
 
 ---
 
+The final concept which is relevant in this task is that of interactivity. Shells can be either interactive or non-interactive.
+
+Interactive: If you've used Powershell, Bash, Zsh, sh, or any other standard CLI environment then you will be used to interactive shells. These allow you to interact with programs after executing them. For example, take the SSH login prompt:  
+<img width="621" height="82" alt="image" src="https://github.com/user-attachments/assets/f1b13ca0-f04b-483b-b931-cac7c631212e" />
+
+Here you can see that it's asking interactively that the user type either yes or no in order to continue the connection. This is an interactive program, which requires an interactive shell in order to run.
 
 
 
