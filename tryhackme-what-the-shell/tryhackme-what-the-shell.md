@@ -94,4 +94,12 @@ _nc MACHINE_IP <port>_
 
 <img width="1327" height="207" alt="image" src="https://github.com/user-attachments/assets/0dc150a7-69fc-4a60-88e5-97a35210457c" />
 
+As you can see, this once again gives us code execution on the remote machine. Note that this is not specific to Windows.  
+
+The important thing to understand here is that we are listening on the target, then connecting to it with our own machine.  
+
+---
+
+
+
 
