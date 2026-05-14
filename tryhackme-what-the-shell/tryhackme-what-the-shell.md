@@ -116,3 +116,11 @@ Notice that the whoami command (which is non-interactive) executes perfectly, bu
 
 Additionally, in various places throughout this task you will see a command in the screenshots called listener. This command is an alias unique to the attacking machine used for demonstrations, and is a shorthand way of typing sudo rlwrap nc -lvnp 443, which will be covered in upcoming tasks. It will not work on any other machine unless the alias has been configured locally.  
 
+### Which type of shell connects back to a listening port on your computer, Reverse (R) or Bind (B)?  
+*Answer: R*
+
+### You have injected malicious shell code into a website. Is the shell you receive likely to be interactive? (Y or N)  
+*Answer: N*
+
+### When using a bind shell, would you execute a listener on the Attacker (A) or the Target (T)?  
+*Answer: T*
