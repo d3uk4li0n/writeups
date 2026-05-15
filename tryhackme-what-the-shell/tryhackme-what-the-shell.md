@@ -124,3 +124,15 @@ Additionally, in various places throughout this task you will see a command in t
 
 ### When using a bind shell, would you execute a listener on the Attacker (A) or the Target (T)?  
 *Answer: T*
+
+### Task 4: Netcat 
+
+As mentioned previously, Netcat is the most basic tool in a pentester's toolkit when it comes to any kind of networking. With it we can do a wide variety of interesting things, but let's focus for now on shells.
+
+_Reverse Shells_
+
+In the previous task we saw that reverse shells require shellcode and a listener. There are many ways to execute a shell, so we'll start by looking at listeners.  
+
+The syntax for starting a netcat listener using Linux is this:  
+
+
