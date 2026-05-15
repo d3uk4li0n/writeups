@@ -141,3 +141,13 @@ _nc -lvnp <port-number>_
 -v is used to request a verbose output  
 -n tells netcat not to resolve host names or use DNS. Explaining this is outwith the scope of the room.  
 -p indicates that the port specification will follow.  
+
+The example in the previous task used port 443. Realistically you could use any port you like, as long as there isn't already a service using it. Be aware that if you choose to use a port below 1024, you will need to use sudo when starting your listener. That said, it's often a good idea to use a well-known port number (80, 443 or 53 being good choices) as this is more likely to get past outbound firewall rules on the target.  
+
+A working example of this would be:  
+
+_sudo nc -lvnp 443_  
+
+We can then connect back to this with any number of payloads, depending on the environment on the target.  
+
+An example of this is displayed in the previous task.  
