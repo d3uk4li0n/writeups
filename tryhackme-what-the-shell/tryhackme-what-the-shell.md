@@ -151,3 +151,19 @@ _sudo nc -lvnp 443_
 We can then connect back to this with any number of payloads, depending on the environment on the target.  
 
 An example of this is displayed in the previous task.  
+
+_Bind Shells_  
+
+If we are looking to obtain a bind shell on a target then we can assume that there is already a listener waiting for us on a chosen port of the target: all we need to do is connect to it. The syntax for this is relatively straight forward:
+
+_nc <target-ip> <chosen-port>_
+
+Here we are using netcat to make an outbound connection to the target on our chosen port.
+
+We will look at using netcat to create a listener for this type of shell in Task 8. What's important here is that you understand how to connect to a listening port using netcat.
+
+### Which option tells netcat to listen?  
+*Answer: -l*
+
+### How would you connect to a bind shell on the IP address: 10.10.10.11 with port 8080?  
+*Answer: nc 10.10.10.11 8080*
