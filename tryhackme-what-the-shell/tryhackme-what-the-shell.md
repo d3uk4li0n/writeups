@@ -167,3 +167,7 @@ We will look at using netcat to create a listener for this type of shell in Task
 
 ### How would you connect to a bind shell on the IP address: 10.10.10.11 with port 8080?  
 *Answer: nc 10.10.10.11 8080*
+
+Ok, so we've caught or connected to a netcat shell, what next?
+
+These shells are very unstable by default. Pressing Ctrl + C kills the whole thing. They are non-interactive, and often have strange formatting errors. This is due to netcat "shells" really being processes running inside a terminal, rather than being bonafide terminals in their own right. Fortunately, there are many ways to stabilise netcat shells on Linux systems. We'll be looking at three here. Stabilisation of Windows reverse shells tends to be significantly harder; however, the second technique that we'll be covering here is particularly useful for it.
