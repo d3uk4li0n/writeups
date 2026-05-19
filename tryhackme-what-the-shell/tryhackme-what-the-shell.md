@@ -228,4 +228,10 @@ stty cols <number>
 
 Filling in the numbers you got from running the command in your own terminal.  
 
-This will change the registered width and height of the terminal, thus allowing programs such as text editors which rely on such information being accurate to correctly open.
+This will change the registered width and height of the terminal, thus allowing programs such as text editors which rely on such information being accurate to correctly open.  
+
+### How would you change your terminal size to have 238 columns?
+*stty cols 238*
+
+### What is the syntax for setting up a Python3 webserver on port 80? 
+*sudo python3 -m http.server 80*
