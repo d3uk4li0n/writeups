@@ -275,3 +275,5 @@ We use the "pipes" argument to interface between the Unix and Windows ways of ha
 Regardless of the target, we use this command on our attacking machine to connect to the waiting listener.  
 
 socat TCP:<TARGET-IP>:<TARGET-PORT> -  
+
+---
