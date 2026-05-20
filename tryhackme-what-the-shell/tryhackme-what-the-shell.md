@@ -240,6 +240,10 @@ This will change the registered width and height of the terminal, thus allowing 
 
 Socat is similar to netcat in some ways, but fundamentally different in many others. The easiest way to think about socat is as a connector between two points. In the interests of this room, this will essentially be a listening port and the keyboard, however, it could also be a listening port and a file, or indeed, two listening ports. All socat does is provide a link between two points -- much like the portal gun from the Portal games!
 
-Once again, let's start with reverse shells.
+Once again, let's start with reverse shells.  
 
 _Reverse Shells_
+
+As mentioned previously, the syntax for socat gets a lot harder than that of netcat. Here's the syntax for a basic reverse shell listener in socat:
+
+socat TCP-L:<port> -
