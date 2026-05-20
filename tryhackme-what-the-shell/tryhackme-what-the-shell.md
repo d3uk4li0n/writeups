@@ -305,3 +305,11 @@ As normal, on the left we have a listener running on our local attacking machine
 
 <img width="1247" height="173" alt="image" src="https://github.com/user-attachments/assets/154b5788-00df-4df0-8718-e46afd29c15a" />
 
+Note that the socat shell is fully interactive, allowing us to use interactive commands such as SSH. This can then be further improved by setting the stty values as seen in the previous task, which will let us use text editors such as Vim or Nano.  
+
+---
+
+If, at any point, a socat shell is not working correctly, it's well worth increasing the verbosity by adding -d -d into the command. This is very useful for experimental purposes, but is not usually necessary for general use.
+
+### How would we get socat to listen on TCP port 8080?  
+*TCP-L:8080*
