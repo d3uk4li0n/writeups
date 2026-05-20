@@ -235,3 +235,11 @@ This will change the registered width and height of the terminal, thus allowing 
 
 ### What is the syntax for setting up a Python3 webserver on port 80? 
 *sudo python3 -m http.server 80*
+
+### Task 6: Socat
+
+Socat is similar to netcat in some ways, but fundamentally different in many others. The easiest way to think about socat is as a connector between two points. In the interests of this room, this will essentially be a listening port and the keyboard, however, it could also be a listening port and a file, or indeed, two listening ports. All socat does is provide a link between two points -- much like the portal gun from the Portal games!
+
+Once again, let's start with reverse shells.
+
+_Reverse Shells_
