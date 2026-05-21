@@ -313,3 +313,5 @@ If, at any point, a socat shell is not working correctly, it's well worth increa
 
 ### How would we get socat to listen on TCP port 8080?  
 *TCP-L:8080*
+
+### Task 7: Socat Encrypted Shells 
