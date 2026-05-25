@@ -356,4 +356,3 @@ The following image shows an OPENSSL Reverse shell from a Linux target. As usual
 
 <img width="1852" height="704" alt="image" src="https://github.com/user-attachments/assets/91976a35-d402-4b2b-ae1f-6a4d592232ea" />
 
-This technique will also work with the special, Linux-only TTY shell covered in the previous task -- figuring out the syntax for this will be the challenge for this task. Feel free to use the Linux Practice box (deployable at the end of the room) to experiment if you're struggling to obtain the answer.
