@@ -420,3 +420,5 @@ For other common reverse shell payloads, [PayloadsAllTheThings](https://tryhackm
 *Look through the linked Payloads all the Things Reverse Shell Cheatsheet and familiarise yourself with the languages available.*
 
 ---
+
+### Task 9: msfvenom
