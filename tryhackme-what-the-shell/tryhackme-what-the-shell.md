@@ -413,3 +413,10 @@ In order to use this, we need to replace "<IP>" and "<port>" with an appropriate
 ---
 
 For other common reverse shell payloads, [PayloadsAllTheThings](https://tryhackme.com/room/introtoshells#:~:text=PayloadsAllTheThings,in%20new%20tab) is a repository containing a wide range of shell codes (usually in one-liner format for copying and pasting), in many different languages. It is well worth reading through the linked page to see what's available.
+
+*What command can be used to create a named pipe in Linux?*
+*Answer:* mkfifo
+
+*Look through the linked Payloads all the Things Reverse Shell Cheatsheet and familiarise yourself with the languages available.*
+
+---
