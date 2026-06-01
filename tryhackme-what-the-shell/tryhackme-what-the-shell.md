@@ -553,8 +553,8 @@ When the staged payload generated in the previous task is run, Metasploit receiv
 
 Notice that, because the multi/handler was originally backgrounded, we needed to use sessions 1 to foreground it again. This worked as it was the only session running. Had there been other sessions active, we would have needed to use sessions to see all active sessions, then use sessions <number> to select the appropriate session to foreground. This number would also have been displayed in the line where the shell was opened (see "Command Shell session 1 opened").  
 
-*What command can be used to start a listener in the background?*
+*What command can be used to start a listener in the background?*  
 *Answer:* exploit -j
 
-*If we had just received our tenth reverse shell in the current Metasploit session, what would be the command used to foreground it?*
-*Answer: * sessions 10
+*If we had just received our tenth reverse shell in the current Metasploit session, what would be the command used to foreground it?*  
+*Answer:* sessions 10
