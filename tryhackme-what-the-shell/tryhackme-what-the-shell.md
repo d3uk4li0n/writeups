@@ -526,8 +526,9 @@ Multi/Handler is a superb tool for catching reverse shells. It's essential if yo
 
 Fortunately, it's relatively easy to use:  
 
-Open Metasploit with msfconsole  
-Type use multi/handler, and press enter  
+1.  Open Metasploit with msfconsole  
+2. Type use multi/handler, and press enter  
+
 We are now primed to start a multi/handler session. Let's take a look at the available options using the options command:  
 
 <img width="719" height="384" alt="image" src="https://github.com/user-attachments/assets/bff290f7-80ef-4dba-8689-3e823873bf54" />
