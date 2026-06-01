@@ -558,3 +558,21 @@ Notice that, because the multi/handler was originally backgrounded, we needed to
 
 *If we had just received our tenth reverse shell in the current Metasploit session, what would be the command used to foreground it?*  
 *Answer:* sessions 10
+
+### Task 11
+
+There are times when we encounter websites that allow us an opportunity to upload, in some way or another, an executable file. Ideally we would use this opportunity to upload code that would activate a reverse or bind shell, but sometimes this is not possible. In these cases we would instead upload a webshell. See the [Upload Vulnerabilities Room](https://tryhackme.com/room/uploadvulns) for a more extensive look at this concept.  
+
+"Webshell" is a colloquial term for a script that runs inside a webserver (usually in a language such as PHP or ASP) which executes code on the server. Essentially, commands are entered into a webpage -- either through a HTML form, or directly as arguments in the URL -- which are then executed by the script, with the results returned and written to the page. This can be extremely useful if there are firewalls in place, or even just as a stepping stone into a fully fledged reverse or bind shell.  
+
+As PHP is still the most common server side scripting language, let's have a look at some simple code for this.  
+
+In a very basic one line format:  
+
+<?php echo "<pre>" . shell_exec($_GET["cmd"]) . "</pre>"; ?>  
+
+This will take a GET parameter in the URL and execute it on the system with shell_exec(). Essentially, what this means is that any commands we enter in the URL after ?cmd= will be executed on the system -- be it Windows or Linux. The "pre" elements are to ensure that the results are formatted correctly on the page.  
+
+Let's see this in action:  
+
+<img width="899" height="473" alt="image" src="https://github.com/user-attachments/assets/c225138e-139f-4171-a9b3-7f5fdf97b3d4" />
