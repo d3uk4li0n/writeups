@@ -576,3 +576,6 @@ This will take a GET parameter in the URL and execute it on the system with shel
 Let's see this in action:  
 
 <img width="899" height="473" alt="image" src="https://github.com/user-attachments/assets/c225138e-139f-4171-a9b3-7f5fdf97b3d4" />
+
+*Read the WebShells information.*
+*No answer needed* 
