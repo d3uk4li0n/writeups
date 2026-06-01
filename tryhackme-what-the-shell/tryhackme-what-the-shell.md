@@ -533,4 +533,22 @@ We are now primed to start a multi/handler session. Let's take a look at the ava
 
 <img width="719" height="384" alt="image" src="https://github.com/user-attachments/assets/bff290f7-80ef-4dba-8689-3e823873bf54" />
 
+There are three options we need to set: payload, LHOST and LPORT. These are all identical to the options we set when generating  shellcode with Msfvenom -- a payload specific to our target, as well as a listening address and port with which we can receive a shell. Note that the LHOST must be specified here, as metasploit will not listen on all network interfaces like netcat or socat will; it must be told a specific address to listen with (when using TryHackMe, this will be your tun0 address(opens in new tab)). We set these options with the following commands:  
 
+- set PAYLOAD _payload_
+- set LHOST _listen-address_
+- set LPORT _listen-port_
+
+We should now be ready to start the listener!  
+
+Let's do this by using the exploit -j command. This tells Metasploit to launch the module, running as a job in the background.  
+
+<img width="750" height="663" alt="image" src="https://github.com/user-attachments/assets/902d94ce-bbc3-4617-bce9-7324da51da52" />
+
+You may notice that in the above screenshot, Metasploit is listening on a port under 1024. To do this, Metasploit must be run with sudo permissions.  
+
+When the staged payload generated in the previous task is run, Metasploit receives the connection, sending the remainder of the payload and giving us a reverse shell:  
+
+<img width="878" height="201" alt="image" src="https://github.com/user-attachments/assets/ecc498ee-05e3-4371-8f4a-f7a8a88f4e98" />
+
+Notice that, because the multi/handler was originally backgrounded, we needed to use sessions 1 to foreground it again. This worked as it was the only session running. Had there been other sessions active, we would have needed to use sessions to see all active sessions, then use sessions <number> to select the appropriate session to foreground. This number would also have been displayed in the line where the shell was opened (see "Command Shell session 1 opened").  
