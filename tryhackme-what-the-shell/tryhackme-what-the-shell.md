@@ -611,5 +611,8 @@ Reverse and Bind shells are an essential technique for gaining remote code execu
 
 --- 
 
-### Task 11: Practice and Examples  
+### Task 13: Practice and Examples  
 
+This room contained a lot of information, and gave you little opportunity to put it into practice throughout. The following two tasks contain lab machines (one Ubuntu 18.04 server and one Windows server), each configured with a simple webserver with which you can upload and activate shells. This is a sandbox environment, so there will be no filters to bypass. Login credentials and instructions for each will also be given, should you wish to log in to practice with netcat, socat or meterpreter shells.  
+
+The remainder of this task will consist of shell examples for you to try out on the practice boxes.  
