@@ -623,3 +623,5 @@ Try uploading a webshell to the Linux box, then use the command: _nc <LOCAL-IP> 
 
 We fire up the kali machine, run ifconfig and we see the IP is 10.65.78.242  
 
+![Filter](images/1-web-shell.jpg)
+
