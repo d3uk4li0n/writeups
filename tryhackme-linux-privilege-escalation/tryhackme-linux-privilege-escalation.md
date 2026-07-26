@@ -27,5 +27,10 @@ It's rare when performing a real-world penetration test to be able to gain a foo
 - Editing software configurations  
 - Enabling persistence  
 - Changing the privilege of existing (or new) users  
-- Execute any administrative command  
+- Execute any administrative command
+
+*Answer the questions below*  
+_Read the above_
+
+No answer needed
 
