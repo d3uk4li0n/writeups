@@ -5,8 +5,8 @@ Privilege escalation is a journey. There are no silver bullets, and much depends
 
 This room was designed to cover the main privilege escalation vectors and give you a better understanding of the process. This new skill will be an essential part of your arsenal whether you are participating in CTFs, taking certification exams, or working as a penetration tester.
 
-### Answer the questions below
+*Answer the questions below*
 
-Read the above  
+_Read the above_
 
 No answer needed  
