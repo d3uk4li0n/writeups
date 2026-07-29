@@ -80,3 +80,28 @@ The “ps” command provides a few useful options.
 The env command will show environmental variables.  
 
 ![Filter](images/3-2.png)
+
+The PATH variable may have a compiler or a scripting language (e.g. Python) that could be used to run code on the target system or leveraged for privilege escalation.  
+
+### sudo -l   
+
+The target system may be configured to allow users to run some (or all) commands with root privileges. The sudo -l command can be used to list all commands your user can run using sudo.
+
+### ls  
+
+One of the common commands used in Linux is probably ls.
+
+While looking for potential privilege escalation vectors, please remember to always use the ls command with the -la parameter. The example below shows how the “secret.txt” file can easily be missed using the ls or ls -l commands.
+
+![Filter](images/3-3.png)
+
+### id 
+
+The id command will provide a general overview of the user’s privilege level and group memberships.
+
+It is worth remembering that the id command can also be used to obtain the same information for another user as seen below.
+
+![Filter](images/3-4.png)
+
+### /etc/passwd
+
