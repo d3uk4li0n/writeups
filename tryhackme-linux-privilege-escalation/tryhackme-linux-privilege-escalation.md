@@ -105,3 +105,14 @@ It is worth remembering that the id command can also be used to obtain the same 
 
 ### /etc/passwd
 
+Reading the /etc/passwd file can be an easy way to discover users on the system.  
+
+![Filter](images/3-5.png)
+
+While the output can be long and a bit intimidating, it can easily be cut and converted to a useful list for brute-force attacks.  
+
+![Filter](images/3-6.png)
+
+Remember that this will return all users, some of which are system or service users that would not be very useful. Another approach could be to grep for “home” as real users will most likely have their folders under the “home” directory.
+
+![Filter](images/3-7.png)
