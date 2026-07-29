@@ -116,3 +116,7 @@ While the output can be long and a bit intimidating, it can easily be cut and co
 Remember that this will return all users, some of which are system or service users that would not be very useful. Another approach could be to grep for “home” as real users will most likely have their folders under the “home” directory.
 
 ![Filter](images/3-7.png)
+
+### history 
+
+Looking at earlier commands with the history command can give us some idea about the target system and, albeit rarely, have stored information such as passwords or usernames.
