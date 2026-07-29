@@ -42,4 +42,7 @@ Enumeration is the first step you have to take once you gain access to any syste
 
 The hostname command will return the hostname of the lab machine. Although this value can easily be changed or have a relatively meaningless string (e.g. Ubuntu-3487340239), in some cases, it can provide information about the target system’s role within the corporate network (e.g. SQL-PROD-01 for a production SQL server).
 
+### uname -a
+
+Will print system information giving us additional detail about the kernel used by the system. This will be useful when searching for any potential kernel vulnerabilities that could lead to privilege escalation.
 
