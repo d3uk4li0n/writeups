@@ -46,3 +46,28 @@ The hostname command will return the hostname of the lab machine. Although this 
 
 Will print system information giving us additional detail about the kernel used by the system. This will be useful when searching for any potential kernel vulnerabilities that could lead to privilege escalation.
 
+### /proc/version
+
+The proc filesystem (procfs) provides information about the target system processes. You will find proc on many different Linux flavours, making it an essential tool to have in your arsenal.   
+Looking at /proc/version may give you information on the kernel version and additional data such as whether a compiler (e.g. GCC) is installed.  
+
+### /etc/issue.  
+
+Systems can also be identified by looking at the /etc/issue file. This file usually contains some information about the operating system but can easily be customized or changed. While on the subject, any file containing system information can be customized or changed. For a clearer understanding of the system, it is always good to look at all of these.   
+
+### ps Command  
+
+The ps command is an effective way to see the running processes on a Linux system. Typing ps on your terminal will show processes for the current shell.
+
+The output of the ps (Process Status) will show the following;
+
+PID: The process ID (unique to the process)  
+TTY: Terminal type used by the user  
+Time: Amount of CPU time used by the process (this is NOT the time this process has been running for)  
+CMD: The command or executable running (will NOT display any command line parameter)   
+The “ps” command provides a few useful options.   
+
+ps -A: View all running processes  
+ps axjf: View process tree (see the tree formation until ps axjf is run below)  
+
+![Filter](images/1-1.png)
