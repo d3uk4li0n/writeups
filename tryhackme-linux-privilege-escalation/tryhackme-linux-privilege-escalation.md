@@ -144,3 +144,7 @@ Following an initial check for existing interfaces and network routes, it is wor
 netstat -s: list network usage statistics by protocol (below) This can also be used with the -t or -u options to limit the output to a specific protocol.  
 
 ![Filter](images/3-11.png)
+
+netstat -tp: list connections with the service name and PID information.
+
+![Filter](images/3-12.png)
