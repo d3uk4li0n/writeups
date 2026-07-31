@@ -238,4 +238,22 @@ As we are in the Linux realm, familiarity with Linux commands, in general, will 
 
 <img width="2197" height="146" alt="image" src="https://github.com/user-attachments/assets/5628311e-d1f8-4883-b4c4-c14b181b9e88" />
 
-Answer: 3.13.0-24-generic
+*Answer: 3.13.0-24-generic*
+
+*What Linux is this?*
+
+<img width="491" height="100" alt="image" src="https://github.com/user-attachments/assets/14a04fa3-44a4-4d53-880d-4640d6aab8b2" />
+
+*Answer: Ubuntu 14.04 LTS*
+
+*What version of the Python language is installed on the system?*
+
+<img width="412" height="135" alt="image" src="https://github.com/user-attachments/assets/3c0e9658-7d56-4ab8-a5ea-0815bd61b0b2" />
+
+*Answer: 2.7.6*
+
+*What vulnerability seem to affect the kernel of the target system? (Enter a CVE number)*
+
+https://nvd.nist.gov/vuln/detail/cve-2015-1328
+
+*Answer: CVE-2015-1328*
