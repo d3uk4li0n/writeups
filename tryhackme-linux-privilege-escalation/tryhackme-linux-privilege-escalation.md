@@ -130,3 +130,17 @@ The target system may be a pivoting point to another network. The ifconfig comma
 This can be confirmed using the ip route command to see which network routes exist.
 
 ![Filter](images/3-9.png)
+
+### netstat 
+
+Following an initial check for existing interfaces and network routes, it is worth looking into existing communications. The netstat command can be used with several different options to gather information on existing connections.
+
+- netstat -a: shows all listening ports and established connections.
+- netstat -at or netstat -au can also be used to list TCP or UDP protocols respectively.
+- netstat -l: list ports in “listening” mode. These ports are open and ready to accept incoming connections. This can be used with the “t” option to list only ports that are listening using the TCP protocol (below)
+
+![Filter](images/3-10.png)
+
+netstat -s: list network usage statistics by protocol (below) This can also be used with the -t or -u options to limit the output to a specific protocol.  
+
+![Filter](images/3-11.png)
