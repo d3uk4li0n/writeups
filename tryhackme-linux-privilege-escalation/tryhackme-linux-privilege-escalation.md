@@ -120,3 +120,13 @@ Remember that this will return all users, some of which are system or service us
 ### history 
 
 Looking at earlier commands with the history command can give us some idea about the target system and, albeit rarely, have stored information such as passwords or usernames.
+
+### ifconfig 
+
+The target system may be a pivoting point to another network. The ifconfig command will give us information about the network interfaces of the system. The example below shows the target system has three interfaces (eth0, tun0, and tun1). Our attacking machine can reach the eth0 interface but can not directly access the two other networks.
+
+![Filter](images/3-8.png)
+
+This can be confirmed using the ip route command to see which network routes exist.
+
+![Filter](images/3-9.png)
