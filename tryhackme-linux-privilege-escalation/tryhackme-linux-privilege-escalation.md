@@ -228,9 +228,14 @@ As we are in the Linux realm, familiarity with Linux commands, in general, will 
 
 ### Answer the questions below  
 
-What is the hostname of the target system? 
+*What is the hostname of the target system?*
 
 <img width="319" height="150" alt="image" src="https://github.com/user-attachments/assets/281ac734-57d2-4e8a-b5c5-c67dc7247cd2" />
 
 *Answer: wade7363*
 
+*What is the Linux kernel version of the target system?*
+
+<img width="2197" height="146" alt="image" src="https://github.com/user-attachments/assets/5628311e-d1f8-4883-b4c4-c14b181b9e88" />
+
+Answer: 3.13.0-24-generic
