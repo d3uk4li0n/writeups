@@ -148,3 +148,24 @@ netstat -s: list network usage statistics by protocol (below) This can also be u
 netstat -tp: list connections with the service name and PID information.
 
 ![Filter](images/3-12.png)
+
+This can also be used with the -l option to list listening ports (below)  
+
+![Filter](images/3-13.png)
+
+We can see the “PID/Program name” column is empty as this process is owned by another user   
+Below is the same command run with root privileges and reveals this information as 2641/nc (netcat)
+
+![Filter](images/3-14.png)
+
+netstat -i: Shows interface statistics. We see below that “eth0” and “tun0” are more active than “tun1”  
+
+![Filter](images/3-15.png)
+
+The netstat usage you will probably see most often in blog posts, write-ups, and courses is netstat -ano which could be broken down as follows;
+
+- -a: Display all sockets
+- -n: Do not resolve names
+- -o: Display timers
+
+![Filter](images/3-16.png)
