@@ -226,3 +226,11 @@ find / -perm -u=s -type f 2>/dev/null: Find files with the SUID bit, which allow
 
 As we are in the Linux realm, familiarity with Linux commands, in general, will be very useful. Please spend some time getting comfortable with commands such as find, locate, grep, cut, sort, etc..
 
+### Answer the questions below  
+
+What is the hostname of the target system? 
+
+<img width="319" height="150" alt="image" src="https://github.com/user-attachments/assets/281ac734-57d2-4e8a-b5c5-c67dc7247cd2" />
+
+*Answer: wade7363*
+
