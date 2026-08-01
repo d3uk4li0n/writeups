@@ -274,4 +274,16 @@ The target system’s environment will influence the tool you will be able to us
 Install and try a few automated enumeration tools on your local Linux distribution  
 *No answer needed*  
 
+## Task 5: Privilege Escalation: Kernel Exploits  
 
+Privilege escalation ideally leads to root privileges. This can sometimes be achieved simply by exploiting an existing vulnerability, or in some cases by accessing another user account that has more privileges, information, or access.
+
+Unless a single vulnerability leads to a root shell, the privilege escalation process will rely on misconfigurations and lax permissions.  
+
+The kernel on Linux systems manages the communication between components such as the memory on the system and applications. This critical function requires the kernel to have specific privileges; thus, a successful exploit will potentially lead to root privileges.  
+
+The Kernel exploit methodology is simple;
+
+1. Identify the kernel version
+2. Search and find an exploit code for the kernel version of the target system
+3. Run the exploit
