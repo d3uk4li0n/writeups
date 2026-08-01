@@ -287,3 +287,5 @@ The Kernel exploit methodology is simple;
 1. Identify the kernel version
 2. Search and find an exploit code for the kernel version of the target system
 3. Run the exploit
+
+Although it looks simple, please remember that a failed kernel exploit can lead to a system crash. Make sure this potential outcome is acceptable within the scope of your penetration testing engagement before attempting a kernel exploit.  
