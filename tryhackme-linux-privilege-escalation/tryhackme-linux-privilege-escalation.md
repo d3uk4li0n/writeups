@@ -257,3 +257,21 @@ As we are in the Linux realm, familiarity with Linux commands, in general, will 
 https://nvd.nist.gov/vuln/detail/cve-2015-1328
 
 *Answer: CVE-2015-1328*
+
+## Task 4: Automated Enumeration Tools
+
+Several tools can help you save time during the enumeration process. These tools should only be used to save time knowing they may miss some privilege escalation vectors. Below is a list of popular Linux enumeration tools with links to their respective Github repositories.
+
+The target system’s environment will influence the tool you will be able to use. For example, you will not be able to run a tool written in Python if it is not installed on the target system. This is why it would be better to be familiar with a few rather than having a single go-to tool.  
+
+- LinPeas: https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS(opens in new tab)
+- LinEnum: https://github.com/rebootuser/LinEnum(opens in new tab)(opens in new tab)
+- LES (Linux Exploit Suggester): https://github.com/mzet-/linux-exploit-suggester(opens in new tab)
+- Linux Smart Enumeration: https://github.com/diego-treitos/linux-smart-enumeration(opens in new tab)
+- Linux Priv Checker: https://github.com/linted/linuxprivchecker
+
+*Answer the questions below*  
+Install and try a few automated enumeration tools on your local Linux distribution  
+*No answer needed*  
+
+
