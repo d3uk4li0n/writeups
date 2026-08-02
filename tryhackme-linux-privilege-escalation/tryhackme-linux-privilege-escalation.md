@@ -288,4 +288,14 @@ The Kernel exploit methodology is simple;
 2. Search and find an exploit code for the kernel version of the target system
 3. Run the exploit
 
-Although it looks simple, please remember that a failed kernel exploit can lead to a system crash. Make sure this potential outcome is acceptable within the scope of your penetration testing engagement before attempting a kernel exploit.  
+Although it looks simple, please remember that a failed kernel exploit can lead to a system crash. Make sure this potential outcome is acceptable within the scope of your penetration testing engagement before attempting a kernel exploit. 
+
+*Research sources:*
+
+1. Based on your findings, you can use Google to search for an existing exploit code.  
+2. Sources such as https://www.cvedetails.com/(opens in new tab) can also be useful.  
+3. Another alternative would be to use a script like LES (Linux Exploit Suggester) but remember that these tools can generate false positives (report a kernel vulnerability that does not affect the target system) or false negatives (not report any kernel vulnerabilities although the kernel is vulnerable).
+
+
+
+
