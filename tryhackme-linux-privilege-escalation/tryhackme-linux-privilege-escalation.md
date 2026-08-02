@@ -328,6 +328,8 @@ The output confirms that the exploit was successful: whoami returns root, and id
 
 <img width="1051" height="222" alt="image" src="https://github.com/user-attachments/assets/aa552871-14f4-4fb2-bd1a-90ca4f2ec016" />
 
+**No answer needed**
+
 *What is the content of the flag1.txt file?*  
 
 <img width="712" height="209" alt="image" src="https://github.com/user-attachments/assets/e218be29-922a-4121-8df8-76506a232ac5" />
