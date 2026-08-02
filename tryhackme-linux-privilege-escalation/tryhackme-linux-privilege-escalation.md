@@ -303,4 +303,8 @@ Although it looks simple, please remember that a failed kernel exploit can lead 
 3. Some exploits may require further interaction once they are run. Read all comments and instructions provided with the exploit code.
 4. You can transfer the exploit code from your machine to the target system using the SimpleHTTPServer Python module and wget respectively.
 
+*Answer the questions below*
 
+find and use the appropriate kernel exploit to gain root privileges on the target system.  
+
+What is the content of the flag1.txt file?  
