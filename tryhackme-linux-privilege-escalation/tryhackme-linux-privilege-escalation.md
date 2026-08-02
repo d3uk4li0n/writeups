@@ -226,37 +226,37 @@ find / -perm -u=s -type f 2>/dev/null: Find files with the SUID bit, which allow
 
 As we are in the Linux realm, familiarity with Linux commands, in general, will be very useful. Please spend some time getting comfortable with commands such as find, locate, grep, cut, sort, etc..
 
-### Answer the questions below  
+*Answer the questions below*  
 
 *What is the hostname of the target system?*
 
 <img width="319" height="150" alt="image" src="https://github.com/user-attachments/assets/281ac734-57d2-4e8a-b5c5-c67dc7247cd2" />
 
-*Answer: wade7363*
+**Answer: wade7363**
 
 *What is the Linux kernel version of the target system?*
 
 <img width="2197" height="146" alt="image" src="https://github.com/user-attachments/assets/5628311e-d1f8-4883-b4c4-c14b181b9e88" />
 
-*Answer: 3.13.0-24-generic*
+**Answer: 3.13.0-24-generic**
 
 *What Linux is this?*
 
 <img width="491" height="100" alt="image" src="https://github.com/user-attachments/assets/14a04fa3-44a4-4d53-880d-4640d6aab8b2" />
 
-*Answer: Ubuntu 14.04 LTS*
+**Answer: Ubuntu 14.04 LTS**
 
 *What version of the Python language is installed on the system?*
 
 <img width="412" height="135" alt="image" src="https://github.com/user-attachments/assets/3c0e9658-7d56-4ab8-a5ea-0815bd61b0b2" />
 
-*Answer: 2.7.6*
+**Answer: 2.7.6**
 
 *What vulnerability seem to affect the kernel of the target system? (Enter a CVE number)*
 
 https://nvd.nist.gov/vuln/detail/cve-2015-1328
 
-*Answer: CVE-2015-1328*
+**Answer: CVE-2015-1328**
 
 ## Task 4: Automated Enumeration Tools
 
@@ -305,7 +305,7 @@ Although it looks simple, please remember that a failed kernel exploit can lead 
 
 *Answer the questions below*
 
-find and use the appropriate kernel exploit to gain root privileges on the target system.  
+*find and use the appropriate kernel exploit to gain root privileges on the target system.*  
 
 First, we need to gather info about the system 
 
@@ -328,8 +328,8 @@ The output confirms that the exploit was successful: whoami returns root, and id
 
 <img width="1051" height="222" alt="image" src="https://github.com/user-attachments/assets/aa552871-14f4-4fb2-bd1a-90ca4f2ec016" />
 
-What is the content of the flag1.txt file?  
+*What is the content of the flag1.txt file?*  
 
 <img width="712" height="209" alt="image" src="https://github.com/user-attachments/assets/e218be29-922a-4121-8df8-76506a232ac5" />
 
-Answer: THM-28392872729920
+**Answer: THM-28392872729920**
