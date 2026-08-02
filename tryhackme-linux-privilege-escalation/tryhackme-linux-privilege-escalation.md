@@ -307,4 +307,8 @@ Although it looks simple, please remember that a failed kernel exploit can lead 
 
 find and use the appropriate kernel exploit to gain root privileges on the target system.  
 
+First, we need to gather info about the system 
+
+<img width="2801" height="335" alt="image" src="https://github.com/user-attachments/assets/caa44848-7022-4e2f-bde9-ae042ab0430f" />
+
 What is the content of the flag1.txt file?  
