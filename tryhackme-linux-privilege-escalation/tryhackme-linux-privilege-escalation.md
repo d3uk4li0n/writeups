@@ -311,4 +311,14 @@ First, we need to gather info about the system
 
 <img width="2801" height="335" alt="image" src="https://github.com/user-attachments/assets/caa44848-7022-4e2f-bde9-ae042ab0430f" />
 
+We see the target kernel's version is 3.13.0-24-generic so we search exploit-db for publicly available kernel exploits compatible with that version  
+After identifying a [suitable kernel exploit](https://www.exploit-db.com/exploits/37292) we download its source code to our attacking machine. To transfer it to the target, we start a simple Python HTTP server in the exploit's directory and use wget on the target to retrieve the file.
+
+Attacker's side:  
+<img width="1284" height="238" alt="image" src="https://github.com/user-attachments/assets/c13a3636-2b84-4a8b-ab55-b9ab13b4452c" />
+
+Target's side:  
+<img width="2828" height="499" alt="image" src="https://github.com/user-attachments/assets/6f5483fc-c1bc-4043-819b-b7a6f746b353" />
+
+
 What is the content of the flag1.txt file?  
