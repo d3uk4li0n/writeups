@@ -401,3 +401,8 @@ This will result in a shell spawn with root privileges.
 
 How many programs can the user "karen" run on the target system with sudo rights?
 
+<img width="2402" height="454" alt="image" src="https://github.com/user-attachments/assets/d91f9a04-0daf-4729-a77a-5770ac6f2bcb" />
+
+*Answer: 3*
+
+
