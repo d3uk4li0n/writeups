@@ -411,3 +411,13 @@ What is the content of the flag2.txt file?
 
 **Answer: THM-402028394**
 
+How would you use Nmap to spawn a root shell if your user had sudo rights on nmap?
+
+To begin answering this question I googled: nmap +https://gtfobins.github.io/  
+
+The first result on the GTFOBins page is this: 
+
+<img width="1675" height="700" alt="image" src="https://github.com/user-attachments/assets/e8ca1ba2-4d37-4516-825a-fa4c8b097001" />
+
+**Answer: sudo nmap --interactive**
+
