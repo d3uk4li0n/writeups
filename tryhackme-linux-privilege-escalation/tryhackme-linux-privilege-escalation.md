@@ -342,7 +342,7 @@ The sudo command, by default, allows you to run a program with root privileges. 
 
 Any user can check its current situation related to root privileges using the sudo -l command.  
 
-https://gtfobins.github.io/(opens in new tab) is a valuable source that provides information on how any program, on which you may have sudo rights, can be used.  
+https://gtfobins.github.io/ is a valuable source that provides information on how any program, on which you may have sudo rights, can be used.  
 
 **Leverage application functions**
 
