@@ -344,7 +344,6 @@ Any user can check its current situation related to root privileges using the su
 
 https://gtfobins.github.io/(opens in new tab) is a valuable source that provides information on how any program, on which you may have sudo rights, can be used.  
 
-
-
+### Leverage application functions
 
 
