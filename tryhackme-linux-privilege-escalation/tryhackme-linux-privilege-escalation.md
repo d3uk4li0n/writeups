@@ -421,3 +421,12 @@ The first result on the GTFOBins page is this:
 
 **Answer: sudo nmap --interactive**
 
+What is the hash of frank's password?
+
+From the previous questions, we know we have sudo access to the less command, so we run:  
+
+less /etc/shadow  
+
+<img width="2645" height="1384" alt="image" src="https://github.com/user-attachments/assets/3beb3d4a-036d-4e9e-bb2e-c305e1a11089" />
+
+**Answer: $6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1:18796:0:99999:7:::**
