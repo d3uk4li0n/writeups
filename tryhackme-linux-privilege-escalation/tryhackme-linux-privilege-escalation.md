@@ -387,3 +387,13 @@ gcc -fPIC -shared -o shell.so shell.c -nostartfiles
 
 <img width="690" height="278" alt="image" src="https://github.com/user-attachments/assets/36c69d5f-3228-406b-967f-1af4a05f238e" />
 
+We can now use this shared object file when launching any program our user can run with sudo. In our case, Apache2, find, or almost any of the programs we can run with sudo can be used.  
+
+We need to run the program by specifying the LD_PRELOAD option, as follows;
+
+sudo LD_PRELOAD=/home/user/ldpreload/shell.so find  
+
+This will result in a shell spawn with root privileges.  
+
+<img width="922" height="175" alt="image" src="https://github.com/user-attachments/assets/43467a0a-4f6f-461c-8985-0363fdfc5bee" />
+
