@@ -397,3 +397,7 @@ This will result in a shell spawn with root privileges.
 
 <img width="922" height="175" alt="image" src="https://github.com/user-attachments/assets/43467a0a-4f6f-461c-8985-0363fdfc5bee" />
 
+*Answer the questions below*
+
+How many programs can the user "karen" run on the target system with sudo rights?
+
