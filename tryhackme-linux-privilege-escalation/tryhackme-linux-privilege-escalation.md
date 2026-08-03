@@ -403,6 +403,11 @@ How many programs can the user "karen" run on the target system with sudo rights
 
 <img width="2402" height="454" alt="image" src="https://github.com/user-attachments/assets/d91f9a04-0daf-4729-a77a-5770ac6f2bcb" />
 
-*Answer: 3*
+**Answer: 3**
 
+What is the content of the flag2.txt file?
+
+<img width="1614" height="712" alt="image" src="https://github.com/user-attachments/assets/61dc92f7-44bc-44ec-9196-2d26bd135b24" />
+
+**Answer: THM-402028394**
 
