@@ -335,3 +335,16 @@ The output confirms that the exploit was successful: whoami returns root, and id
 <img width="712" height="209" alt="image" src="https://github.com/user-attachments/assets/e218be29-922a-4121-8df8-76506a232ac5" />
 
 **Answer: THM-28392872729920**
+
+### Task 6: Privilege Escalation: sudo
+
+The sudo command, by default, allows you to run a program with root privileges. Under some conditions, system administrators may need to give regular users some flexibility on their privileges. For example, a junior SOC analyst may need to use Nmap regularly but would not be cleared for full root access. In this situation, the system administrator can allow this user to only run Nmap with root privileges while keeping its regular privilege level throughout the rest of the system.  
+
+Any user can check its current situation related to root privileges using the sudo -l command.  
+
+https://gtfobins.github.io/(opens in new tab) is a valuable source that provides information on how any program, on which you may have sudo rights, can be used.  
+
+
+
+
+
