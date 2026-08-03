@@ -354,5 +354,16 @@ In this case, we can use a "hack" to leak information leveraging a function of t
 
 Loading the /etc/shadow file using this option will result in an error message that includes the first line of the /etc/shadow file.  
 
+**Leverage LD_PRELOAD**
 
+On some systems, you may see the LD_PRELOAD environment option.  
 
+<img width="485" height="148" alt="image" src="https://github.com/user-attachments/assets/f682bb16-4b92-4f2e-96e6-82120132cde2" />
+
+LD_PRELOAD is a function that allows any program to use shared libraries. This [blog post](https://rafalcieslak.wordpress.com/2013/04/02/dynamic-linker-tricks-using-ld_preload-to-cheat-inject-features-and-investigate-programs/) will give you an idea about the capabilities of LD_PRELOAD. If the "env_keep" option is enabled we can generate a shared library which will be loaded and executed before the program is run. Please note the LD_PRELOAD option will be ignored if the real user ID is different from the effective user ID.
+
+The steps of this privilege escalation vector can be summarized as follows;
+
+1. Check for LD_PRELOAD (with the env_keep option)
+2. Write a simple C code compiled as a share object (.so extension) file
+3. Run the program with sudo rights and the LD_PRELOAD option pointing to our .so file
