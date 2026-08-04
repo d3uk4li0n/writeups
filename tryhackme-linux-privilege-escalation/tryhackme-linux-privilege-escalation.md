@@ -513,3 +513,13 @@ and it works: we get the hash for user2
 
 <img width="2849" height="1377" alt="image" src="https://github.com/user-attachments/assets/065ab5f2-cf99-4179-9087-d696cdaaeddd" />
 
+Plug this line into our password.txt file in the attacker machine  
+Then the user2 line from /etc/passwd into our passwd.txt  
+
+<img width="1833" height="1388" alt="image" src="https://github.com/user-attachments/assets/ed9a96fb-741f-4219-a3d3-0f13be737d64" />
+
+Unshadow it into a single password.txt file, then finally crack it with John the Ripper:
+
+<img width="1599" height="824" alt="image" src="https://github.com/user-attachments/assets/b55245e3-9440-4f45-8caf-738344ae7b68" />
+
+**Answer: Password1**
