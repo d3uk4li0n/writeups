@@ -523,3 +523,16 @@ Unshadow it into a single password.txt file, then finally crack it with John the
 <img width="1599" height="824" alt="image" src="https://github.com/user-attachments/assets/b55245e3-9440-4f45-8caf-738344ae7b68" />
 
 **Answer: Password1**
+
+*What is the content of the flag3.txt file?*
+
+Running the command: find / -type f -name flag3.txt   
+We see there can only one correct answer: 
+
+<img width="2408" height="1394" alt="image" src="https://github.com/user-attachments/assets/0c4ba164-6ab4-4ed6-8337-77ddcf16b0a0" />
+
+We once again use base64:  
+
+<img width="901" height="124" alt="image" src="https://github.com/user-attachments/assets/55725a3a-09dc-4698-bc96-1931ca6818ec" />
+
+**Answer: THM-3847834**
