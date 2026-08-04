@@ -514,7 +514,7 @@ and it works: we get the hash for user2
 <img width="2849" height="1377" alt="image" src="https://github.com/user-attachments/assets/065ab5f2-cf99-4179-9087-d696cdaaeddd" />
 
 Plug this line into our password.txt file in the attacker machine  
-Then the user2 line from /etc/passwd into our passwd.txt  
+Then the user2 line from /etc/passwd into our passwd.txt file  
 
 <img width="1833" height="1388" alt="image" src="https://github.com/user-attachments/assets/ed9a96fb-741f-4219-a3d3-0f13be737d64" />
 
