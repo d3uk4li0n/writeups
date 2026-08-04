@@ -399,19 +399,19 @@ This will result in a shell spawn with root privileges.
 
 *Answer the questions below*
 
-How many programs can the user "karen" run on the target system with sudo rights?
+*How many programs can the user "karen" run on the target system with sudo rights?*
 
 <img width="2402" height="454" alt="image" src="https://github.com/user-attachments/assets/d91f9a04-0daf-4729-a77a-5770ac6f2bcb" />
 
 **Answer: 3**
 
-What is the content of the flag2.txt file?
+*What is the content of the flag2.txt file?*
 
 <img width="1614" height="712" alt="image" src="https://github.com/user-attachments/assets/61dc92f7-44bc-44ec-9196-2d26bd135b24" />
 
 **Answer: THM-402028394**
 
-How would you use Nmap to spawn a root shell if your user had sudo rights on nmap?
+*How would you use Nmap to spawn a root shell if your user had sudo rights on nmap?*
 
 To begin answering this question I googled: nmap +https://gtfobins.github.io/  
 
@@ -421,7 +421,7 @@ The first result on the GTFOBins page is this:
 
 **Answer: sudo nmap --interactive**
 
-What is the hash of frank's password?
+*What is the hash of frank's password?*
 
 From the previous questions, we know we have sudo access to the less command, so we run:  
 
