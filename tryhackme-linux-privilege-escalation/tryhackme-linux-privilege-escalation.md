@@ -430,3 +430,16 @@ less /etc/shadow
 <img width="2645" height="1384" alt="image" src="https://github.com/user-attachments/assets/3beb3d4a-036d-4e9e-bb2e-c305e1a11089" />
 
 **Answer: $6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1:18796:0:99999:7:::**
+
+## Task 7: SUID bit 
+
+Much of Linux privilege controls rely on controlling the users and files interactions. This is done with permissions. By now, you know that files can have read, write, and execute permissions. These are given to users within their privilege levels. This changes with SUID (Set-user Identification) and SGID (Set-group Identification). These allow files to be executed with the permission level of the file owner or the group owner, respectively.  
+
+You will notice these files have an “s” bit set showing their special permission level.  
+
+find / -type f -perm -04000 -ls 2>/dev/null will list files that have SUID or SGID bits set.  
+
+<img width="857" height="373" alt="image" src="https://github.com/user-attachments/assets/651e3098-0612-4a2a-b969-a1a2dcb3e759" />
+
+A good practice would be to compare executables on this list with GTFOBins (https://gtfobins.github.io). Clicking on the SUID button will filter binaries known to be exploitable when the SUID bit is set (you can also use this link for a pre-filtered list https://gtfobins.github.io/#+suid).
+
