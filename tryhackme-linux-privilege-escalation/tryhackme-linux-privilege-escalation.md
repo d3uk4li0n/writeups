@@ -506,7 +506,7 @@ find / -type f -perm -04000 -ls 2>/dev/null
 
 <img width="2824" height="1381" alt="image" src="https://github.com/user-attachments/assets/1c88778a-c005-4c83-9b49-a56bb0f80283" />
 
-We can see that base64 has the SUID bit set. We can use it to read the contents of the /etc/shadow file or to manipulate input/output in a way that might allow you to execute commands as root. 
+We can see that base64 has the SUID bit set. We can use it to read the contents of the /etc/shadow file or to manipulate input/output in a way that might allow us to execute commands as root. 
 
 I try running:  base64 /etc/shadow | base64 -d   
 and it works: we get the hash for user2  
