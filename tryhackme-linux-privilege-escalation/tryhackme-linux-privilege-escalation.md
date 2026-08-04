@@ -527,7 +527,7 @@ Unshadow it into a single password.txt file, then finally crack it with John the
 *What is the content of the flag3.txt file?*
 
 Running the command: find / -type f -name flag3.txt   
-We see there can only one correct answer: 
+We see there can only be one correct answer: 
 
 <img width="2408" height="1394" alt="image" src="https://github.com/user-attachments/assets/0c4ba164-6ab4-4ed6-8337-77ddcf16b0a0" />
 
