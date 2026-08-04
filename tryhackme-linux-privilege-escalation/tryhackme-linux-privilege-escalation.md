@@ -443,3 +443,73 @@ find / -type f -perm -04000 -ls 2>/dev/null will list files that have SUID or SG
 
 A good practice would be to compare executables on this list with GTFOBins (https://gtfobins.github.io). Clicking on the SUID button will filter binaries known to be exploitable when the SUID bit is set (you can also use this link for a pre-filtered list https://gtfobins.github.io/#+suid).
 
+The list above shows that nano has the SUID bit set. Unfortunately, GTFObins does not provide us with an easy win. Typical to real-life privilege escalation scenarios, we will need to find intermediate steps that will help us leverage whatever minuscule finding we have.  
+
+<img width="881" height="468" alt="image" src="https://github.com/user-attachments/assets/59ea7a5d-273f-4656-a4fa-19b06a338f99" />
+
+**Note:** The attached VM has another binary with SUID other than nano.
+
+The SUID bit set for the nano text editor allows us to create, edit and read files using the file owner’s privilege. Nano is owned by root, which probably means that we can read and edit files at a higher privilege level than our current user has. At this stage, we have two basic options for privilege escalation: reading the /etc/shadow file or adding our user to /etc/passwd.  
+
+Below are simple steps using both vectors.  
+
+reading the /etc/shadow file  
+
+We see that the nano text editor has the SUID bit set by running the find / -type f -perm -04000 -ls 2>/dev/null command.  
+
+nano /etc/shadow will print the contents of the /etc/shadow file. We can now use the unshadow tool to create a file crackable by John the Ripper. To achieve this, unshadow needs both the /etc/shadow and /etc/passwd files.  
+
+<img width="646" height="328" alt="image" src="https://github.com/user-attachments/assets/e08b82d8-99e0-4815-9e2a-8e258bdb325a" />
+
+The unshadow tool’s usage can be seen below;  
+unshadow passwd.txt shadow.txt > passwords.txt  
+
+<img width="445" height="64" alt="image" src="https://github.com/user-attachments/assets/d9c49455-8bff-4e3b-96e9-f49dbcbf6427" />
+
+With the correct wordlist and a little luck, John the Ripper can return one or several passwords in cleartext. For a more detailed room on John the Ripper, you can visit https://tryhackme.com/room/johntheripperbasics.  
+
+The other option would be to add a new user that has root privileges. This would help us circumvent the tedious process of password cracking. Below is an easy way to do it:  
+
+We will need the hash value of the password we want the new user to have. This can be done quickly using the openssl tool on Kali Linux.  
+
+<img width="433" height="79" alt="image" src="https://github.com/user-attachments/assets/47024dc6-6154-4596-a5be-7ccfb858500c" />
+
+We will then add this password with a username to the /etc/passwd file.  
+
+<img width="750" height="457" alt="image" src="https://github.com/user-attachments/assets/dcfa4f21-1de9-48a2-a1ae-2f3a83da864a" />
+
+Once our user is added (please note how root:/bin/bash was used to provide a root shell) we will need to switch to this user and hopefully should have root privileges.  
+
+<img width="881" height="183" alt="image" src="https://github.com/user-attachments/assets/e6343aca-106e-4f10-b5cb-8f3e4f8028ec" />
+
+Now it's your turn to use the skills you were just taught to find a vulnerable binary.  
+
+*Answer the questions below*  
+
+*Which user shares the name of a great comic book writer?*
+
+We inspect the content of the /etc/passwd file  
+
+<img width="1873" height="1396" alt="image" src="https://github.com/user-attachments/assets/4460ef7e-a2e6-4ee6-ad6a-b5a299ea5423" />
+
+**Answer: gerryconway**
+
+*What is the password of user2?*
+
+The first thing we're gonna do is create a passwd.txt and shadow.txt file on our attacker machine 
+
+<img width="1076" height="91" alt="image" src="https://github.com/user-attachments/assets/6c5c564c-4278-4ec3-babc-724f46d6b5d8" />
+
+Earlier in this room it was noted to us nano is not the only binary with SUID  
+So we run the following command to look for SUID binaries:  
+find / -type f -perm -04000 -ls 2>/dev/null  
+
+<img width="2824" height="1381" alt="image" src="https://github.com/user-attachments/assets/1c88778a-c005-4c83-9b49-a56bb0f80283" />
+
+We can see that base64 has the SUID bit set. We can use it to read the contents of the /etc/shadow file or to manipulate input/output in a way that might allow you to execute commands as root. 
+
+I try running:  base64 /etc/shadow | base64 -d   
+and it works: we get the hash for user2  
+
+<img width="2849" height="1377" alt="image" src="https://github.com/user-attachments/assets/065ab5f2-cf99-4179-9087-d696cdaaeddd" />
+
