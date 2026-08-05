@@ -536,3 +536,46 @@ We once again use base64:
 <img width="901" height="124" alt="image" src="https://github.com/user-attachments/assets/55725a3a-09dc-4698-bc96-1931ca6818ec" />
 
 **Answer: THM-3847834**
+
+## Task 8: Privilege Escalation: Capabilities 
+
+Another method system administrators can use to increase the privilege level of a process or binary is “Capabilities”. Capabilities help manage privileges at a more granular level. For example, if the SOC analyst needs to use a tool that needs to initiate socket connections, a regular user would not be able to do that. If the system administrator does not want to give this user higher privileges, they can change the capabilities of the binary. As a result, the binary would get through its task without needing a higher privilege user.
+The capabilities man page provides detailed information on its usage and options.  
+
+We can use the getcap tool to list enabled capabilities.
+
+<img width="1125" height="187" alt="image" src="https://github.com/user-attachments/assets/fe710651-be84-497c-ba83-f26a7634f0c0" />
+
+When run as an unprivileged user, getcap -r / will generate a huge amount of errors, so it is good practice to redirect the error messages to /dev/null.  
+
+Please note that neither vim nor its copy has the SUID bit set. This privilege escalation vector is therefore not discoverable when enumerating files looking for SUID.  
+
+<img width="832" height="117" alt="image" src="https://github.com/user-attachments/assets/20e0f3be-da5c-40d9-9fa7-db2562ff5230" />
+
+GTFObins has a good list of binaries that can be leveraged for privilege escalation if we find any set capabilities.
+
+We notice that vim can be used with the following command and payload:  
+
+<img width="1365" height="83" alt="image" src="https://github.com/user-attachments/assets/cceb74bf-7a5b-4281-899c-2ad54d92a346" />
+
+This will launch a root shell as seen below;
+
+<img width="1344" height="107" alt="image" src="https://github.com/user-attachments/assets/e0002215-c6e6-46b9-a3d5-f68eefde3048" />
+
+*Answer the questions below*
+
+*Complete the task described above on the target system*
+
+<img width="2172" height="324" alt="image" src="https://github.com/user-attachments/assets/3a891548-e371-4d1f-b423-da99bcaeea88" />
+
+We run:
+
+./vim -c ':py3 import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
+
+This spawns a root shell: 
+<img width="986" height="229" alt="image" src="https://github.com/user-attachments/assets/b53b066f-0a0e-4765-a576-908c4fd11c3f" />
+
+**No answer needed**
+
+*How many binaries have set capabilities?*
+
