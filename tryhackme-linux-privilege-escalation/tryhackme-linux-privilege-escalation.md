@@ -579,3 +579,7 @@ This spawns a root shell:
 
 *How many binaries have set capabilities?*
 
+As we have seen earlier:
+<img width="2185" height="274" alt="image" src="https://github.com/user-attachments/assets/c280b8f3-9c62-4df4-b049-9bbefe582665" />
+
+**Answer: 6**
