@@ -583,3 +583,15 @@ As we have seen earlier:
 <img width="2185" height="274" alt="image" src="https://github.com/user-attachments/assets/c280b8f3-9c62-4df4-b049-9bbefe582665" />
 
 **Answer: 6**
+
+*What other binary can be used through its capabilities?*
+
+<img width="2221" height="315" alt="image" src="https://github.com/user-attachments/assets/7287c5bf-155a-4ecc-b730-d91f264fe06a" />
+
+**Answer: view**
+
+*What is the content of the flag4.txt file?*
+
+<img width="1266" height="461" alt="image" src="https://github.com/user-attachments/assets/f7fbc2c1-3a8d-4ce4-8683-ac373d67e279" />
+
+**Answer: THM-9349843**
