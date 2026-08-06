@@ -700,7 +700,7 @@ Attacker's side:
 The shell isn't stabilized, which means we get the echo, but we did gain root access:  
 <img width="1595" height="530" alt="image" src="https://github.com/user-attachments/assets/7ba36395-f5c4-49f6-afeb-17305c4bedb5" />
 
-catting /etc/shadow file we find the matt user: 
+catting the /etc/shadow file we find the matt user: 
 <img width="2704" height="1234" alt="image" src="https://github.com/user-attachments/assets/cca8258d-896e-44ce-be65-2be69ed0aae8" />
 
 Using unshadow and John the Ripper the same exact way we did in the previous task, we get the answer.  
