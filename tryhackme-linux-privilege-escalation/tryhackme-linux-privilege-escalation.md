@@ -662,3 +662,8 @@ In the odd event you find an existing script or task attached to a cron job, it 
 
 **Answer: 4**
 
+*What is the content of the flag5.txt file?*
+
+The flag is located at /home/ubuntu/flag5.txt and we don't have read permissions:
+
+<img width="1419" height="288" alt="image" src="https://github.com/user-attachments/assets/fd70374e-9ec9-40d3-bb88-c845edb4ee45" />
