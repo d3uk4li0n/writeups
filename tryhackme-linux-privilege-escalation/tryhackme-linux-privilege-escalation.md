@@ -654,3 +654,11 @@ The incoming reverse shell connection has root privileges:
 
 In the odd event you find an existing script or task attached to a cron job, it is always worth spending time to understand the function of the script and how any tool is used within the context. For example, tar, 7z, rsync, etc., can be exploited using their wildcard feature.  
 
+*Answer the questions below*
+
+*How many user-defined cron jobs can you see on the target system?*
+
+<img width="2106" height="1056" alt="image" src="https://github.com/user-attachments/assets/6cfc58c2-06c1-4d02-99bc-8f24a69bf202" />
+
+**Answer: 4**
+
