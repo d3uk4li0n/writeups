@@ -687,3 +687,22 @@ Make sure we give the proper permissions to the script and output files:
 <img width="1191" height="196" alt="image" src="https://github.com/user-attachments/assets/b7bdf2fd-0a66-4008-8f9a-f2a523ba6aee" />
 
 **Answer: THM-383000283**
+
+*What is Matt's password?*
+
+we modify the script used earlier to connect to our target machine and hand us an interactive shell:
+
+Target's side:
+<img width="1060" height="143" alt="image" src="https://github.com/user-attachments/assets/54b43702-f48d-4125-8651-fb6e91d58f0c" />
+Attacker's side:
+<img width="773" height="218" alt="image" src="https://github.com/user-attachments/assets/2c7cf10a-2364-4963-91f4-62328f710ad7" />
+
+The shell isn't stabilized, which means we get the echo, but we did gain root access:  
+<img width="1595" height="530" alt="image" src="https://github.com/user-attachments/assets/7ba36395-f5c4-49f6-afeb-17305c4bedb5" />
+
+catting /etc/shadow file we find the matt user: 
+<img width="2704" height="1234" alt="image" src="https://github.com/user-attachments/assets/cca8258d-896e-44ce-be65-2be69ed0aae8" />
+
+Using unshadow and John the Ripper the same exact way we did in the previous task, we get the answer.  
+
+**Answer: 123456**
