@@ -680,10 +680,10 @@ We comment out the parts we don't need and instruct it to print the content of t
 
 <img width="1079" height="179" alt="image" src="https://github.com/user-attachments/assets/908a631e-9222-408a-9e01-a7dd4d694187" />
 
-Make sure we have give the proper permissions to the script and output files:  
+Make sure we give the proper permissions to the script and output files:  
 
-<img width="1228" height="207" alt="image" src="https://github.com/user-attachments/assets/3716e6c9-7cb3-452e-a94b-d373e647317a" />
+<img width="1225" height="130" alt="image" src="https://github.com/user-attachments/assets/f4bdd67d-d5dd-49f7-8ea2-e0e7d7f7dc43" />
 
-<img width="1210" height="203" alt="image" src="https://github.com/user-attachments/assets/0d71d296-a915-49fa-b4ad-74795dd36d7a" />
+<img width="1191" height="196" alt="image" src="https://github.com/user-attachments/assets/b7bdf2fd-0a66-4008-8f9a-f2a523ba6aee" />
 
 **Answer: THM-383000283**
