@@ -667,3 +667,23 @@ In the odd event you find an existing script or task attached to a cron job, it 
 The flag is located at /home/ubuntu/flag5.txt and we don't have read permissions:
 
 <img width="1419" height="288" alt="image" src="https://github.com/user-attachments/assets/fd70374e-9ec9-40d3-bb88-c845edb4ee45" />
+
+From the output of the cron jobs earlier, we see there is one that could come in handy: 
+
+<img width="2052" height="1044" alt="image" src="https://github.com/user-attachments/assets/bf8f59a2-a797-4551-b2a6-8028a8f1c5a2" />
+
+Looking at its content, we can see it's a backup script.
+
+<img width="733" height="202" alt="image" src="https://github.com/user-attachments/assets/54257061-4e99-407d-8907-b069c39dcdf2" />
+
+We comment out the parts we don't need and instruct it to print the content of the flag file
+
+<img width="1079" height="179" alt="image" src="https://github.com/user-attachments/assets/908a631e-9222-408a-9e01-a7dd4d694187" />
+
+Make sure we have give the proper permissions to the script and output files:  
+
+<img width="1228" height="207" alt="image" src="https://github.com/user-attachments/assets/3716e6c9-7cb3-452e-a94b-d373e647317a" />
+
+<img width="1210" height="203" alt="image" src="https://github.com/user-attachments/assets/0d71d296-a915-49fa-b4ad-74795dd36d7a" />
+
+**Answer: THM-383000283**
