@@ -692,9 +692,9 @@ Make sure we give the proper permissions to the script and output files:
 
 we modify the script used earlier to connect to our target machine and hand us an interactive shell:
 
-Target's side:
+Target's side:  
 <img width="1060" height="143" alt="image" src="https://github.com/user-attachments/assets/54b43702-f48d-4125-8651-fb6e91d58f0c" />
-Attacker's side:
+Attacker's side:  
 <img width="773" height="218" alt="image" src="https://github.com/user-attachments/assets/2c7cf10a-2364-4963-91f4-62328f710ad7" />
 
 The shell isn't stabilized, which means we get the echo, but we did gain root access:  
