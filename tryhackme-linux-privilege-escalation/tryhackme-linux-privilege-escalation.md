@@ -772,10 +772,11 @@ We have given executable rights to our copy of /bin/bash, please note that at th
 
 <img width="1367" height="228" alt="image" src="https://github.com/user-attachments/assets/ae06afde-6099-4f41-9c85-06805d674e13" />
 
+*Answer the questions below*
 
+*What is the odd folder you have write access for?*  
 
-
-
+**Answer: /home/murdoch**  
 
 
 
