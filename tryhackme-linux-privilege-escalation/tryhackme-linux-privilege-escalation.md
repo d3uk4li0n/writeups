@@ -706,3 +706,80 @@ catting the /etc/shadow file we find the matt user:
 Using unshadow and John the Ripper the same exact way we did in the previous task, we get the answer.  
 
 **Answer: 123456**
+
+## Task 10: Privilege Escalation: PATH
+
+If a folder for which your user has write permission is located in the path, you could potentially hijack an application to run a script. PATH in Linux is an environmental variable that tells the operating system where to search for executables. For any command that is not built into the shell or that is not defined with an absolute path, Linux will start searching in folders defined under PATH. (PATH is the environmental variable we're talking about here, path is the location of a file).  
+
+Typically the PATH will look like this:
+<img width="1010" height="78" alt="image" src="https://github.com/user-attachments/assets/2cbb3ee4-0fd7-4dd7-943a-e7e2d71cfc27" />
+
+If we type “thm” to the command line, these are the locations Linux will look in for an executable called thm. The scenario below will give you a better idea of how this can be leveraged to increase our privilege level. As you will see, this depends entirely on the existing configuration of the target system, so be sure you can answer the questions below before trying this.  
+
+What folders are located under $PATH  
+
+1. Does your current user have write privileges for any of these folders?
+2. Can you modify $PATH?
+3. Is there a script/application you can start that will be affected by this vulnerability?
+4. For demo purposes, we will use the script below:
+
+For demo purposes, we will use the script below:
+This script tries to launch a system binary called “thm” but the example can easily be replicated with any binary.  
+
+We compile this into an executable and set the SUID bit.  
+
+<img width="738" height="319" alt="image" src="https://github.com/user-attachments/assets/aa4963d1-c9c7-4795-9041-e19909d04581" />
+
+Our user now has access to the “path” script with SUID bit set.  
+
+<img width="605" height="122" alt="image" src="https://github.com/user-attachments/assets/a4f8787e-a572-4514-be58-5dd24f44c50d" />
+
+Once executed “path” will look for an executable named “thm” inside folders listed under PATH.  
+
+If any writable folder is listed under PATH we could create a binary named thm under that directory and have our “path” script run it. As the SUID bit is set, this binary will run with root privilege. 
+
+A simple search for writable folders can done using the “find / -writable 2>/dev/null” command. The output of this command can be cleaned using a simple cut and sort sequence.  
+
+<img width="896" height="252" alt="image" src="https://github.com/user-attachments/assets/6f84a9bd-5e75-4daa-81a8-b165321f5280" />
+
+Some CTF scenarios can present different folders but a regular system would output something like we see above.  
+
+Comparing this with PATH will help us find folders we could use.
+
+<img width="993" height="47" alt="image" src="https://github.com/user-attachments/assets/35950788-6b64-47b6-b43b-44021149ff79" />
+
+We see a number of folders under /usr, thus it could be easier to run our writable folder search once more to cover subfolders.
+
+<img width="1029" height="91" alt="image" src="https://github.com/user-attachments/assets/c7c4b0bd-14e4-44a5-97d9-d446b483be6f" />
+
+An alternative could be the command below.  
+find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u  
+
+We have added “grep -v proc” to get rid of the many results related to running processes.  
+
+Unfortunately, subfolders under /usr are not writable  
+
+The folder that will be easier to write to is probably /tmp. At this point because /tmp is not present in PATH so we will need to add it. As we can see below, the “export PATH=/tmp:$PATH” command accomplishes this.  
+
+<img width="1049" height="133" alt="image" src="https://github.com/user-attachments/assets/ce867d44-6d09-40ec-bea7-891272c0dd8b" />
+
+At this point the path script will also look under the /tmp folder for an executable named “thm”.  
+Creating this command is fairly easy by copying /bin/bash as “thm” under the /tmp folder.  
+
+<img width="553" height="142" alt="image" src="https://github.com/user-attachments/assets/0b76bcc7-e9ff-456a-8c49-555d3e357944" />
+
+We have given executable rights to our copy of /bin/bash, please note that at this point it will run with our user’s right. What makes a privilege escalation possible within this context is that the path script runs with root privileges.  
+
+<img width="1367" height="228" alt="image" src="https://github.com/user-attachments/assets/ae06afde-6099-4f41-9c85-06805d674e13" />
+
+
+
+
+
+
+
+
+
+
+
+
