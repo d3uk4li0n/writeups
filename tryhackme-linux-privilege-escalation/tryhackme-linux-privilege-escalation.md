@@ -865,3 +865,5 @@ Compile it and set the SUID bit:
 **No answer needed**
 
 *What is the content of the flag7.txt file?*
+
+**Answer: THM-89384012**
