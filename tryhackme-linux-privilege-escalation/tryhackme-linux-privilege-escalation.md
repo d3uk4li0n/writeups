@@ -864,6 +864,8 @@ Compile it and set the SUID bit:
 
 **No answer needed**
 
+At this point, the binary has been compiled and the SUID bit has been set. I was unable to complete the final execution step on my instance, so I will leave the remainder here rather than speculate about a solution I could not reproduce.  
+
 *What is the content of the flag7.txt file?*
 
 **Answer: THM-89384012**
