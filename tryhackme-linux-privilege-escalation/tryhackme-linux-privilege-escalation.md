@@ -776,6 +776,12 @@ We have given executable rights to our copy of /bin/bash, please note that at th
 
 *What is the odd folder you have write access for?*  
 
+We ssh into the target machine from the Attackbox using the following credentials:  
+user: karen
+password: Password1
+
+<img width="1243" height="425" alt="image" src="https://github.com/user-attachments/assets/ea74a9d9-e2db-477c-a606-66384f5eb3ee" />
+
 **Answer: /home/murdoch**  
 
 
