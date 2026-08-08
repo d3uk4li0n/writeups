@@ -852,7 +852,7 @@ Notice the nfs executable has the SUID bit set on the target system and runs wit
 
 We mount one of the “no_root_squash” shares to our attacking machine before building our executable:
 
-<img width="1446" height="133" alt="image" src="https://github.com/user-attachments/assets/08bb6f2b-4f59-4f6e-96b7-effa1c83fe97" />
+<img width="2444" height="478" alt="image" src="https://github.com/user-attachments/assets/4b04937c-d793-4feb-8577-fa2ba881a29c" />
 
 Our executable will set both user and group ID to root before running bash:  
 
