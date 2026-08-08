@@ -834,12 +834,17 @@ You will see below that both files (nfs.c and nfs are present on the target syst
 
 Notice the nfs executable has the SUID bit set on the target system and runs with root privileges.
 
+*Answer the questions below*
 
+*How many mountable shares can you identify on the target system?*
 
+<img width="1827" height="554" alt="image" src="https://github.com/user-attachments/assets/dc9fb0fc-ddc8-42f7-92a7-547ec6b5ce8d" />
 
+**Answer: 3**
 
+*How many shares have the "no_root_squash" option enabled?*
 
+<img width="1072" height="258" alt="image" src="https://github.com/user-attachments/assets/4b607cba-d338-431f-a9cd-bd90e414a653" />
 
-
-
+**Answer: 3**
 
