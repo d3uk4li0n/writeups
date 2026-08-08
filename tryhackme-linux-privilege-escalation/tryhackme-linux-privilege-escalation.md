@@ -856,12 +856,11 @@ We mount one of the “no_root_squash” shares to our attacking machine before 
 
 Our executable will set both user and group ID to root before running bash:  
 
-<img width="641" height="359" alt="image" src="https://github.com/user-attachments/assets/9d4ea312-1811-4331-8e3e-27436f8dedc3" />
+<img width="545" height="445" alt="image" src="https://github.com/user-attachments/assets/9d82c983-4452-4ed3-93b7-80127fa24df8" />
 
 Compile it and set the SUID bit: 
 
-<img width="939" height="228" alt="image" src="https://github.com/user-attachments/assets/49c6207d-173c-4a6d-accf-c07e3366bf86" />
-
+<img width="1109" height="321" alt="image" src="https://github.com/user-attachments/assets/42335d29-dd0f-400c-b3bb-e775b0d1e8a1" />
 
 **No answer needed**
 
