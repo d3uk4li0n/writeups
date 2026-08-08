@@ -796,11 +796,6 @@ password: Password1
 
 <img width="2884" height="572" alt="image" src="https://github.com/user-attachments/assets/267c3c52-453d-4fd4-b3c7-dca0883f88fc" />
 
-
-
-<img width="2070" height="610" alt="image" src="https://github.com/user-attachments/assets/1c0211ac-d425-4c5e-81b8-1ecab97e80e9" />
-
-
 **No answer needed**
 
 *What is the content of the flag6.txt file?*
