@@ -788,8 +788,6 @@ password: Password1
 
 <img width="2000" height="810" alt="image" src="https://github.com/user-attachments/assets/e5b3723f-97e2-4aee-9a85-68186a269890" />
 
-<img width="2093" height="201" alt="image" src="https://github.com/user-attachments/assets/a4c0b596-31dc-4091-8e73-7b8e9629152f" />
-
 <img width="2119" height="400" alt="image" src="https://github.com/user-attachments/assets/da53f5a4-00c8-4db5-abf3-5c3d45a0dd8f" />
 
 <img width="1186" height="855" alt="image" src="https://github.com/user-attachments/assets/4a67ef40-a9b0-4167-a420-9ef523dab172" />
