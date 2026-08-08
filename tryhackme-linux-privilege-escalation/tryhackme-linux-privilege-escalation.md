@@ -848,3 +848,21 @@ Notice the nfs executable has the SUID bit set on the target system and runs wit
 
 **Answer: 3**
 
+*Gain a root shell on the target system*
+
+We mount one of the “no_root_squash” shares to our attacking machine before building our executable:
+
+<img width="1446" height="133" alt="image" src="https://github.com/user-attachments/assets/08bb6f2b-4f59-4f6e-96b7-effa1c83fe97" />
+
+Our executable will set both user and group ID to root before running bash:  
+
+<img width="641" height="359" alt="image" src="https://github.com/user-attachments/assets/9d4ea312-1811-4331-8e3e-27436f8dedc3" />
+
+Compile it and set the SUID bit: 
+
+<img width="939" height="228" alt="image" src="https://github.com/user-attachments/assets/49c6207d-173c-4a6d-accf-c07e3366bf86" />
+
+
+**No answer needed**
+
+*What is the content of the flag7.txt file?*
