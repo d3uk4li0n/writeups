@@ -777,16 +777,33 @@ We have given executable rights to our copy of /bin/bash, please note that at th
 *What is the odd folder you have write access for?*  
 
 We ssh into the target machine from the Attackbox using the following credentials:  
-user: karen
+user: karen  
 password: Password1
 
 <img width="1243" height="425" alt="image" src="https://github.com/user-attachments/assets/ea74a9d9-e2db-477c-a606-66384f5eb3ee" />
 
 **Answer: /home/murdoch**  
 
+*Exploit the $PATH vulnerability to read the content of the flag6.txt file.*
+
+<img width="2000" height="810" alt="image" src="https://github.com/user-attachments/assets/e5b3723f-97e2-4aee-9a85-68186a269890" />
+
+<img width="2093" height="201" alt="image" src="https://github.com/user-attachments/assets/a4c0b596-31dc-4091-8e73-7b8e9629152f" />
+
+<img width="2119" height="400" alt="image" src="https://github.com/user-attachments/assets/da53f5a4-00c8-4db5-abf3-5c3d45a0dd8f" />
+
+<img width="1186" height="855" alt="image" src="https://github.com/user-attachments/assets/4a67ef40-a9b0-4167-a420-9ef523dab172" />
+
+<img width="2884" height="572" alt="image" src="https://github.com/user-attachments/assets/267c3c52-453d-4fd4-b3c7-dca0883f88fc" />
 
 
 
+<img width="2070" height="610" alt="image" src="https://github.com/user-attachments/assets/1c0211ac-d425-4c5e-81b8-1ecab97e80e9" />
 
 
+**No answer needed**
+
+*What is the content of the flag6.txt file?*
+
+**Answer: THM-736628929**
 
