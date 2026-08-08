@@ -884,3 +884,33 @@ You can access the lab machine over your browser or use the SSH credentials belo
 - Username: leonard
 - Password: Penny123
 
+First of all, let's see what users are present other than leonard:
+
+<img width="768" height="228" alt="image" src="https://github.com/user-attachments/assets/cf431c17-4c13-4eeb-b469-0e2b50f1d224" />
+
+As you might imagine, we don't have access to the rootflag dir:
+
+<img width="1389" height="568" alt="image" src="https://github.com/user-attachments/assets/93d493ab-f946-4ee6-b9f8-b2bec07bd990" />
+
+I correctly guessed the password of the missy user: Password1  
+Running sudo -l, we see she has access to the find command:
+
+<img width="2876" height="612" alt="image" src="https://github.com/user-attachments/assets/4c1d886c-fb49-4171-a590-335669a9c64e" />
+
+You bet we're gonna put that information to good use:
+
+<img width="1587" height="290" alt="image" src="https://github.com/user-attachments/assets/16f2124d-7962-4d21-88c7-a51220103039" />
+
+Although we can't use the find command to find the flag2.txt file, we can use that same command to gain root access:
+
+<img width="2053" height="439" alt="image" src="https://github.com/user-attachments/assets/61c93383-82a7-4b6a-a740-5a544d103916" />
+
+*What is the content of the flag1.txt file?*
+
+**Answer: THM-42828719920544**
+
+*What is the content of the flag2.txt file?*
+
+**Answer: THM-168824782390238**  
+
+And with that, we've completed the Linux Privilege Escalation room.
