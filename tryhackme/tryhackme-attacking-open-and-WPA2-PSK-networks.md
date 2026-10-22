@@ -14,3 +14,15 @@ Two access points from the reconnaissance scan are in scope, each identified bel
 - Crack a captured handshake against a wordlist to recover the passphrase.  
 - Connect to the network with the recovered passphrase and retrieve a flag from behind it.  
 - Decrypt captured WPA2 traffic to steal a victim's live session cookie.  
+
+### Prerequisites 
+
+Completion of the Wi-Fi Fundamentals and Reconnaissance room, which is where monitor mode and airodump-ng are introduced and practised. Both are treated here as established tools rather than taught a second time.  
+
+### Machine Access
+
+Start the lab by clicking the Start Machine button below. The machine takes a couple of minutes to boot and then appears in Split View in your browser. For convenience, you can use the expand button in the bottom-left corner of Split View to open the VM in full-screen mode. No login is required, as the session opens directly onto the desktop, already authenticated as the user account.  
+
+### Confirming the Wireless Interfaces
+
+>_ sudo iw dev
