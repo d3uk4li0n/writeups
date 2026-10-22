@@ -25,4 +25,8 @@ Start the lab by clicking the Start Machine button below. The machine takes a co
 
 ### Confirming the Wireless Interfaces
 
->_ sudo iw dev
+Open a Terminal on the machine and confirm that the wireless interfaces are present:  
+
+```console
+user@debian-thm:~$ sudo iw dev
+```
