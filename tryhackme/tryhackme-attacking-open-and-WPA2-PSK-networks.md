@@ -30,3 +30,20 @@ Open a Terminal on the machine and confirm that the wireless interfaces are pres
 ```console
 user@debian-thm:~$ sudo iw dev
 ```
+
+Several wlan interfaces are listed, numbered from wlan0 upward. These are the radios used to observe the networks in the lab and to attack them. Most of the tooling requires root privileges, so commands are prefixed with sudo; the password, where prompted, is user
+
+The attacks in this room run from a card in monitor mode, so create the monitor interface before you begin:  
+
+```console
+user@debian-thm:~$ sudo airmon-ng check kill
+user@debian-thm:~$ sudo airmon-ng start wlan0
+```
+
+airmon-ng check kill is not optional here, and it matters for more than the monitor interface.  NetworkManager manages every wireless radio on the machine, so when it is left running it will reclaim the managed radio moments after wpa_supplicant associates with a network. The association appears to succeed,  wpa_supplicant reports no error, and then  iw dev wlan1 link reads Not connected and every  DHCPDISCOVER goes unanswered. Stopping it first avoids that, and it has to come first because the command also stops any  wpa_supplicant already running.
+That gives you wlan0mon, the interface every capture and injection command in this room expects. The two managed radios stay as they are, wlan2 for the open network and wlan1 for the WPA2 one once its passphrase is known, because a card in monitor mode cannot associate with anything.  
+
+### Answer the questions below   
+
+*Deploy the machine and read through the introduction, then continue to the next task when you are ready.*  
+_No answer needed_
