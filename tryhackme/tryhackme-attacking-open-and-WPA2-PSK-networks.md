@@ -45,5 +45,5 @@ That gives you wlan0mon, the interface every capture and injection command in th
 
 ### Answer the questions below   
 
-*Deploy the machine and read through the introduction, then continue to the next task when you are ready.*  
+**Deploy the machine and read through the introduction, then continue to the next task when you are ready.** 
 _No answer needed_
