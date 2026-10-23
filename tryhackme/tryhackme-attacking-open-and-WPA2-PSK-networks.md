@@ -55,3 +55,12 @@ _No answer needed_
 An open network issues no key, so joining one takes nothing more than asking. What stands between a new client and the rest of the network is the venue's captive portal, and the decision it records is made per client, against an identifier that client announces. Reaching what sits behind it therefore means joining as an ordinary client, confirming the traffic is being held back, then presenting the identity of a client the portal has already admitted.  
 
 The target is the access point the reconnaissance scan in the [previous room](https://tryhackme.com/room/wififundamentalsandrecon) flagged OPN in its ENC column, Guest-WiFi on channel 6 at BSSID F0:9F:C2:71:22:10. It is the network in the lab requiring the least effort.  
+
+**What Open Means**  
+
+The term open describes the authentication, but its consequence concerns encryption. An access point configured for open authentication performs no key exchange, so nothing transmitted afterwards is protected. Every frame travels in cleartext and is readable by any receiver within range in monitor mode. There is no handshake to capture and nothing to crack, because no secret was established.  
+
+OWE (Opportunistic Wireless Encryption) is the alternative, which the previous room's 5 GHz sweep showed on FreeConnect as AUTH OWE. Joining it looks no different from joining this one, and yet a capture of it yields nothing readable, for a reason the Attacking WPA3 and Rogue Access Points room introduces and the Attacking OWE and the 6 GHz Band room works through (both coming soon). Guest-WiFi is plain OPN, so the techniques below apply in full.  
+
+
+
