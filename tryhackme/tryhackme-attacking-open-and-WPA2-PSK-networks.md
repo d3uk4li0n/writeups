@@ -50,4 +50,8 @@ That gives you wlan0mon, the interface every capture and injection command in th
 **Deploy the machine and read through the introduction, then continue to the next task when you are ready.** 
 _No answer needed_
 
+## Task 2: Bypassing the Captive Portal 
 
+An open network issues no key, so joining one takes nothing more than asking. What stands between a new client and the rest of the network is the venue's captive portal, and the decision it records is made per client, against an identifier that client announces. Reaching what sits behind it therefore means joining as an ordinary client, confirming the traffic is being held back, then presenting the identity of a client the portal has already admitted.  
+
+The target is the access point the reconnaissance scan in the [previous room](https://tryhackme.com/room/wififundamentalsandrecon) flagged OPN in its ENC column, Guest-WiFi on channel 6 at BSSID F0:9F:C2:71:22:10. It is the network in the lab requiring the least effort.  
