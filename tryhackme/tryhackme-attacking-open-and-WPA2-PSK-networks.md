@@ -1,6 +1,8 @@
 # Attacking Open and WPA2-PSK Networks
 ## Bypass a captive portal, then capture, crack and decrypt a WPA2 handshake.
 
+## Task 1: Introduction 
+
 The Wi-Fi Fundamentals and Reconnaissance room covered observation, producing a description of an entire wireless environment without connecting to any of it. That description confers no access. This room converts it into access.  
 
 Two configurations are addressed, being the two most frequently encountered in practice. An open network requires no password and applies no encryption, so every frame crosses the radio in cleartext and is readable by any receiver in range. WPA2-PSK does encrypt that traffic, but the scheme rests on one passphrase shared by every client, and the four-way handshake proving a client knows it can be captured and attacked offline. Recovering that passphrase exposes the traffic of every device on the network, not only the attacker's own.  
@@ -47,3 +49,5 @@ That gives you wlan0mon, the interface every capture and injection command in th
 
 **Deploy the machine and read through the introduction, then continue to the next task when you are ready.** 
 _No answer needed_
+
+
