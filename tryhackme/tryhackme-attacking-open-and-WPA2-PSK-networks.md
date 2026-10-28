@@ -76,3 +76,31 @@ network={
     key_mgmt=NONE
 }
 ```
+
+Bring the association up and request an address:  
+
+```console
+user@debian-thm:~$ sudo wpa_supplicant -B -i wlan2 -c guest-open.conf
+Successfully initialized wpa_supplicant
+user@debian-thm:~$ sudo dhclient wlan2
+```
+
+wpa_supplicant drives the association with the same -B, -i and -c flags introduced in the previous room. Association is a layer 2 event and provides no IP address, so dhclient follows to request one from the access point by DHCP (Dynamic Host Configuration Protocol).
+
+A single iw command achieves the same result without a configuration file:  
+
+```console
+user@debian-thm:~$ sudo iw dev wlan2 connect Guest-WiFi
+```
+
+Once DHCP replies, the interface holds an address on the guest subnet, with the access point acting as gateway on 192.168.10.1:  
+
+```console
+user@debian-thm:~$ ip addr show wlan2
+9: wlan2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 02:00:00:00:02:00 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.10.84/24 brd 192.168.10.255 scope global wlan2
+       valid_lft forever preferred_lft forever
+    inet6 fe80::ff:fe00:200/64 scope link 
+       valid_lft forever preferred_lft forever
+```
