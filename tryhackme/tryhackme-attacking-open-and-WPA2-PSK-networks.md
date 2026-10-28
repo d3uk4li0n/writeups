@@ -62,5 +62,17 @@ The term open describes the authentication, but its consequence concerns encrypt
 
 OWE (Opportunistic Wireless Encryption) is the alternative, which the previous room's 5 GHz sweep showed on FreeConnect as AUTH OWE. Joining it looks no different from joining this one, and yet a capture of it yields nothing readable, for a reason the Attacking WPA3 and Rogue Access Points room introduces and the Attacking OWE and the 6 GHz Band room works through (both coming soon). Guest-WiFi is plain OPN, so the techniques below apply in full.  
 
+**Captive Portals**  
 
+A captive portal is an authentication step a venue requires before forwarding client traffic onward. Guest-WiFi runs one served by openNDS. It gates access but provides no encryption, so traffic before, during and after the portal remains as readable as on any other open network. This task defeats the portal; the next exploits the absence of encryption.
 
+**Joining Guest-WiFi**
+
+The monitor interface is wlan0mon. A second managed-mode radio, wlan2, serves as an ordinary client. Because the network is open, the only significant configuration line is key_mgmt=NONE. Write the following to guest-open.conf. 
+
+```console
+network={
+    ssid="Guest-WiFi"
+    key_mgmt=NONE
+}
+```
