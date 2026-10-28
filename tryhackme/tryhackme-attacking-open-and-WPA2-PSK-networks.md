@@ -104,3 +104,21 @@ user@debian-thm:~$ ip addr show wlan2
     inet6 fe80::ff:fe00:200/64 scope link 
        valid_lft forever preferred_lft forever
 ```
+
+**The Portal Response, HTTP 511**
+
+openNDS intercepts port 80 traffic from every MAC address absent from its allow-list. Addressing the request to an IP rather than a hostname keeps name resolution out of the test:  
+
+```console
+user@debian-thm:~$ curl -sI http://192.168.10.1/
+HTTP/1.1 511 Network Authentication Required
+Content-Length: 1289
+Connection: close
+Content-Type: text/html; charset=utf-8
+Date: Sat, 04 Jul 2026 14:41:22 GMT
+```
+
+-sI combines two options. -I asks for the response headers alone rather than the page body, which is all that is needed to see how the gateway answers an unauthenticated client, and -s keeps the progress meter out of the output.  
+HTTP 511 Network Authentication Required, defined in [RFC 6585](https://www.rfc-editor.org/info/rfc6585/), indicates the client is on the network but has not authenticated. No header names the software, but the splash page returned in the body signs itself openNDS S/N:f09fc2712210, identifying the daemon. Every request receives the same response until openNDS considers the client authorized.  
+
+
