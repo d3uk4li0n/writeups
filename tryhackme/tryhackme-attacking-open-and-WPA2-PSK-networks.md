@@ -163,3 +163,8 @@ Content-Type: text/html; charset=UTF-8
 ```
 
 <img width="2124" height="918" alt="image" src="https://github.com/user-attachments/assets/57a02755-212f-4387-b52b-d05156f09b8a" />
+
+**Answer the question below**
+*What HTTP status code does the openNDS captive portal return to a client that has not yet authenticated?*
+
+**Answer:** 511
