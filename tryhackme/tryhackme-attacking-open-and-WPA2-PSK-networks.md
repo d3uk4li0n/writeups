@@ -168,3 +168,7 @@ Content-Type: text/html; charset=UTF-8
 *What HTTP status code does the openNDS captive portal return to a client that has not yet authenticated?*
 
 **Answer:** 511
+
+## Task 3: Introduction 
+
+Network access alone is of limited value, and the substantive risk on an open network requires no spoofing at all. A web application does not recognise a returning user by their password on every request. It recognises a session cookie, a token issued at login and sent back by the browser with everything that follows.  
