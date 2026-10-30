@@ -169,6 +169,10 @@ Content-Type: text/html; charset=UTF-8
 
 **Answer:** 511
 
-## Task 3: Introduction 
+## Task 3: Stealing a Session on an Open Network 
 
-Network access alone is of limited value, and the substantive risk on an open network requires no spoofing at all. A web application does not recognise a returning user by their password on every request. It recognises a session cookie, a token issued at login and sent back by the browser with everything that follows.  
+Network access alone is of limited value, and the substantive risk on an open network requires no spoofing at all. A web application does not recognise a returning user by their password on every request. It recognises a session cookie, a token issued at login and sent back by the browser with everything that follows. 
+
+An open network applies no encryption, so that cookie crosses the air as readable text along with everything else. The requests legitimate users of Guest-WiFi send to the router panel can therefore be lifted out of a capture by anyone within range of the access point.
+
+
