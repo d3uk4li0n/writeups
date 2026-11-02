@@ -175,4 +175,18 @@ Network access alone is of limited value, and the substantive risk on an open ne
 
 An open network applies no encryption, so that cookie crosses the air as readable text along with everything else. The requests legitimate users of Guest-WiFi send to the router panel can therefore be lifted out of a capture by anyone within range of the access point.
 
+**Capturing the Cookies**  
+
+Pin the monitor interface to the network's channel and write to disk:  
+
+```console
+user@debian-thm:~$ sudo airodump-ng -c 6 --bssid F0:9F:C2:71:22:10 -w opn wlan0mon
+```
+
+The channel lock, BSSID filter and -w prefix behave as they did in the reconnaissance room, holding the radio on Guest-WiFi so it is never listening elsewhere when the guest clients transmit, and writing what it hears to opn-01.cap  
+
+
+
+
+
 
