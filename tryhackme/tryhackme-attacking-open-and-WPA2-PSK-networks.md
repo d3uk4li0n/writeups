@@ -200,5 +200,8 @@ user@debian-thm:~$ sudo tshark -r opn-01.cap -Y http.cookie -T fields -e ip.src 
 192.168.10.102	PHPSESSID=REDACTED-3
 ```
 
+Three sessions belonging to two users, free1 and free2, are logged into the panel on 192.168.10.1, and their cookies have been recovered in plaintext. Each row is one captured request, so a client that made seven requests contributes seven identical rows and the output is longer than the number of distinct sessions in it. Sorting the first column, or reading the second for repeats, reduces it to the three values that matter. Captured values will differ from the example. No key and no cracking were required.  
+
+<img width="2206" height="886" alt="image" src="https://github.com/user-attachments/assets/134a4901-3fe5-4dd2-b8aa-da722ffa784b" />
 
 
