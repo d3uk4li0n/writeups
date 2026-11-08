@@ -261,8 +261,17 @@ We start capturing traffic with
 sudo airodump-ng -c 6 --bssid F0:9F:C2:71:22:10 -w opn wlan0mon  
 ```
 
-We let it run for roughyl a minute before quitting the process with Ctrl-C
+We let it run for roughly a minute before quitting the process with Ctrl-C
 
 <img width="1832" height="650" alt="image" src="https://github.com/user-attachments/assets/72f5ac0f-e78b-4081-ab68-3c1cc8f1d9cc" />
 
+Verify that our capture file exists, then we run  
+
+```console
+sudo tshark -r opn-01.cap -Y http.cookie -T fields -e ip.src -e http.cookie  
+```
+
+to parse its content  
+
+<img width="2119" height="1058" alt="image" src="https://github.com/user-attachments/assets/2f0e2947-072a-48c6-80a9-196a37772e90" />
 
