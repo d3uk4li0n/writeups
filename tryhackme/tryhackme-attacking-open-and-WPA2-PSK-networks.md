@@ -278,5 +278,20 @@ to parse its content
 Although the output contains 29 lines, there are only three distinct sessions  
 The cookies were transmitted over HTTP without encryption  
 
+Randomize MAC address:  
 
+<img width="1400" height="374" alt="image" src="https://github.com/user-attachments/assets/affde7d2-3920-40bc-a6fe-8b040ed13624" />
 
+Verify the captive portal has been bypassed using curl:  
+
+<img width="1292" height="536" alt="image" src="https://github.com/user-attachments/assets/49b038a9-4de9-4052-8f20-1095c8d5a094" />
+
+It's time to finally retrieve the flag using our existing cookie  
+
+```console
+curl -s -b "PHPSESSID=87da1cf5bf60433283679b12459d97af" http://192.168.10.1/index.php
+``` 
+
+<img width="2908" height="563" alt="image" src="https://github.com/user-attachments/assets/6dc8ab25-ef91-4e66-b29e-fc6c7e3c3dd9" />
+
+**Answer: THM{559bcac8fcb676576af3de81b40a5ef7190db4bd}**
