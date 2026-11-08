@@ -275,3 +275,8 @@ to parse its content
 
 <img width="2119" height="1058" alt="image" src="https://github.com/user-attachments/assets/2f0e2947-072a-48c6-80a9-196a37772e90" />
 
+Although the output contains 29 lines, there are only three distinct sessions  
+The cookies were transmitted over HTTP without encryption  
+
+
+
