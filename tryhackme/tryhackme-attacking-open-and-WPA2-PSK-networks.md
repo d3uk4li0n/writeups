@@ -300,7 +300,11 @@ curl -s -b "PHPSESSID=87da1cf5bf60433283679b12459d97af" http://192.168.10.1/inde
 
 **Answer: THM{559bcac8fcb676576af3de81b40a5ef7190db4bd}**
 
-## Task 4: Stealing a Session on an Open Network  
+## Task 4: How WPA2-PSK works  
+
+WPA2-PSK encrypts traffic in transit, so the attack against it is not a brute-force assault on that encryption. It targets one specific moment in the protocol, the exchange in which a client proves to the access point that it knows the passphrase.  
+
+
 
 
  
