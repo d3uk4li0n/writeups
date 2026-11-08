@@ -247,4 +247,11 @@ user@debian-thm:~$ sudo macchanger -p wlan2
 user@debian-thm:~$ sudo ip link set wlan2 up
 ```
 
+The first thing we're gonna do is list the available wireless adapters and their associated info.  
+
+<img width="1876" height="764" alt="image" src="https://github.com/user-attachments/assets/efa1ecf7-8a0a-4ccb-9263-001b0a0089dc" />
+
+Then we run sudo airmon-ng check kill to stop all processes that might interfere with monitor mode.
+
+<img width="1172" height="583" alt="image" src="https://github.com/user-attachments/assets/5927390d-7c31-4ae1-a8e2-d42dbb41a161" />
 
