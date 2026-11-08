@@ -255,3 +255,10 @@ Then we run sudo airmon-ng check kill to stop all processes that might interfere
 
 <img width="1172" height="583" alt="image" src="https://github.com/user-attachments/assets/5927390d-7c31-4ae1-a8e2-d42dbb41a161" />
 
+We start capturing traffic with sudo airodump-ng -c 6 --bssid F0:9F:C2:71:22:10 -w opn wlan0mon  
+
+We let it run for roughyl a minute before quitting the process with Ctrl-C
+
+<img width="1832" height="650" alt="image" src="https://github.com/user-attachments/assets/72f5ac0f-e78b-4081-ab68-3c1cc8f1d9cc" />
+
+
