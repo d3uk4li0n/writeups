@@ -247,6 +247,10 @@ user@debian-thm:~$ sudo macchanger -p wlan2
 user@debian-thm:~$ sudo ip link set wlan2 up
 ```
 
+**Answer the questions below**  
+
+**What is the flag from the open network?**  
+
 The first thing we're gonna do is list the available wireless adapters and their associated info.  
 
 <img width="1876" height="764" alt="image" src="https://github.com/user-attachments/assets/efa1ecf7-8a0a-4ccb-9263-001b0a0089dc" />
@@ -295,3 +299,8 @@ curl -s -b "PHPSESSID=87da1cf5bf60433283679b12459d97af" http://192.168.10.1/inde
 <img width="2908" height="563" alt="image" src="https://github.com/user-attachments/assets/6dc8ab25-ef91-4e66-b29e-fc6c7e3c3dd9" />
 
 **Answer: THM{559bcac8fcb676576af3de81b40a5ef7190db4bd}**
+
+## Task 4: Stealing a Session on an Open Network  
+
+
+ 
