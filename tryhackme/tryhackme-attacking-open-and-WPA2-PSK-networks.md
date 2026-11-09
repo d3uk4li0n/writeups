@@ -322,19 +322,23 @@ A nonce is a random number used once, and the two exchanged here are named for t
 
 <img width="2499" height="683" alt="image" src="https://github.com/user-attachments/assets/d4e01e9a-b507-47f3-b0a2-f1934a82820b" />
 
-The client combines the PMK with both nonces and both MAC addresses to derive the PTK, then signs message 2 with a MIC computed from it. The MIC can only exist if the client holds the PMK, so it proves possession without the passphrase being transmitted. The nonces and MAC addresses, by contrast, travel in cleartext, and that combination is what the attack exploits.  
+The client combines the PMK with both nonces and both MAC addresses to derive the PTK, then signs message 2 with a MIC computed from it. The MIC can only exist if the client holds the PMK, so it proves possession without the passphrase being transmitted. The nonces and MAC addresses, by contrast, travel in cleartext, and that combination is what the attack exploits.    
 
 <img width="2214" height="943" alt="image" src="https://github.com/user-attachments/assets/adfa1fbe-d080-4952-8f10-3e6d818c0aa2" />
 
 **Why Capturing the Handshake Is Enough**
 
-Everything except the binding secret crosses the air in the clear. An attacker holding a captured handshake can test each candidate offline: run the candidate and the SSID through PBKDF2 for a trial PMK, derive the trial PTK from the captured nonces and MAC addresses, compute the resulting MIC and compare it against the captured one. A match identifies the passphrase.  
+Everything except the binding secret crosses the air in the clear. An attacker holding a captured handshake can test each candidate offline: run the candidate and the SSID through PBKDF2 for a trial PMK, derive the trial PTK from the captured nonces and MAC addresses, compute the resulting MIC and compare it against the captured one. A match identifies the passphrase.    
 
 This is an offline dictionary attack. The network is never contacted again, so no lockout is triggered, no counter increments and no rate limit applies. The security of a WPA2-PSK network therefore reduces to whether the passphrase survives guessing.  
 
 A second route exists. Some access points include a PMKID (Pairwise Master Key Identifier) in the first handshake message, derived from the PMK and the two MAC addresses. It is attackable by the same process and can be obtained from a single frame without waiting for a client, making it a clientless alternative where no clients are present.  
 
 **Forcing a Handshake**
+
+A handshake occurs only when a client joins. If every device is already connected and idle, none is about to join, so a connected one is forced off the network instead and reconnects by itself.  
+
+The eviction uses the unauthenticated deauthentication frame described in the reconnaissance room, spoofed to appear to come from the access point. The client drops, reconnects within moments, and performs a new four-way handshake in front of the listening radio.  
 
 **Answer the questions below**
 
