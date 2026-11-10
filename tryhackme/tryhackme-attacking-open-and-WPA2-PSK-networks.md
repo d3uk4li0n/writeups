@@ -422,9 +422,9 @@ Stop the capture with Ctrl+C. The file required is home2g-01.cap.
 
 **Answer the questions below**  
 
-**Which aireplay-ng attack-mode number sends deauthentication frames?**
+**Which aireplay-ng attack-mode number sends deauthentication frames?**  
 *Answer:* 0
 
-**What short phrase does airodump-ng display in the top-right of its header once the handshake has been captured?**
+**What short phrase does airodump-ng display in the top-right of its header once the handshake has been captured?**  
 *Answer:* WPA handshake
 
