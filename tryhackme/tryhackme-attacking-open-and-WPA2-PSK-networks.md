@@ -534,12 +534,10 @@ PBKDF2 performed as designed, which is why the guessing rate is measured in thou
 *What is the hashcat hash-mode number used to crack a WPA/WPA2 handshake?*  
 *Answer:* 22000
 
-*What is the recovered passphrase for the Home-2G network?*
+*What is the recovered passphrase for the Home-2G network?*  
 *Answer:* starwars1
 
-
-
-
+## Task 7: Connecting to the Network
 
 
 
