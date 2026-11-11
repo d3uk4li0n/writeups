@@ -537,8 +537,55 @@ PBKDF2 performed as designed, which is why the guessing rate is measured in thou
 *What is the recovered passphrase for the Home-2G network?*  
 *Answer:* starwars1
 
-## Task 7: Connecting to the Network
+## Task 7: Connecting to the Network  
 
+A recovered passphrase is only a credential until something is done with it. Using it means associating as an ordinary client, which moves the attacker from outside the encryption boundary to inside it and onto the same subnet as every other device on the network. The wireless attack ends at that point and an ordinary internal one begins, against whatever the network exposes to the clients it trusts.  
+
+What this network exposes is a router with a web panel. Reaching it takes an association, an address on the subnet and a scan to establish what is listening.  
+
+Association requires a radio in managed mode, since a monitor interface only listens and cannot hold a client connection. wlan0mon is therefore left to its capture work and wlan1, a separate managed interface, carries the connection.  
+
+**Building the Client Configuration**  
+
+wpa_supplicant reads a configuration file rather than accepting a password on the command line. The wpa_passphrase helper writes one. It takes the network name and then the passphrase recovered in the previous task as its two arguments, and prints the finished network={ ... } block to the terminal, so the redirect is what saves it as home2g.conf:  
+
+```console
+user@debian-thm:~$ wpa_passphrase Home-2G <passphrase> > home2g.conf
+```
+
+```console
+network={
+	ssid="Home-2G"
+	#psk="<passphrase>"
+	psk=<64 hexadecimal characters>
+}
+```
+
+The hex string is the point of the tool. Rather than storing plaintext, wpa_passphrase performs the PBKDF2 derivation from Task 4, hashing the passphrase with the SSID to produce the 256-bit PMK, and it is that key wpa_supplicant uses. The original passphrase is retained only as a comment.  
+
+**Associating and Obtaining a Lease**  
+
+wpa_supplicant runs the client half of the join here as it did against Guest-WiFi in Task 2, with the same -B, -i and -c flags. What differs is the work it does. There key_mgmt=NONE left it nothing to prove, while here it proves knowledge of the key sitting in home2g.conf by completing the four-way handshake.  
+
+iw dev wlan1 link then reports what that interface is associated with, naming the access point, the network and the frequency in use, or printing Not connected if the association never completed.  
+
+```console
+user@debian-thm:~$ sudo wpa_supplicant -B -i wlan1 -c home2g.conf
+Successfully initialized wpa_supplicant
+user@debian-thm:~$ sudo iw dev wlan1 link
+Connected to f0:9f:c2:71:22:12 (on wlan1)
+	SSID: Home-2G
+	freq: 2437
+	RX: 1819 bytes (28 packets)
+	TX: 642 bytes (6 packets)
+	signal: -30 dBm
+	rx bitrate: 1.0 MBit/s
+	tx bitrate: 2.0 MBit/s
+
+	bss flags:	short-slot-time
+	dtim period:	2
+	beacon int:	100
+```
 
 
 
