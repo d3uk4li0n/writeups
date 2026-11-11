@@ -587,6 +587,23 @@ Connected to f0:9f:c2:71:22:12 (on wlan1)
 	beacon int:	100
 ```
 
+The reported frequency of 2437 MHz is channel 6, so the association is with the expected access point. Layer 2 is established, layer 3 is not, so dhclient requests a lease as it did on the guest network. The output records the whole exchange, from the broadcast discovery through the offer of 192.168.2.23 and the request for it to the final acknowledgement:  
+
+```console
+user@debian-thm:~$ sudo dhclient -v wlan1
+...
+Listening on LPF/wlan1/02:00:00:00:01:00
+Sending on   LPF/wlan1/02:00:00:00:01:00
+Sending on   Socket/fallback
+DHCPDISCOVER on wlan1 to 255.255.255.255 port 67 interval 8
+DHCPOFFER of 192.168.2.23 from 192.168.2.1
+DHCPREQUEST for 192.168.2.23 on wlan1 to 255.255.255.255 port 67
+DHCPACK of 192.168.2.23 from 192.168.2.1
+bound to 192.168.2.23 -- renewal in 37222 seconds.
+```
+
+The interface holds 192.168.2.23, and both the offer and the acknowledgement came from 192.168.2.1, which on a router of this class is the DHCP server, the gateway and the access point.  
+
 
 
 
