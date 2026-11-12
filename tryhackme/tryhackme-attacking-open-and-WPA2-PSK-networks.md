@@ -683,4 +683,11 @@ The defaults are accepted and the panel greets the session as admin. On a live r
 
 What it does not yield here is the flag, which is scoped to one of the router's real users rather than to the administrator. Their passwords are long random strings that no wordlist recovers, so the route to them is not a password at all but a session one of them has already opened.  
 
+**Answer the questions below**   
+
+**Which utility generates the wpa_supplicant PSK configuration from an SSID and passphrase?**  
+*Answer:* wpa_passphrase  
+
+**What default credentials log into the router admin panel? (format username:password)**  
+*Answer:* admin:admin  
 
