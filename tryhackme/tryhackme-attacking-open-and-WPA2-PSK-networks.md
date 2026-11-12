@@ -691,3 +691,6 @@ What it does not yield here is the flag, which is scoped to one of the router's 
 **What default credentials log into the router admin panel? (format username:password)**  
 *Answer:* admin:admin  
 
+## Task 8: Decrypting Traffic and Stealing Sessions  
+
+
