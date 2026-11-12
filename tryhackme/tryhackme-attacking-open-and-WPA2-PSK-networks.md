@@ -693,4 +693,8 @@ What it does not yield here is the flag, which is scoped to one of the router's 
 
 ## Task 8: Decrypting Traffic and Stealing Sessions  
 
+The flag on Home-2G is held by the accounts test1 and test2, whose passwords are long random strings. The Wi-Fi passphrase fell to a wordlist; these would not. Both users are logged into the router panel, and each session is tracked by a cookie that crosses the air on every request, exactly as the guest cookies did on Guest-WiFi.  
+
+The attack is therefore the one already run in Task 3. What differs is that those frames were cleartext and these are not, so a decryption stage sits between the capture and the extraction, and nothing after it changes. 
+
 
