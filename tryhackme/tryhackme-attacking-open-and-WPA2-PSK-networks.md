@@ -770,4 +770,20 @@ Two conclusions follow. Structurally, every WPA2-PSK device shares one passphras
 
 *Answer:* THM{9f863bbec27bd00458dfa5f84fe3a81f1f688955}  
 
+## Task 9: Conclusion  
+
+Two networks, one open and one encrypted, ended with the same stolen session. The room began with nothing but a reconnaissance listing naming Guest-WiFi and Home-2G, and it ends with a flag taken from each, neither of them obtained by guessing a user's password.  
+The work divided into five stages, and the commands that carried each are worth holding on to.  
+
+Two networks, one open and one encrypted, ended with the same stolen session. The room began with nothing but a reconnaissance listing naming Guest-WiFi and Home-2G, and it ends with a flag taken from each, neither of them obtained by guessing a user's password.  
+
+The work divided into five stages, and the commands that carried each are worth holding on to.  
+
+- Bypassing the captive portal: wpa_supplicant joined Guest-WiFi with key_mgmt=NONE and dhclient took a lease, at which point curl drew an HTTP 511 from openNDS. Cloning an already-authorised client with macchanger -m and reconnecting turned the same request into a 302, because the allow-list keys on a MAC address that every frame broadcasts.
+- Stealing a session in the clear: airodump-ng -c 6 --bssid wrote the guest traffic to disk, tshark -Y http.cookie read the PHPSESSID values straight out of it, and curl -b replayed one to reach the panel as free1.
+- Capturing the handshake: The same airodump-ng invocation pinned to Home-2G, and aireplay-ng -0 aimed at one associated station forced the reconnect that put a four-way handshake in front of the radio, confirmed by WPA handshake appearing in the header.
+- Recovering the passphrase: aircrack-ng -w -b tested the wordlist against the capture on the CPU, while hcxpcapngtool -o converted the same capture to the 22000 format for hashcat -m 22000, which is built for GPUs but ran on the CPU here. Both arrived at the identical passphrase, because both run the same PBKDF2 comparison described in Task 4.
+- Joining and decrypting: wpa_passphrase turned the recovered passphrase into a supplicant profile holding the PMK, wpa_supplicant and dhclient put the attacking radio on the subnet, and airdecap-ng -e -p rebuilt each client's PTK to rewrite the capture as plaintext, after which the Task 3 extraction ran unchanged.
+
+
 
